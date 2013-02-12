@@ -1,0 +1,211 @@
+// import Compass modules
+@import 'compass';
+
+// variables
+$borderColor: #777;
+$border: 1px solid $borderColor;
+$textColor: #111;
+$baseColor: #000;
+$accentColor: #F60;
+$borderRadius: 5px;
+$navBorder: none;
+
+// custom mixins
+@mixin gradient($startColor: #eee, $endColor: white) {
+  color: #fff;
+  background-color: $endColor;  
+  @include background(linear-gradient($startColor,$endColor)); // Compass
+}
+@mixin gradientBlack {
+  @include gradient(#4c4c4c,#000000);  
+}
+@mixin gradientOrange {
+  @include gradient(#ffb27f,#ff6600);
+}
+@mixin gradientGray {
+  @include gradient(#dbdbdb,#777);
+}
+
+// Eric Meyers' CSS reset; Compass reset not so good
+@import 'reset';
+
+// clearfix
+@import 'clearfix';
+
+// other CSS
+html, body {
+    background: #DDD;
+}
+.hidden {
+    display: none;
+}
+#header_container {
+  width: 93.14453125%; // 1004px / 1024px * 95%
+  padding: 2px 0.927734375%; // 10px / 1024px * 95%  
+  margin: 5px auto 0 auto;
+  background: #fff;   
+  vertical-align: bottom;
+  text-align: left;
+  border: $border;
+  border-bottom: 0;
+  border-collapse: collapse;
+  #header_first_word {
+    color: $baseColor;
+  }
+  #header_plus {
+    color: $accentColor;
+  }
+  #header_second_word {
+    color: #777;
+  }    
+}
+#dropdown_container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0;
+    border: $border;
+    border-bottom: 0;
+    border-top: 0;
+    border-collapse: collapse; 
+    @include gradientBlack;
+}
+#content_container {
+    width: 93.14453125%; // 1004px / 1024px * 95%
+    padding: 0.927734375%; // 10px / 1024px * 95%
+    margin: 0 auto;
+    border: $border;
+    border-bottom: 0;
+    border-top: 0;
+    border-collapse: collapse;
+    position: relative;
+    background-color: #fff;
+    color: #000;    
+}
+// container for contents on left side of screen; contents
+// expand to fill the container
+#left_container {
+  width: 50%;
+  margin:0;
+  padding:0;
+}
+#map_canvas {
+  width: 600px;
+  height: 300px;
+  border: $border;
+}
+#myCanvas2 {
+  text-align: center;
+  padding: 5px;
+}
+#footer_container {
+    @include gradientBlack; 
+    vertical-align: bottom;
+    width: 95%;
+    border: $border;
+    border-bottom: 0;
+    border-top: 0;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+#header_container, #content_container, #footer_container, #dropdown_container, table, th, td, tr, fieldset, div {
+  border-color: $borderColor;
+}
+// rounded box divs
+.content_box {
+  padding: 10px;
+  border: $border;
+  margin-bottom: 5px;
+  @include border-radius($borderRadius);
+}
+.accordion_title {
+  text-align: center;
+  padding: 5px;
+}
+.content_header {
+    color: $textColor;
+}
+// hyperlinks in text
+.content_a {
+  &:link, &:visited {
+    color: $textColor;
+  }
+  &:hover {
+    color: $accentColor;
+    text-decoration: underline;
+  }
+}
+
+// action links / buttons
+.actions {
+  width: 200px;
+  text-align: center;
+}
+
+a.action {
+    padding: 2px 5px;
+    margin: 0 0 1em 1em;
+    border: $border;
+    text-align: center;
+    outline: none; 
+    border-color: #777; 
+    @include gradientGray;
+    &:link, &:visited {
+        color: #FFF;
+    }
+    &:hover {   
+        text-decoration: none; 
+        border-color: $accentColor;
+        @include gradientOrange;
+    }    
+}
+// logos 
+img.logo80 {
+  height: 80px; 
+  margin: 10px auto
+}
+img.logo60 {
+  height: 60px; 
+  margin: 10px auto
+}
+img.logo30 {
+  height: 30px; 
+  margin: 10px auto
+}
+
+// imports
+@import 'table';
+@import 'figure';
+@import 'form';
+@import 'navbar';
+@import 'typography';
+@import 'colorbox';
+
+// media queries; cut-and-paste
+@media screen and (max-width: 930px) {
+  .accordion_title {
+    display: block;
+    text-align: center;
+  }
+  figure.myFigure.portrait {
+    width: 49%; // expand to available width
+    margin-right: 0;
+  }
+  #myCanvas2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 580px) {
+  figure.float.portrait, figure.float.landscape {
+    width: 100%; // expand to available width
+    float: none; // normal flow
+  }
+  .accordion_title {
+    margin-top: 5px;
+  }
+  #header_container {
+    text-align: center;
+  }
+  #left_container {
+    width: 100%;
+  }
+}

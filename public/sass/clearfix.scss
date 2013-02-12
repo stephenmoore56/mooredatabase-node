@@ -1,0 +1,12 @@
+// standard clearfix; Compass reset not good
+.group:before,
+.group:after {
+content: "";
+display: table;
+}
+.group:after {
+clear: both;
+}
+.group {
+zoom: 1;
+}

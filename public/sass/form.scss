@@ -1,0 +1,58 @@
+// spacing between controls 
+dl.zend_form dd {
+    margin-bottom: 5px;
+}
+fieldset {
+    border: $border;
+    padding: 10px;
+    width: 98%;
+    margin-bottom: 7px;
+    @include border-radius(5px);
+}
+#submit-label,#csrf-label,#csrf-element, #elementGroup-label {
+    display: none;
+}
+#elementGroup-element {
+    clear:both; // FF hack; because we don't display the label above 
+}
+legend {
+    margin-left: 1em;
+}
+label {
+    float: left;
+    width: 8em;
+    margin-right: 1em;
+}
+label.invalid {
+    color: red;
+}
+input[type = "text"], input[type = "password"] {
+  line-height: 1.5em;
+}
+input[type = "text"], input[type = "password"], textarea {
+    border: $border;
+    background-color: #FAFFBD;
+    background-image: none;
+    color: black;
+    @include border-radius(5px);
+}
+input[readonly=readonly], textarea[readonly=readonly] {
+    border: $border;
+    background-color: #EEE;
+    background-image: none;
+    color: black;
+}    
+button, input[type = "submit"] {
+    width: 100px;
+}
+input.invalid, textarea.invalid {
+    background-color: #fff47f;
+    border: 2px #F00 solid;
+}
+// form errors list 
+ul.form-errors {
+    border: 2px #F00 solid;
+    padding: 10px 20px;
+    width: 400px;
+    background-color: #FFEB80;
+}

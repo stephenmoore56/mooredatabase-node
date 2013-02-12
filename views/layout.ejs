@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<%- partial('partials/metadata.ejs') %>
+<title>MOORE+DATABASE | <%= title %></title>
+<%- partial('partials/stylesheets.ejs') %>
+<%- partial('partials/scripts.ejs') %>
+</head>
+<body>
+<%- partial('partials/banner.ejs') %>	
+<%- partial('partials/navbar.ejs') %>
+<section id="content_container" class="group">
+<%-body -%>
+</section>
+<%- partial('partials/footer.ejs') %>
+<%- partial('partials/googleAnalytics.ejs') %>
+</body>
+</html>

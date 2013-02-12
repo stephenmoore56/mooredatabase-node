@@ -1,0 +1,89 @@
+// fonts
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 100.01%;
+}
+h1, h2, h3, h4, h5, h6, legend { 
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+}
+strong {
+    font-weight: bold;
+}
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 1.4em;
+}
+h3 {
+    font-size: 1.3em;
+}
+h4 {
+    font-size: 1.2em;
+}
+h5 {
+    font-size: 1.1em;
+}
+h6 {
+    font-size: 1em;
+}
+// banner/logo text
+.header_text {
+  font-size: 2.25em;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#content_container p, #content_container li, #content_container blockquote, table {
+    font-size: .75em;
+}
+.dialog_p {
+    font-size: .8em;
+}
+
+// nested lists 
+#content_container li li {
+    font-size: 1em;
+}
+#content_container blockquote {
+    font-style: italic;
+}
+.dropdown a {
+    font-size: .8em;
+    font-weight: bold;
+}
+.scientific_name {
+    font-style: italic;
+}
+fieldset {
+    dt, dd, button, input.submit {
+      font-size: .9em;
+    }
+}
+button, input.submit {
+    font-size: 75%;
+}
+// jQuery overrides
+.ui-button-text, .ui-dialog-titlebar, #accordion h3 a, #accordionFixedHeight h3 a {
+    font-size: .8em;
+    font-weight: normal;
+}
+#tabs > ul > li > a > h3 {
+    font-size: 1em;
+    font-weight: normal;
+}
+.ui-accordion-header {
+  line-height: .75;
+}
+li.ui-menu-item {
+    font-size: .7em;
+    list-style: none outside none;
+}
+.ui-widget, .ui-widget * {
+    font-family: Verdana, sans-serif;
+}
+@media screen and (max-width: 580px) {
+  .header_text {
+    font-size: 1.5em;
+  }
+}

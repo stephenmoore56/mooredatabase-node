@@ -1,0 +1,281 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "partials/metadata.ejs",
+			"settings":
+			{
+				"buffer_size": 525,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Nodejs/Nodejs.sublime-build",
+	"command_palette":
+	{
+		"height": 348.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 418.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/var/www/mysites/node/app.js",
+		"/var/www/mysites/node/error.log",
+		"/var/www/mysites/node/views/partials/metadata.ejs",
+		"/var/www/mysites/node/package.json",
+		"/var/www/mysites/node/npm-debug.log",
+		"/Users/stephenmoore/Downloads/ACErrorReport (2).txt",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/layout.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/routes/index.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/navbar.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/index.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/footer.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/node_modules/ejs/Readme.md",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/app.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/routes/user.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/scripts.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/stylesheets.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/metadata.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/googleAnalytics.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/package.json",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/partials/banner.ejs",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/public/javascripts/mooredatabase.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/views/layout.ejs.html",
+		"/Library/WebServer/Documents/MOORE-DATABASE/node/public/stylesheets/style.css",
+		"/Users/stephenmoore/junk/nodetest/package.json",
+		"/Users/stephenmoore/Downloads/ACErrorReport (4).txt",
+		"/Users/stephenmoore/Downloads/ACErrorReport.txt",
+		"/Users/stephenmoore/Desktop/ECSData.txt",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/6 Frameworks/7 Generating Express Sites/recipes/routes/index.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/6 Frameworks/7 Generating Express Sites/recipes/app.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/6 Frameworks/1 Starting an Express Project/recipes/script.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/6 Frameworks/2 Laying out Views/recipes/package.json",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/6 Frameworks/1 Starting an Express Project/recipes/package.json",
+		"/Library/WebServer/Documents/MOORE-DATABASE/README",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/js/mooredatabase.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/coffee_watch.sh",
+		"/Users/stephenmoore/Downloads/ACErrorReport (1).txt",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/5 Creating Web Servers/4 Sending Different Response Types/response/server_json.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/5 Creating Web Servers/4 Sending Different Response Types/response/server.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/5 Creating Web Servers/1 Responding to requests/server.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/4 Command Line Scripts/4 Validating JavaScript Code/messy.js",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/js/static-content/settings.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/4 Command Line Scripts/2 Gathering User Input/readline.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/4 Command Line Scripts/1 Reading Arguments/read/package.json",
+		"/Users/stephenmoore/junk/timeout.js",
+		"/Users/stephenmoore/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/3 Modules/1 What is a module/script.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/3 Modules/3 Using modules/html/script.js",
+		"/Users/stephenmoore/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/stephenmoore/junk/hello.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/3 Modules/1 What is a module/project/package.json",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/3 Modules/3 Using modules/html/package.json",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/2 Getting Started/1 Running a Node script/script.js",
+		"/Users/stephenmoore/Desktop/Ex_Files_Node.js_FL/Exercise Files/2 Getting Started/1 Running a Node script/test.js",
+		"/Users/stephenmoore/rails_projects/sample_app/Gemfile",
+		"/Users/stephenmoore/rails_projects/sample_app/app/assets/javascripts/sessions.js.coffee",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/compass/config.rb",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/compass_watch.sh",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/compass/sass/main.scss",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/styles/sass/main.scss",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/compass_watch.sh",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/sass/main.scss",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/config.rb",
+		"/Library/WebServer/Documents/MOORE-DATABASE/mobile/sass/config.rb",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/js/animation_db_mooredatabase.js",
+		"/Users/stephenmoore/rails_projects/sample_app/app/controllers/application_controller.rb",
+		"/Users/stephenmoore/rails_projects/sample_app/app/views/layouts/_header.html.erb",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/sass/main.scss",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/css/main.css",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/index.php",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/sitemap.xml",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/robots.txt",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/config.rb",
+		"/Library/WebServer/Documents/MOORE-DATABASE/desktop/zend/public/media/sass_watch.sh",
+		"/Users/stephenmoore/Downloads/ACErrorReport (1) copy.txt",
+		"/Users/stephenmoore/Library/Application Support/Sublime Text 2/Packages/User/Plain text.sublime-settings",
+		"/Users/stephenmoore/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/stephenmoore/Desktop/query.sql"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sub",
+			"@charset",
+			"crypto",
+			"Generated expected rowcount value of 13 for contactType.\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "partials/metadata.ejs",
+					"settings":
+					{
+						"buffer_size": 525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								525,
+								525
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 54.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 96.0
+	},
+	"output.git":
+	{
+		"height": 53.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 323.0,
+	"status_bar_visible": true
+}
