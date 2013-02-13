@@ -15,3 +15,5 @@ npm-debug.log
 
 .DS_Store
 public/.DS_Store
+node.sublime-project
+node.sublime-workspace

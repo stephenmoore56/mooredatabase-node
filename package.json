@@ -1,6 +1,7 @@
 {
   "name": "mooredatabase-node",
   "version": "0.0.1",
+  "author": "Stephen Moore <stephenmoore56@msn.com> (http://moore-database.com)",
   "engines": {
     "node": "0.8.19",
     "npm": "1.2.10"
