@@ -1,17 +1,5 @@
 <% layout('layout.ejs') -%>
-<figure id="myFigure" class="myFigure float portrait">
-	<a class="colorboxLink" 
-		href="/images/statefairride.jpg" 
-		title="State Fair">
-			<img id="popupImage" 
-			src="/images/statefairride.jpg" 
-			alt="State Fair - The Dreaded Zipper" 
-			title="State Fair"/>
-	</a>
-	<figcaption>
-		State Fair
-	</figcaption>
-</figure>
+<%- partial('partials/figure.ejs', {"orientation":"portrait","src":"/images/statefairride.jpg","title":"Zipper","caption":"Zipper"}) %>
 <section id="left_container">
 	<header id="homeTitle" class="content_box accordion_title">
     	<h1 class="content_header">node.js</h1>
