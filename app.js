@@ -10,6 +10,9 @@ var express = require('express')
   , engine = require('ejs-locals')
   , winston = require('winston');
 
+// Redis store for sessions
+var RedisStore = require('connect-redis')(express);
+
 // start an express app
 var app = express();
 
@@ -37,8 +40,10 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.cookieParser());
+  app.use(express.session({ secret: "pileated woodpecker" }));  
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));  
+  app.use(express.static(path.join(__dirname, 'public')));   
   app.use(function(req, res, next) {
     res.status(404).render('error', { title: 'Error' });
   });
