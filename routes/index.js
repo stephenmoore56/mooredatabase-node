@@ -20,7 +20,8 @@ exports.mysqltest = function(req, res){
 		var connection = mysql.createConnection({
 		  host     : 'mooredatabase.cd02yxrr7fxm.us-east-1.rds.amazonaws.com',
 		  user     : 'smoore',
-		  password : 'gsnyder56'
+		  password : 'gsnyder56',
+		  database : 'birding'
 		});				
 	}
 	connection.connect();
