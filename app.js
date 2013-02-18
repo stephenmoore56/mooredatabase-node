@@ -8,9 +8,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , engine = require('ejs-locals')
-  , winston = require('winston')
-  , backbone = require('backbone')
-  , mysql = require('mysql');
+  , winston = require('winston');
 
 // Redis store for sessions
 var RedisStore = require('connect-redis')(express);

@@ -1,5 +1,5 @@
 /*
- * GET home page.
+ * For the time being, all routing happens here
  */
 exports.index = function(req, res){
 	res.render('index', { title: 'Node.js' });
