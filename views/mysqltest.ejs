@@ -1,5 +1,5 @@
 <% layout('layout.ejs') -%>
-<%- partial('partials/figure.ejs', {"orientation":"portrait","src":"/images/statefairride.jpg","title":"Zipper","caption":"Zipper"}) %>
+<%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/minnehahabridge.jpg","title":"Minnehaha","caption":"Minnehaha"}) %>
 <section id="left_container">
 	<header id="homeTitle" class="content_box accordion_title">
     	<h1 class="content_header">MySQL Test Page</h1>
@@ -8,6 +8,9 @@
 		<p>
 			Database test was successful.
 		</p>
+		<p>
+			Species count: <%= speciesCount %>
+		</p>		
 	</section>
 	<p>
 		<img src="/images/node.png"
