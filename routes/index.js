@@ -5,18 +5,27 @@ exports.index = function(req, res){
 	res.render('index', { title: 'Node.js' });
 };
 exports.mysqltest = function(req, res){
-	var mysql      = require('mysql');
-	var connection = mysql.createConnection({
-	  host     : 'mooredatabase.cd02yxrr7fxm.us-east-1.rds.amazonaws.com',
-	  user     : 'smoore',
-	  password : 'gsnyder56',
-	  database : 'birding'
-	});		
+	var mysqlDatabase      = require('../modules/mysqlDatabase.js');
+	var	sql = "SELECT \
+			  aou_order.order_name, \
+			  aou_order.notes AS order_notes, \
+			  ( SELECT COUNT(*) \
+                FROM \
+                aou_list aol2 \
+                WHERE \
+                aol2.order = aou_order.order_name) AS totalSpecies, \
+              COUNT(DISTINCT aou_list.id) AS speciesCount \
+              FROM \
+			  sighting \
+			  INNER JOIN aou_list ON sighting.aou_list_id = aou_list.id \
+			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \
+			  GROUP BY aou_order.order_name, aou_order.notes \
+			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
+	var connection = mysqlDatabase.connect();		
 	connection.connect();
-	connection.query('SELECT COUNT(*) AS speciesCount FROM aou_list;', function(err, rows, fields) {
+	connection.query(sql, function(err, rows) {
 		if (err) throw err;
-		var speciesCount = rows[0].speciesCount;
-		res.render('mysqltest', { title: 'MySQL Test', speciesCount: speciesCount });	  
+		res.render('mysqltest', { title: 'Amazon RDS Test', orders: rows });	  
 	});
 	connection.end();
 };

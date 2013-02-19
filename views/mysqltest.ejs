@@ -1,24 +1,34 @@
 <% layout('layout.ejs') -%>
-<%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/minnehahabridge.jpg","title":"Minnehaha","caption":"Minnehaha"}) %>
-<section id="left_container">
-	<header id="homeTitle" class="content_box accordion_title">
-    	<h1 class="content_header">MySQL Test Page</h1>
-	</header>
-	<section class="content_box">
-		<p>
-			Database test was successful.
-		</p>
-		<p>
-			Species count: <%= speciesCount %>
-		</p>		
-	</section>
-	<p>
-		<img src="/images/node.png"
-			alt="Node.js Logo"
-			class="logo60"
-			style="background-color: #AAA; padding: 10px;" />		
-		<img src="/images/heroku.png"
-			alt="Heroku Logo"
-			class="logo60" />															
-	</p>
-</section>
+<header class="content_box accordion_title"> 
+	<h4 class="content_header">Species By Order</h4>
+</header>
+<table id='species' class='report sorted' style='width:100%;padding:0;margin:0;' title='Order Sightings'>
+	<thead>
+		<tr>
+	    	<th class='image_title'>Order</th>
+	    	<th class='image_title'>Notes</th>
+	  		<th class='image_title numeric'>Species Sighted</th>
+	  		<th class='image_title numeric'>Total Species</th>	  		
+		</tr>
+	</thead>
+	<tbody>		
+	<% for (i = 0; i < orders.length; i++) { %> 
+		<% // print order row  %> 
+		<tr class="order">
+			<td class="left_aligned orderName"><%= orders[i].order_name  %></td>
+			<td class="left_aligned"><%= orders[i].order_notes %></td>
+			<td class="right_aligned"><%= orders[i].speciesCount %></td>	
+			<td class="right_aligned"><%= orders[i].totalSpecies %></td>					
+		</tr>
+	<% } %> 
+	</tbody>
+</table>
+<p>
+	<img src="/images/node.png"
+		alt="Node.js Logo"
+		class="logo60"
+		style="background-color: #AAA; padding: 10px;" />		
+	<img src="/images/heroku.png"
+		alt="Heroku Logo"
+		class="logo60" />															
+</p>
