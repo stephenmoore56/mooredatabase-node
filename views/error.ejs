@@ -2,9 +2,9 @@
 <%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/university.jpg","title":"University","caption":"University"}) %>
 <section id="left_container">
 	<header class="content_box accordion_title">
-    	<h1 class="content_header">Error 404</h1>
+    	<h1 class="content_header"><%= title %></h1>
     </header>
 	<section class="content_box">
-		<p>The file you requested cannot be found.</p>
+		<p><%= description %></p>
 	</section>
 </section>

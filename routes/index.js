@@ -5,7 +5,9 @@ exports.index = function(req, res){
 	res.render('index', { title: 'Node.js' });
 };
 exports.mysqltest = function(req, res){
-	var mysqlDatabase      = require('../modules/mysqlDatabase.js');
+	var mysqlDatabase = require('../modules/mysqlDatabase.js');
+	var connection = mysqlDatabase.connect();		
+	connection.connect();	
 	var	sql = "SELECT \
 			  aou_order.order_name, \
 			  aou_order.notes AS order_notes, \
@@ -21,11 +23,12 @@ exports.mysqltest = function(req, res){
 			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \
 			  GROUP BY aou_order.order_name, aou_order.notes \
 			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
-	var connection = mysqlDatabase.connect();		
-	connection.connect();
 	connection.query(sql, function(err, rows) {
-		if (err) throw err;
-		res.render('mysqltest', { title: 'Amazon RDS Test', orders: rows });	  
+		if (err) {
+			res.render('error', { title: 'Database Error', description: 'A database error occurred: ' + err.message });
+		} else {
+			res.render('mysqltest', { title: 'Heroku - Amazon RDS Test', orders: rows });			
+		}
 	});
 	connection.end();
 };

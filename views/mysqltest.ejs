@@ -2,7 +2,10 @@
 <header class="content_box accordion_title"> 
 	<h4 class="content_header">Species By Order</h4>
 </header>
-<table id='species' class='report sorted' style='width:100%;padding:0;margin:0;' title='Order Sightings'>
+<section class="content_box">
+	<p>This page demonstrates integration of a Heroku Node.js app with an Amazon RDS MySQL backend.</p>
+</section>
+<table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
 	<thead>
 		<tr>
 	    	<th class='image_title'>Order</th>
@@ -12,15 +15,14 @@
 		</tr>
 	</thead>
 	<tbody>		
-	<% for (i = 0; i < orders.length; i++) { %> 
-		<% // print order row  %> 
+	<% orders.forEach(function(order) { %> 
 		<tr class="order">
-			<td class="left_aligned orderName"><%= orders[i].order_name  %></td>
-			<td class="left_aligned"><%= orders[i].order_notes %></td>
-			<td class="right_aligned"><%= orders[i].speciesCount %></td>	
-			<td class="right_aligned"><%= orders[i].totalSpecies %></td>					
+			<td class="left_aligned orderName"><%= order.order_name  %></td>
+			<td class="left_aligned"><%= order.order_notes %></td>
+			<td class="right_aligned"><%= order.speciesCount %></td>	
+			<td class="right_aligned"><%= order.totalSpecies %></td>					
 		</tr>
-	<% } %> 
+	<% }) %> 
 	</tbody>
 </table>
 <p>

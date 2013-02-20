@@ -45,7 +45,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));   
   app.use(function(req, res, next) {
-    res.status(404).render('error', { title: 'Error' });
+    res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' });
   });
 });
 
