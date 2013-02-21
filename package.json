@@ -21,7 +21,6 @@
     "ejs": "0.8.3",
     "ejs-locals": "~1.0.2",
     "winston": "0.6.2",
-    "backbone": "0.9.10",
     "mysql": "2.0.0-alpha7",
     "underscore": "1.4.4"
   }
