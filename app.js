@@ -41,7 +41,10 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: "pileated woodpecker" }));  
+  // sessions expire in 2 hours
+  app.use(express.session({ 
+  	secret: "pileated woodpecker",
+  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)) }));  
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));   
   app.use(function(req, res, next) {
