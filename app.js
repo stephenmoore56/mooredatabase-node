@@ -1,20 +1,31 @@
-
-/**
- * Module dependencies.
- */
-
+// dependencies
 var express = require('express')
-  , routes = require('./routes')
   , http = require('http')
   , path = require('path')
   , engine = require('ejs-locals')
-  , winston = require('winston');
+  , winston = require('winston')
+  , _ = require('underscore');
 
 // Redis store for sessions
 var RedisStore = require('connect-redis')(express);
 
 // start an express app
 var app = express();
+
+// require controllers
+var routes = require('./routes');
+var content = _.extend(require('./routes/content'));
+routes.content = content;
+var birding = _.extend(require('./routes/birding'));
+routes.birding = birding;
+
+// routes
+app.get('/', routes.content.nodejs);
+app.get('/content', routes.content.nodejs);
+app.get('/content/nodejs', routes.content.nodejs);
+app.get('/birding', routes.birding.orders);
+app.get('/birding/orders', routes.birding.orders);
+
 
 // configure winston error logging; add file transport
 var logger = new winston.Logger({
@@ -55,9 +66,6 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
-app.get('/', routes.index);
-app.get('/mysqltest', routes.mysqltest);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
