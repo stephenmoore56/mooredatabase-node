@@ -1,0 +1,36 @@
+<% layout('../layout.ejs') -%>
+<header class="content_box accordion_title"> 
+	<h4 class="content_header">Species By Order</h4>
+</header>
+<section class="content_box">
+	<p>This page demonstrates integration of a Heroku Node.js app with an Amazon RDS MySQL backend.</p>
+</section>
+<table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
+	<thead>
+		<tr>
+	    	<th class='image_title'>Order</th>
+	    	<th class='image_title'>Notes</th>
+	  		<th class='image_title numeric'>Species Sighted</th>
+	  		<th class='image_title numeric'>Total Species</th>	  		
+		</tr>
+	</thead>
+	<tbody>		
+	<% orders.forEach(function(order) { %> 
+		<tr class="order">
+			<td class="left_aligned orderName"><%= order.order_name  %></td>
+			<td class="left_aligned"><%= order.order_notes %></td>
+			<td class="right_aligned"><%= order.speciesCount %></td>	
+			<td class="right_aligned"><%= order.totalSpecies %></td>					
+		</tr>
+	<% }) %> 
+	</tbody>
+</table>
+<p>
+	<img src="/images/node.png"
+		alt="Node.js Logo"
+		class="logo60"
+		style="background-color: #AAA; padding: 10px;" />		
+	<img src="/images/heroku.png"
+		alt="Heroku Logo"
+		class="logo60" />															
+</p>
