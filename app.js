@@ -14,7 +14,7 @@ var app = express();
 
 // require controllers
 var routes = require('./routes');
-var content = _.extend(require('./routes/content'));
+var content = _.extend(require('./routes/static-content'));
 routes.content = content;
 var birding = _.extend(require('./routes/birding'));
 routes.birding = birding;
