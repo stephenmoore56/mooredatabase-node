@@ -3,8 +3,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , engine = require('ejs-locals')
-  , winston = require('winston')
-  , _ = require('underscore');
+  , winston = require('winston');
 
 // Redis store for sessions
 var RedisStore = require('connect-redis')(express);
@@ -12,20 +11,8 @@ var RedisStore = require('connect-redis')(express);
 // start an express app
 var app = express();
 
-// require controllers
-var routes = require('./routes');
-var content = _.extend(require('./routes/static-content'));
-routes.content = content;
-var birding = _.extend(require('./routes/birding'));
-routes.birding = birding;
-
-// routes
-app.get('/', routes.content.nodejs);
-app.get('/content', routes.content.nodejs);
-app.get('/content/nodejs', routes.content.nodejs);
-app.get('/birding', routes.birding.orders);
-app.get('/birding/orders', routes.birding.orders);
-
+// routing
+var routes = require('./modules/routes')(app);
 
 // configure winston error logging; add file transport
 var logger = new winston.Logger({
