@@ -18,16 +18,8 @@ var app = express();
 // routing
 var routes = require('./modules/routes')(app);
 
-// configure winston error logging; add file transport
-var logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      filename: './error.log',
-      handleExceptions: true,
-      json: true
-    })
-  ]
-});
+// logging
+var logger = require('./modules/myLogger').factory();
 // log startup
 logger.log('info', 'Starting app in ' + process.env.NODE_ENV + '...');
 
@@ -47,8 +39,11 @@ app.configure(function(){
   app.use(express.session({ 
   	secret: "pileated woodpecker",
   	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)) }));  
+  // application routes
   app.use(app.router);
+  // routes for static assets in public directory
   app.use(express.static(path.join(__dirname, 'public')));   
+  // 404 page
   app.use(function(req, res, next) {
     res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' });
   });
