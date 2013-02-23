@@ -8,8 +8,11 @@ var express = require('express')
 // Redis store for sessions
 var RedisStore = require('connect-redis')(express);
 
-// start an express app
+// set environment before starting express
 process.env.NODE_ENV = "production";
+//process.env.NODE_ENV = "development";
+
+// start an express app
 var app = express();
 
 // routing
@@ -26,7 +29,7 @@ var logger = new winston.Logger({
   ]
 });
 // log startup
-logger.log('info', 'Starting app...');
+logger.log('info', 'Starting app in ' + process.env.NODE_ENV + '...');
 
 // use ejs-locals for all ejs templates
 app.engine('ejs', engine);
