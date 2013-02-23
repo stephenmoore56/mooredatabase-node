@@ -1,6 +1,6 @@
 // birding controller
 exports.orders = function(req, res){
-	var mysqlDatabase = require('../modules/mysqlDatabase.js');
+	var mysqlDatabase = require('../lib/mysqlDatabase.js');
 	var connection = mysqlDatabase.connect();		
 	connection.connect();	
 	var	sql = "SELECT \

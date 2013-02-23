@@ -16,10 +16,10 @@ process.env.NODE_ENV = "production";
 var app = express();
 
 // routing
-var routes = require('./modules/routes')(app);
+var routes = require('./lib/routes')(app);
 
 // logging
-var logger = require('./modules/myLogger').factory();
+var logger = require('./lib/myLogger').factory();
 // log startup
 logger.log('info', 'Starting app in ' + process.env.NODE_ENV + '...');
 
