@@ -9,6 +9,7 @@ var express = require('express')
 var RedisStore = require('connect-redis')(express);
 
 // start an express app
+process.env.NODE_ENV = "production";
 var app = express();
 
 // routing
