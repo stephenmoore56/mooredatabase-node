@@ -2,8 +2,7 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , engine = require('ejs-locals')
-  , winston = require('winston');
+  , engine = require('ejs-locals');
 
 // Redis store for sessions
 var RedisStore = require('connect-redis')(express);
@@ -19,9 +18,8 @@ var app = express();
 var routes = require('./lib/routes')(app);
 
 // logging
-var logger = require('./lib/myLogger').factory();
-// log startup
-logger.log('info', 'Starting app in ' + process.env.NODE_ENV + '...');
+var logger = require('./lib/logger').factory();
+logger.log('info','Starting app in ' + process.env.NODE_ENV + ' mode...');
 
 // use ejs-locals for all ejs templates
 app.engine('ejs', engine);
