@@ -9,7 +9,7 @@
   drawChartSpeciesByOrder = function(dataPoints) {
     var chart, chartData, data, i, options, _i, _ref;
     chartData = [];
-    for (i = 0; i < dataPoints.length; i++) {
+    for (i = _i = 0, _ref = dataPoints.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
       chartData.push([dataPoints[i]['order_name'], parseInt(dataPoints[i]['speciesCount'])]);
     }
     data = new google.visualization.DataTable();

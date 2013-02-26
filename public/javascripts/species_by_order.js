@@ -3,14 +3,15 @@
 
   $(document).ready(function() {
     if (Modernizr.svg) {
-	    return $.ajax({
-	      url: '/birding/ordersajax',
-	      cache: false,
-	      dataType: 'json',
-	      success: function(data) {
-	        return mooredatabase.drawChartSpeciesByOrder(data);
-	      }
-	    });
+      $.ajax({
+        url: '/birding/ordersajax',
+        cache: false,
+        dataType: 'json',
+        success: function(data) {
+          mooredatabase.drawChartSpeciesByOrder(data);
+          return true;
+        }
+      });
     } else {
       $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
     }
