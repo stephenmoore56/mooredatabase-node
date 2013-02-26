@@ -33,6 +33,8 @@ app.configure(function(){
   app.use(express.favicon());
   // log incoming requests to console in dev mode
   app.use(express.logger('dev'));
+  // gzip output
+  app.use(express.compress());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
