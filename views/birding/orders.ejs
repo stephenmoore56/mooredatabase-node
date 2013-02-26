@@ -1,9 +1,21 @@
 <% layout('../layout.ejs') -%>
+<script type="text/javascript" src="//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A"></script>
+<script src="/javascripts/google_chart_species_by_order.js"></script>
+<script src="/javascripts/species_by_order.js"></script>
 <header class="content_box accordion_title"> 
 	<h4 class="content_header">Species By Order</h4>
 </header>
 <section class="content_box">
-	<p>This page demonstrates integration of a Heroku Node.js app with an Amazon RDS MySQL backend.</p>
+	<p>This page demonstrates integration of a Heroku Node.js app with an Amazon RDS MySQL backend.  The tables are
+	drawn server-side using the EJS templating system.  The pie chart is drawn using the Google Charts API with data
+	obtained via an AJAX call to the Node.js app.</p>
+</section>	
+<section class="content_box">	
+	<figure id="piechart">
+	    <div id="chart_div" title="Google Pie Chart Example">
+	    	Pie Chart
+	    </div>
+	</figure>
 </section>
 <table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
 	<thead>

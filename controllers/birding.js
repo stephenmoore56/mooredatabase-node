@@ -45,7 +45,7 @@ exports.ordersajax = function(req, res){
 			res.render('error', { title: 'Database Error', description: 'A database error occurred: ' + err.message });
 		} else {
 			// send JSON to client
-			res.send(JSON.stringify(rows));		
+			res.send(rows);		
 		}
 	});
 	connection.end();
