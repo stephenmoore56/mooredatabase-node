@@ -46,6 +46,17 @@ app.configure(function(){
   app.use(app.router);
   // routes for static assets in public directory
   app.use(express.static(path.join(__dirname, 'public')));   
+  // error handler
+  // middleware with an arity of 4 are considered
+  // error handling middleware. When you next(err)
+  // it will be passed through the defined middleware
+  // in order, but ONLY those with an arity of 4, ignoring
+  // regular middleware.
+  app.use(function(err, req, res, next){
+    // whatever you want here, feel free to populate
+    // properties on `err` to treat it differently in here.
+    res.status(err.status || 500).render('error', { title: 'Error', description: err.message });
+  });
   // 404 page
   app.use(function(req, res, next) {
     res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' });
