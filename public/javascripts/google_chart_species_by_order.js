@@ -2,6 +2,25 @@
 (function() {
   var drawChartSpeciesByOrder;
 
+  $(document).ready(function() {
+    if (($('#chart_div').length)) {
+      if (Modernizr.svg) {
+        $.ajax({
+          url: '/birding/ordersajax',
+          cache: false,
+          dataType: 'json',
+          success: function(data) {
+            mooredatabase.drawChartSpeciesByOrder(data);
+            return true;
+          }
+        });
+      } else {
+        $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
+      }
+    }
+    return true;
+  });
+
   google.load('visualization', '1.0', {
     'packages': ['corechart']
   });
