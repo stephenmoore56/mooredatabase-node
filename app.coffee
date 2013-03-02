@@ -27,8 +27,6 @@ app.configure ->
   app.set('views', __dirname + '/views')
   # use ejs templating
   app.set('view engine', 'ejs')
-  # serve up express favicon
-  app.use(express.favicon())
   # log incoming requests to console in dev mode
   app.use(express.logger('dev'))
   # gzip output
