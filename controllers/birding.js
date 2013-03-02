@@ -44,8 +44,12 @@ exports.ordersajax = function(req, res){
 		if (err) {
 			res.render('error', { title: 'Database Error', description: 'A database error occurred: ' + err.message });
 		} else {
-			// send JSON to client
-			res.send(rows);		
+			// send header; official MIME type for JSON
+			res.writeHead(200, {
+				'Content-Type': 'application/json'
+			});
+			// Send data as JSON string.
+			res.end(JSON.stringify(rows));
 		}
 	});
 	connection.end();
