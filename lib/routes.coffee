@@ -16,14 +16,6 @@ module.exports = (app) ->
   app.get('/birding', controllers.birding.orders)
   app.get('/birding/orders', controllers.birding.orders)
   app.get('/birding/ordersajax', controllers.birding.ordersajax)
-  
-  # # routes that require https
-  # app.all('*', (req,res,next) ->
-    # if req.headers['x-forwarded-proto'] isnt 'https'
-      # res.redirect('https://node.moore-database.com' + req.url)
-    # else
-      # next() # Continue to other routes if we're not redirecting
-  # )  
 
   # routes requiring https
   app.get('/auth/login', controllers.auth.login)
