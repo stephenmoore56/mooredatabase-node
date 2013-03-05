@@ -1,0 +1,19 @@
+<% layout('../layout.ejs') -%>
+<form id="loginForm" action="/auth/login" method="post">
+	<dl class="zend_form">
+		<dt>&#160;</dt>
+		<dd>
+			<fieldset>
+				<legend>Login</legend>
+				<dl>
+					<dt><label for="username" class="required">Username:</label></dt>
+					<dd><input type="text" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required" autocomplete="on"></dd>
+					<dt><label for="password" class="required">Password:</label></dt>
+					<dd><input type="password" name="password" id="password" value="" size="30" maxLength="30" autocomplete="on" required="required"></dd>
+				</dl>
+			</fieldset>
+		</dd>
+		<dt id="submit-label">&#160;</dt>
+		<dd id="submit-element"><input type="submit" name="submit" id="submit" value="Log In" class="submit"></dd>
+	</dl>
+</form>
