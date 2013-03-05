@@ -1,7 +1,7 @@
 // birding controller
 var auth = require('../lib/auth');
 exports.orders = function(req, res){
-	auth.ssl_not_required(req,res);
+	auth.ssl_required(req,res,false);
 	var mysqlDatabase = require('../lib/mysqlDatabase.js');
 	var connection = mysqlDatabase.connect();		
 	connection.connect();	
@@ -30,7 +30,7 @@ exports.orders = function(req, res){
 	connection.end();
 };
 exports.ordersajax = function(req, res){
-	auth.ssl_not_required(req,res);
+	auth.ssl_required(req,res,false);
 	var mysqlDatabase = require('../lib/mysqlDatabase.js');
 	var connection = mysqlDatabase.connect();		
 	connection.connect();	

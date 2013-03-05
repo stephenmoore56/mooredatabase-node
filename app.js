@@ -58,7 +58,7 @@
   });
 
   http.createServer(app).listen(app.get('port'), function() {
-    return console.log("Express server listening on port " + app.get('port'));
+    return console.log("Express server listening on port " + app.get('port') + " in " + process.env.NODE_ENV + " environment");
   });
 
 }).call(this);

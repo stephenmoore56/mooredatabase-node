@@ -6,8 +6,8 @@ engine = require('ejs-locals')
 RedisStore = require('connect-redis')(express)
 
 # set environment before starting express
-#process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "production"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -60,4 +60,4 @@ app.configure 'development', ->
   app.use express.errorHandler()
 
 http.createServer(app).listen(app.get('port'), ->
-  console.log "Express server listening on port " + app.get('port'))
+  console.log "Express server listening on port " + app.get('port') + " in " + process.env.NODE_ENV + " environment")
