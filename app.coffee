@@ -6,8 +6,8 @@ engine = require('ejs-locals')
 RedisStore = require('connect-redis')(express)
 
 # set environment before starting express
-#process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "production"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
