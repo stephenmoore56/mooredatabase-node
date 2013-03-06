@@ -1,5 +1,4 @@
 exports.ssl_required = (req,res,required) ->
-  console.log 'Environment:' + process.env.NODE_ENV
   # only check for http/https in production
   if process.env.NODE_ENV is 'production'
     if required  

@@ -16,9 +16,10 @@ module.exports = (app) ->
   app.get('/birding', controllers.birding.orders)
   app.get('/birding/orders', controllers.birding.orders)
   app.get('/birding/ordersajax', controllers.birding.ordersajax)
+  app.get('/logout', controllers.auth.logout)   
 
   # routes requiring https
   app.get('/auth/login', controllers.auth.login)
-  app.post('/auth/login', controllers.auth.authenticate)  
+  app.post('/auth/login', controllers.auth.authenticate) 
   app.get('/login', controllers.auth.login)  
   app.get('/content/menu', controllers.content.menu)  

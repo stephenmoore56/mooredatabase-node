@@ -12,7 +12,7 @@
 
   RedisStore = require('connect-redis')(express);
 
-  process.env.NODE_ENV = "production";
+  process.env.NODE_ENV = "development";
 
   app = express();
 
