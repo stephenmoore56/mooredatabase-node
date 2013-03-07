@@ -1,0 +1,12 @@
+<% if (typeof flash != 'undefined') { %>
+  <% if (flash.error) { %>
+  	<div class="ui-widget">
+  		<div class="ui-state-highlight ui-corner-all" style="margin-top: 3px; padding: 0 .7em;"> 
+			<p><strong>
+				<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+				<%= flash.error %>
+			</p></strong>  
+		</div>
+	</div>    
+  <% } %>  
+<% } %>
