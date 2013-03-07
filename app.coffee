@@ -4,16 +4,14 @@ http = require('http')
 path = require('path')
 engine = require('ejs-locals')
 RedisStore = require('connect-redis')(express)
+flash = require('connect-flash')
 
 # set environment before starting express
-process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+#process.env.NODE_ENV = "production"
+process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
-
-# routing
-routes = require('./lib/routes')(app)
 
 # logging
 logger = require('./lib/logger').factory()
@@ -33,11 +31,15 @@ app.configure ->
   app.use(express.compress())
   app.use(express.bodyParser())
   app.use(express.methodOverride())
-  app.use(express.cookieParser())
+  app.use(express.cookieParser('keyboard cat'))
   # sessions expire in 2 hours
   app.use(express.session({ 
   	secret: "pileated woodpecker",
-  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)) }))  
+  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)) })) 
+  # flash message support
+  app.use(flash()) 	
+  # set up routes after bodyParser() is called	 
+  routes = require('./lib/routes')(app)  	
   # application routes
   app.use(app.router)
   # routes for static assets in public directory

@@ -22,4 +22,5 @@ module.exports = (app) ->
   app.get('/auth/login', controllers.auth.login)
   app.post('/auth/login', controllers.auth.authenticate) 
   app.get('/login', controllers.auth.login)  
-  app.get('/content/menu', controllers.content.menu)  
+  app.get('/content/menu', controllers.content.menu)
+  true

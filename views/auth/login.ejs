@@ -1,4 +1,5 @@
 <% layout('../layout.ejs') -%>
+<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
 <form id="loginForm" action="/auth/login" method="post">
 	<dl class="zend_form">
 		<dt>&#160;</dt>

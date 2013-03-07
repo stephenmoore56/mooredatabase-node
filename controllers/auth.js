@@ -1,35 +1,40 @@
 // dependencies
 var auth = require('../lib/auth');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+if (process.env.REDISTOGO_URL) {
+  	// redistogo connection
+	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var redis = require("redis").createClient(rtg.port, rtg.hostname);
+	redis.auth(rtg.auth.split(":")[1]);  
+} else {
+	var redis = require("redis"),
+	    client = redis.createClient();
+}
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    // User.findOne({ username: username }, function(err, user) {
-      // if (err) { return done(err); }
-      // if (!user) {
-        // return done(null, false, { message: 'Incorrect username.' });
-      // }
-      // if (!user.validPassword(password)) {
-        // return done(null, false, { message: 'Incorrect password.' });
-      // }
-      // return done(null, user);
-    // });
-    var user;
-    return done(null, user);
-  }
-));
+client.on("error", function (err) {
+    console.log("Redis Error: " + err);
+});
 
 // auth controller actions
 exports.login = function(req, res){
 	auth.ssl_required(req,res,true);
-	res.render('auth/login', { title: 'Login' });
+	res.render('auth/login', { locals: { title: 'Login', flash: req.flash() } });
 };
 exports.authenticate = function(req, res){
 	auth.ssl_required(req,res,true);
-	// passport.authenticate('local', { successRedirect: '/content/menu',
-   									 // failureRedirect: '/login'})
-   	res.redirect('/content/menu');
+	var username = req.body.username;
+	var password = req.body.password;
+	client.get(username, function(err, reply) {
+		if (err) {
+			req.flash("error","An error occurred.");
+			res.redirect('/auth/login');
+		}
+		if (!reply || reply != password) {
+			req.flash("error","Invalid username/password combination.");
+			res.redirect('/auth/login');
+		} else {
+			res.redirect('/content/menu');
+		}
+	});	
 };
 // need a logout / destroy session action here
 exports.logout = function(req,res) {
