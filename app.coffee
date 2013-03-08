@@ -33,6 +33,8 @@ app.configure ->
   app.use(express.bodyParser())
   app.use(express.methodOverride())
   app.use(express.cookieParser('pileated woodpecker'))
+  # routes for static assets in public directory
+  app.use(express.static(path.join(__dirname, 'public')))    
   # sessions expire in 2 hours
   app.use(express.session({ 
     secret: "pileated woodpecker"
@@ -55,9 +57,7 @@ app.configure ->
   # set up routes after bodyParser() is called	 
   routes = require('./lib/routes')(app)  	
   # application routes
-  app.use(app.router)
-  # routes for static assets in public directory
-  app.use(express.static(path.join(__dirname, 'public')))   
+  app.use(app.router) 
   # error handler
   # middleware with an arity of 4 are considered
   # error handling middleware. When you next(err)

@@ -36,6 +36,7 @@
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('pileated woodpecker'));
+    app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       secret: "pileated woodpecker",
       expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
@@ -57,7 +58,6 @@
     });
     routes = require('./lib/routes')(app);
     app.use(app.router);
-    app.use(express["static"](path.join(__dirname, 'public')));
     app.use(function(err, req, res, next) {
       return res.status(err.status || 500).render('error', {
         title: 'Error',
