@@ -32,28 +32,24 @@ app.configure ->
   app.use(express.compress())
   app.use(express.bodyParser())
   app.use(express.methodOverride())
-  app.use(express.cookieParser('keyboard cat'))
+  app.use(express.cookieParser('pileated woodpecker'))
   # sessions expire in 2 hours
   app.use(express.session({ 
-    secret: "pileated woodpecker",
-    expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
-    store:  sessionStore,
-    cookie:
-      path     : '/'
-      domain   : 'node.moore-database.com' 
-      httpOnly : true, 
-      maxAge   : 2 * 60 * 60 * 1000
-  })) 
+    secret: "pileated woodpecker"
+    expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
+    store:  sessionStore
+    cookie: { maxAge: 60000 }
+  }))
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
     if req.session
-      res.locals.authenticated = req.session.auth || false
-      res.locals.username = req.session.username || null
+      res.locals.authenticated = req.session.auth
+      res.locals.username = req.session.username
     else
       res.locals.authenticated = false
-      res.locals.username = 'nobody'      
+      res.locals.username = 'nobody'         
     next()
     return
   # set up routes after bodyParser() is called	 

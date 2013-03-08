@@ -35,23 +35,20 @@
     app.use(express.compress());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express.cookieParser('keyboard cat'));
+    app.use(express.cookieParser('pileated woodpecker'));
     app.use(express.session({
       secret: "pileated woodpecker",
       expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
       store: sessionStore,
       cookie: {
-        path: '/',
-        domain: 'node.moore-database.com',
-        httpOnly: true,
-        maxAge: 2 * 60 * 60 * 1000
+        maxAge: 60000
       }
     }));
     app.use(flash());
     app.use(function(req, res, next) {
       if (req.session) {
-        res.locals.authenticated = req.session.auth || false;
-        res.locals.username = req.session.username || null;
+        res.locals.authenticated = req.session.auth;
+        res.locals.username = req.session.username;
       } else {
         res.locals.authenticated = false;
         res.locals.username = 'nobody';
