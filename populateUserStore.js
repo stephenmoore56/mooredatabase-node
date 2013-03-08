@@ -1,3 +1,4 @@
+var bcrypt = require('bcrypt');
 if (process.env.REDISTOGO_URL) {
   	// redistogo connection
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
@@ -26,10 +27,12 @@ client.del("admin");
 client.del("pickpocket23bazooka");
 client.del("stephenmoore56");
 
+// generate salt
+var salt = bcrypt.genSaltSync(10);
 // repopulate
-client.set("admin", "28rTu932Ypxz987");
-client.set("pickpocket23bazooka", "dY78vNqP37sS94U");
-client.set("stephenmoore56", "Ty84Db0U6qM33");
+client.set("admin",               bcrypt.hashSync("28rTu932Ypxz987", salt));
+client.set("pickpocket23bazooka", bcrypt.hashSync("dY78vNqP37sS94U", salt));
+client.set("stephenmoore56",      bcrypt.hashSync("Ty84Db0U6qM33",   salt));
 
 // exit
 client.quit();

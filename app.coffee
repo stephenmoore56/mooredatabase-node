@@ -4,11 +4,12 @@ http = require('http')
 path = require('path')
 engine = require('ejs-locals')
 RedisStore = require('connect-redis')(express)
+sessionStore = new RedisStore()
 flash = require('connect-flash')
 
 # set environment before starting express
-#process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "production"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -35,9 +36,16 @@ app.configure ->
   # sessions expire in 2 hours
   app.use(express.session({ 
   	secret: "pileated woodpecker",
-  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)) })) 
+  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
+  	store:  sessionStore})) 
   # flash message support
-  app.use(flash()) 	
+  app.use(flash()) 
+  # stick some session variables where views can see them	
+  app.use (req, res, next) ->
+    res.locals.authenticated = req.session.auth
+    res.locals.username = req.session.username
+    next()
+    return
   # set up routes after bodyParser() is called	 
   routes = require('./lib/routes')(app)  	
   # application routes

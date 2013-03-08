@@ -1,5 +1,6 @@
 // dependencies
 var auth = require('../lib/auth');
+var bcrypt = require('bcrypt');
 if (process.env.REDISTOGO_URL) {
   	// redistogo connection
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
@@ -21,23 +22,42 @@ exports.login = function(req, res){
 };
 exports.authenticate = function(req, res){
 	auth.ssl_required(req,res,true);
+	// extract username and password from POST
 	var username = req.body.username;
 	var password = req.body.password;
 	client.get(username, function(err, reply) {
 		if (err) {
 			req.flash("error","An error occurred.");
 			res.redirect('/auth/login');
+			return;
 		}
-		if (!reply || reply != password) {
+		if (!reply) {
 			req.flash("error","Invalid username/password combination.");
 			res.redirect('/auth/login');
-		} else {
-			res.redirect('/content/menu');
+			return;
 		}
+		bcrypt.compare(password,reply,function(err, same) {
+			if (err) {
+				req.flash("error","An error occurred.");
+				res.redirect('/auth/login');
+				return;		
+			}
+			if (! same) {
+				req.flash("error","Invalid username/password combination.");
+				res.redirect('/auth/login');
+				return;	
+			} else {	
+				req.session.auth = true;
+    			req.session.username = username;				
+				res.redirect('/content/menu');
+				return;			
+			}
+		});
 	});	
 };
 // need a logout / destroy session action here
 exports.logout = function(req,res) {
-  req.logout();
-  res.redirect('/');	
+  req.session.regenerate(function(){
+    res.redirect('/auth/login');
+  })
 }
