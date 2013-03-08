@@ -43,8 +43,13 @@
     }));
     app.use(flash());
     app.use(function(req, res, next) {
-      res.locals.authenticated = req.session.auth || false;
-      res.locals.username = req.session.username || null;
+      if (req.session) {
+        res.locals.authenticated = req.session.auth || false;
+        res.locals.username = req.session.username || null;
+      } else {
+        res.locals.authenticated = false;
+        res.locals.username = 'nobody';
+      }
       next();
     });
     routes = require('./lib/routes')(app);

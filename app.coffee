@@ -42,8 +42,12 @@ app.configure ->
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
-    res.locals.authenticated = req.session.auth || false
-    res.locals.username = req.session.username || null
+    if req.session
+      res.locals.authenticated = req.session.auth || false
+      res.locals.username = req.session.username || null
+    else
+      res.locals.authenticated = false
+      res.locals.username = 'nobody'      
     next()
     return
   # set up routes after bodyParser() is called	 
