@@ -39,7 +39,13 @@
     app.use(express.session({
       secret: "pileated woodpecker",
       expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
-      store: sessionStore
+      store: sessionStore,
+      cookie: {
+        path: '/',
+        domain: 'node.moore-database.com',
+        httpOnly: true,
+        maxAge: 2 * 60 * 60 * 1000
+      }
     }));
     app.use(flash());
     app.use(function(req, res, next) {

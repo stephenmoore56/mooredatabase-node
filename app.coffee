@@ -35,9 +35,15 @@ app.configure ->
   app.use(express.cookieParser('keyboard cat'))
   # sessions expire in 2 hours
   app.use(express.session({ 
-  	secret: "pileated woodpecker",
-  	expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
-  	store:  sessionStore})) 
+    secret: "pileated woodpecker",
+    expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
+    store:  sessionStore,
+    cookie:
+      path     : '/'
+      domain   : 'node.moore-database.com' 
+      httpOnly : true, 
+      maxAge   : 2 * 60 * 60 * 1000
+  })) 
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
