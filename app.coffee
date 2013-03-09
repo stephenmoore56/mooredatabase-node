@@ -34,6 +34,7 @@ app.configure ->
   app.use(express.cookieParser('pileated woodpecker'))
   # routes for static assets in public directory; put before
   # stuff for pages that require sessions, flash, ssl, authentication, etc.
+  app.use(express.favicon());
   app.use(express.static(path.join(__dirname, 'public')))    
   # sessions expire in 2 hours
   app.use(express.session({ 

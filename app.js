@@ -34,6 +34,7 @@
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('pileated woodpecker'));
+    app.use(express.favicon());
     app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       secret: "pileated woodpecker",
