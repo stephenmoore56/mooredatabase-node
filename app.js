@@ -16,8 +16,6 @@
 
   process.env.NODE_ENV = "production";
 
-  process.env.NODE_ENV = "development";
-
   app = express();
 
   logger = require('./lib/logger').factory();
@@ -39,7 +37,7 @@
     app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       secret: "pileated woodpecker",
-      store: new RedisStore
+      store: new RedisStore()
     }));
     app.use(flash());
     app.use(function(req, res, next) {

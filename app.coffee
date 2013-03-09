@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -38,7 +38,7 @@ app.configure ->
   # sessions expire in 2 hours
   app.use(express.session({ 
     secret: "pileated woodpecker"
-    store: new RedisStore
+    store: new RedisStore()
   }))
   # flash message support
   app.use(flash()) 
