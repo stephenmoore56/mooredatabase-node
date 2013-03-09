@@ -47,15 +47,11 @@
     }));
     app.use(flash());
     app.use(function(req, res, next) {
-      var _base, _base1, _ref, _ref1;
-      if ((_ref = (_base = req.session).auth) == null) {
-        _base.auth = false;
-      }
-      if ((_ref1 = (_base1 = req.session).username) == null) {
-        _base1.username = 'nobody';
-      }
-      res.locals.authenticated = req.session.auth;
-      res.locals.username = req.session.username;
+      var _ref, _ref1, _ref2, _ref3;
+      req.session.auth(((_ref = req.session.auth) != null ? _ref : req.session.auth) ? void 0 : false);
+      req.session.username = ((_ref1 = req.session.username) != null ? _ref1 : req.session.username) ? void 0 : 'nobody';
+      res.locals.authenticated = ((_ref2 = req.session.auth) != null ? _ref2 : req.session.auth) ? void 0 : false;
+      res.locals.username = ((_ref3 = req.session.username) != null ? _ref3 : req.session.username) ? void 0 : 'nobody';
       next();
     });
     routes = require('./lib/routes')(app);
