@@ -16,8 +16,6 @@
 
   process.env.NODE_ENV = "production";
 
-  process.env.NODE_ENV = "development";
-
   app = express();
 
   logger = require('./lib/logger').factory();
@@ -48,18 +46,14 @@
     app.use(flash());
     app.use(function(req, res, next) {
       var _base, _base1, _ref, _ref1;
-      if (req.session != null) {
-        res.locals.authenticated = req.session.auth;
-        res.locals.username = req.session.username;
-      }
       if ((_ref = (_base = req.session).auth) == null) {
         _base.auth = false;
       }
       if ((_ref1 = (_base1 = req.session).username) == null) {
         _base1.username = 'nobody';
       }
-      console.log(req.session.auth);
-      console.log(req.session.username);
+      res.locals.authenticated = req.session.auth;
+      res.locals.username = req.session.username;
       next();
     });
     routes = require('./lib/routes')(app);

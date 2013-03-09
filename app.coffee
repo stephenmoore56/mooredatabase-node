@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -46,13 +46,10 @@ app.configure ->
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
-    if req.session?
-      res.locals.authenticated = req.session.auth
-      res.locals.username = req.session.username       
     req.session.auth ?= false
     req.session.username ?= 'nobody'
-    console.log req.session.auth
-    console.log req.session.username            
+    res.locals.authenticated = req.session.auth
+    res.locals.username = req.session.username             
     next()
     return  
   # set up routes after bodyParser() is called	 
