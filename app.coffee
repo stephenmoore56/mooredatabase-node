@@ -46,6 +46,9 @@ app.configure ->
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
+    if req.session?
+      res.locals.authenticated = req.session.auth
+      res.locals.username = req.session.username       
     req.session.auth ?= false
     req.session.username ?= 'nobody'
     res.locals.authenticated = req.session.auth
