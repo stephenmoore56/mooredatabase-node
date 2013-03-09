@@ -6,9 +6,17 @@ engine = require('ejs-locals')
 RedisStore = require('connect-redis')(express)
 flash = require('connect-flash')
 
+if process.env.REDISTOGO_URL
+  rtg   = require('url').parse process.env.REDISTOGO_URL
+  redis = require('redis').createClient rtg.port, rtg.hostname
+  redis.auth rtg.auth.split(':')[1] # auth 1st part is username and 2nd is password separated by ":"
+# Localhost
+else
+  redis = require("redis").createClient()
+
 # set environment before starting express
 process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -36,7 +44,10 @@ app.configure ->
   # stuff for pages that require sessions, flash, ssl, authentication, etc.
   app.use(express.static(path.join(__dirname, 'public')))    
   # sessions expire in 2 hours
-  app.use(express.session({ store: new RedisStore, secret: 'pileatedwoodpecker' }))
+  app.use(express.session
+    store: new RedisStore {client: redis}
+    secret: 'pileatedwoodpecker'
+  )
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
