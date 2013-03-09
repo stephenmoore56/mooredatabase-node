@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -32,10 +32,6 @@ app.configure ->
   app.use(express.bodyParser())
   app.use(express.methodOverride())
   app.use(express.cookieParser('pileated woodpecker'))
-  # routes for static assets in public directory; put before
-  # stuff for pages that require sessions, flash, ssl, authentication, etc.
-  app.use(express.favicon());
-  app.use(express.static(path.join(__dirname, 'public')))    
   # sessions expire in 2 hours
   app.use(express.session({ 
     secret: "pileated woodpecker"
@@ -51,6 +47,9 @@ app.configure ->
     res.locals.username = req.session.username            
     next()
     return  
+  # routes for static assets in public directory; put before
+  # stuff for pages that require sessions, flash, ssl, authentication, etc.
+  app.use(express.static(path.join(__dirname, 'public')))        
   # set up routes after bodyParser() is called	 
   routes = require('./lib/routes')(app)  	
   # application routes

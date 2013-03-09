@@ -16,6 +16,8 @@
 
   process.env.NODE_ENV = "production";
 
+  process.env.NODE_ENV = "development";
+
   app = express();
 
   logger = require('./lib/logger').factory();
@@ -34,8 +36,6 @@
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('pileated woodpecker'));
-    app.use(express.favicon());
-    app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       secret: "pileated woodpecker",
       store: new RedisStore()
@@ -53,6 +53,7 @@
       res.locals.username = req.session.username;
       next();
     });
+    app.use(express["static"](path.join(__dirname, 'public')));
     routes = require('./lib/routes')(app);
     app.use(app.router);
     app.use(function(err, req, res, next) {
