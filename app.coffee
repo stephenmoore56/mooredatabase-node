@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -38,20 +38,16 @@ app.configure ->
   # sessions expire in 2 hours
   app.use(express.session({ 
     secret: "pileated woodpecker"
-    expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
     store: new RedisStore
-    cookie: { maxAge: 2 * 60 * 60 * 1000 }
-    auth: false
-    username: 'nobody'
   }))
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
-    req.session.auth if req.session.auth ? req.session.auth else false
-    req.session.username = if req.session.username ? req.session.username else 'nobody'
-    res.locals.authenticated = if req.session.auth ? req.session.auth else false
-    res.locals.username = if req.session.username ? req.session.username else 'nobody'            
+    req.session.auth ?= false
+    req.session.username ?= 'nobody'
+    res.locals.authenticated = req.session.auth
+    res.locals.username = req.session.username            
     next()
     return  
   # set up routes after bodyParser() is called	 

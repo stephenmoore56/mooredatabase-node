@@ -16,6 +16,8 @@
 
   process.env.NODE_ENV = "production";
 
+  process.env.NODE_ENV = "development";
+
   app = express();
 
   logger = require('./lib/logger').factory();
@@ -37,21 +39,19 @@
     app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       secret: "pileated woodpecker",
-      expires: new Date(Date.now() + (2 * 60 * 60 * 1000)),
-      store: new RedisStore,
-      cookie: {
-        maxAge: 2 * 60 * 60 * 1000
-      },
-      auth: false,
-      username: 'nobody'
+      store: new RedisStore
     }));
     app.use(flash());
     app.use(function(req, res, next) {
-      var _ref, _ref1, _ref2, _ref3;
-      req.session.auth(((_ref = req.session.auth) != null ? _ref : req.session.auth) ? void 0 : false);
-      req.session.username = ((_ref1 = req.session.username) != null ? _ref1 : req.session.username) ? void 0 : 'nobody';
-      res.locals.authenticated = ((_ref2 = req.session.auth) != null ? _ref2 : req.session.auth) ? void 0 : false;
-      res.locals.username = ((_ref3 = req.session.username) != null ? _ref3 : req.session.username) ? void 0 : 'nobody';
+      var _base, _base1, _ref, _ref1;
+      if ((_ref = (_base = req.session).auth) == null) {
+        _base.auth = false;
+      }
+      if ((_ref1 = (_base1 = req.session).username) == null) {
+        _base1.username = 'nobody';
+      }
+      res.locals.authenticated = req.session.auth;
+      res.locals.username = req.session.username;
       next();
     });
     routes = require('./lib/routes')(app);
