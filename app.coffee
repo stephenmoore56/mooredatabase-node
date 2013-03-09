@@ -3,6 +3,7 @@ express = require('express')
 http = require('http')
 path = require('path')
 engine = require('ejs-locals')
+RedisStore = require('connect-redis')(express)
 flash = require('connect-flash')
 
 # set environment before starting express
@@ -38,16 +39,20 @@ app.configure ->
   app.use(express.session({ 
     secret: "pileated woodpecker"
     expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
+    store: new RedisStore()
+    cookie: { maxAge: 2 * 60 * 60 * 1000 }
   }))
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
-    if req.session is undefined
-      req.session.auth = false
-      req.session.username = 'nobody'
-    res.locals.authenticated = req.session.auth
-    res.locals.username = req.session.username             
+    if req.session?
+      res.locals.authenticated = req.session.auth
+      res.locals.username = req.session.username       
+    req.session.auth ?= false
+    req.session.username ?= 'nobody'
+    console.log req.session.auth
+    console.log req.session.username            
     next()
     return  
   # set up routes after bodyParser() is called	 

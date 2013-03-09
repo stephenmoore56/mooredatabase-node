@@ -25,6 +25,7 @@
     "underscore": "1.4.4",
     "bcrypt": "0.7.4",
     "redis": "0.8.2",
-    "connect-flash": "0.1.0"
+    "connect-flash": "0.1.0",
+    "connect-redis": "*"
   }
 }
