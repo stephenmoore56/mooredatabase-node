@@ -36,9 +36,10 @@
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('pileated woodpecker'));
+    app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
-      secret: "pileated woodpecker",
-      store: new RedisStore()
+      store: new RedisStore,
+      secret: 'pileatedwoodpecker'
     }));
     app.use(flash());
     app.use(function(req, res, next) {
@@ -53,7 +54,6 @@
       res.locals.username = req.session.username;
       next();
     });
-    app.use(express["static"](path.join(__dirname, 'public')));
     routes = require('./lib/routes')(app);
     app.use(app.router);
     app.use(function(err, req, res, next) {
