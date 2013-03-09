@@ -3,7 +3,7 @@
 		<li><a href="http://moore-database.com/index.html" target="_self">home</a></li>
 		<li><a href="/content/nodejs/" target="_self">node.js</a></li>
 		<li><a href="/birding/orders/" target="_self">database</a></li>
-		<% if (authenticated == true) { %>
+		<% if (typeof undefined'authenticated != 'undefined' && authenticated == true) { %>
 			<li><a href="/content/menu/" target="_self">menu</a></li>		
 			<li><a href="/auth/logout/" target="_self">logout</a></li>
 		<% } else { %>
