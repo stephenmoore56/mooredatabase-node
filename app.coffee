@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-#rocess.env.NODE_ENV = "development"
+#process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -41,6 +41,8 @@ app.configure ->
     expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
     store: new RedisStore
     cookie: { maxAge: 2 * 60 * 60 * 1000 }
+    auth: false
+    username: 'nobody'
   }))
   # flash message support
   app.use(flash()) 

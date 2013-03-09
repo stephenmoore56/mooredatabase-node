@@ -41,7 +41,9 @@
       store: new RedisStore,
       cookie: {
         maxAge: 2 * 60 * 60 * 1000
-      }
+      },
+      auth: false,
+      username: 'nobody'
     }));
     app.use(flash());
     app.use(function(req, res, next) {
