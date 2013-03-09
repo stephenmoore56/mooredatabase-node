@@ -39,8 +39,10 @@ app.configure ->
   app.use(express.session({ 
     secret: "pileated woodpecker"
     expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
-    store: new RedisStore()
+    store: new RedisStore
     cookie: { maxAge: 2 * 60 * 60 * 1000 }
+    auth: false
+    username: 'nobody'
   }))
   # flash message support
   app.use(flash()) 
@@ -49,8 +51,6 @@ app.configure ->
     if req.session?
       res.locals.authenticated = req.session.auth
       res.locals.username = req.session.username       
-    req.session.auth ?= false
-    req.session.username ?= 'nobody'
     res.locals.authenticated = req.session.auth
     res.locals.username = req.session.username             
     next()
