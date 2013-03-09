@@ -35,7 +35,7 @@
     app.use(express.compress());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express.cookieParser('pileated woodpecker'));
+    app.use(express.cookieParser());
     app.use(express["static"](path.join(__dirname, 'public')));
     app.use(express.session({
       store: new RedisStore,
