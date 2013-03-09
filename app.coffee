@@ -8,7 +8,7 @@ flash = require('connect-flash')
 
 # set environment before starting express
 process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+#rocess.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
@@ -41,16 +41,13 @@ app.configure ->
     expires: new Date(Date.now() + (2 * 60 * 60 * 1000))
     store: new RedisStore
     cookie: { maxAge: 2 * 60 * 60 * 1000 }
-    auth: false
-    username: 'nobody'
   }))
   # flash message support
   app.use(flash()) 
   # stick some session variables where views can see them	
   app.use (req, res, next) ->
-    if req.session?
-      res.locals.authenticated = req.session.auth
-      res.locals.username = req.session.username       
+    req.session.auth ?= false
+    req.session.username ?= 'nobody'    
     res.locals.authenticated = req.session.auth
     res.locals.username = req.session.username             
     next()

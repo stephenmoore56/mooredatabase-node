@@ -48,7 +48,9 @@ exports.authenticate = function(req, res){
 				return;	
 			} else {	
 				req.session.auth = true;
-    			req.session.username = username;				
+    			req.session.username = username;	
+    			res.locals.authenticated = true;
+    			res.locals.username = username;			
 				res.redirect('/content/menu');
 				return;			
 			}
