@@ -6,24 +6,12 @@ engine = require('ejs-locals')
 MemStore = express.session.MemoryStore
 flash = require('connect-flash')
 
-# if process.env.REDISTOGO_URL
-  # rtg   = require('url').parse process.env.REDISTOGO_URL
-  # redis = require('redis').createClient rtg.port, rtg.hostname
-  # redis.auth rtg.auth.split(':')[1] # auth 1st part is username and 2nd is password separated by ":"
-# # Localhost
-# else
-  # redis = require("redis").createClient()
-
 # set environment before starting express
 process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "development"
 
 # start an express app
 app = express()
-
-# logging
-logger = require('./lib/logger').factory()
-logger.log('info','Starting app in ' + process.env.NODE_ENV + ' mode...')
 
 # use ejs-locals for all ejs templates
 app.engine('ejs', engine)
@@ -35,8 +23,6 @@ app.configure ->
   app.set('view engine', 'ejs')
   # log incoming requests to console in dev mode
   app.use(express.logger('dev'))
-  # gzip output
-  app.use(express.compress())
   app.use(express.bodyParser())
   app.use(express.methodOverride())
   app.use(express.cookieParser())
@@ -78,8 +64,22 @@ app.configure ->
   app.use (req, res, next) ->
     res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' })
 
-app.configure 'development', ->
-  app.use express.errorHandler()
+app.configure('development', ->
+  app.use(express.logger())
+  # this is the error handler, uncomment #1 to see it in action
+  app.use(express.errorHandler(
+    dumpExceptions: true
+    showStack : true
+  ))
+)
+
+app.configure('production', ->
+  # this is the error handler for the production env
+  app.use(express.errorHandler(
+    dumpExceptions: false
+    showStack: false  
+  ))
+)
 
 http.createServer(app).listen(app.get('port'), ->
   console.log "Express server listening on port " + app.get('port') + " in " + process.env.NODE_ENV + " environment")
