@@ -25,6 +25,6 @@
     "redis": "0.8.2",
     "connect-flash": "0.1.0",
     "bcrypt": "0.7.4",
-    "connect-redis": "*"
+    "connect-redis": "1.4.5"
   }
 }
