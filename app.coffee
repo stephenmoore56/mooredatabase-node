@@ -1,4 +1,3 @@
-# dependencies
 express = require('express')
 http = require('http')
 path = require('path')
@@ -6,49 +5,36 @@ engine = require('ejs-locals')
 MemStore = express.session.MemoryStore
 flash = require('connect-flash')
 
-# set environment before starting express
 process.env.NODE_ENV = "production"
 #process.env.NODE_ENV = "development"
 
-# start an express app
 app = express()
-
-# use ejs-locals for all ejs templates
 app.engine('ejs', engine)
 
 app.configure ->
   app.set('port', process.env.PORT || 3000)
   app.set('views', __dirname + '/views')
-  # use ejs templating
   app.set('view engine', 'ejs')
-  # log incoming requests to console in dev mode
   app.use(express.logger('dev'))
   app.use(express.bodyParser())
   app.use(express.methodOverride())
   app.use(express.cookieParser())
-  # routes for static assets in public directory; put before
-  # stuff for pages that require sessions, flash, ssl, authentication, etc.
   app.use(express.static(path.join(__dirname, 'public')))    
-  # sessions expire in 2 hours
   app.use(express.session(
     secret: 'pileated_woodpecker'
     store: MemStore(
       reapInterval: 60000 * 10
     )
   ))
-  # flash message support
   app.use(flash()) 
-  # stick some session variables where views can see them	
   app.use (req, res, next) ->
     req.session.auth ?= false
     req.session.username ?= 'nobody'
     res.locals.authenticated = req.session.auth
     res.locals.username = req.session.username            
     next()
-    return  
-  # set up routes after bodyParser() is called	 
+    return   
   routes = require('./lib/routes')(app)  	
-  # application routes
   app.use(app.router) 
   # error handler
   # middleware with an arity of 4 are considered
@@ -57,16 +43,12 @@ app.configure ->
   # in order, but ONLY those with an arity of 4, ignoring
   # regular middleware.
   app.use (err, req, res, next) ->
-    # whatever you want here, feel free to populate
-    # properties on `err` to treat it differently in here.
     res.status(err.status || 500).render('error', { title: 'Error', description: err.message })
-  # 404 page
   app.use (req, res, next) ->
     res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' })
 
 app.configure('development', ->
   app.use(express.logger())
-  # this is the error handler, uncomment #1 to see it in action
   app.use(express.errorHandler(
     dumpExceptions: true
     showStack : true
@@ -74,7 +56,6 @@ app.configure('development', ->
 )
 
 app.configure('production', ->
-  # this is the error handler for the production env
   app.use(express.errorHandler(
     dumpExceptions: false
     showStack: false  
