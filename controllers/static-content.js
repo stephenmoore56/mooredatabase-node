@@ -15,7 +15,8 @@
     auth.ssl_required(req, res, true);
     auth.auth_required(req, res);
     return res.render('static-content/menu', {
-      title: 'Menu'
+      title: 'Menu',
+      flash: req.flash()
     });
   };
 

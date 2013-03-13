@@ -42,10 +42,11 @@ exports.authenticate = (req, res) ->
 				res.redirect('/auth/login')
 				return	
 			if (! same)
-				req.flash("error","Invalid username/password combinationxxx.")
+				req.flash("error","Invalid username/password combination.")
 				res.redirect('/auth/login')
 				return
 			else	
+			  req.flash("error","Welcome, #{username}.")
 				req.session.auth = true
 				req.session.username = username
 				res.locals.authenticated = true

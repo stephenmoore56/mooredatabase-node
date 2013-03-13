@@ -52,17 +52,18 @@
           return;
         }
         if (!same) {
-          req.flash("error", "Invalid username/password combinationxxx.");
+          req.flash("error", "Invalid username/password combination.");
           res.redirect('/auth/login');
           return;
         } else {
-          req.session.auth = true;
-          req.session.username = username;
-          res.locals.authenticated = true;
-          res.locals.username = username;
-          res.redirect('/content/menu');
-          return;
+          req.flash("error", "Welcome, " + username + ".");
         }
+        req.session.auth = true;
+        req.session.username = username;
+        res.locals.authenticated = true;
+        res.locals.username = username;
+        res.redirect('/content/menu');
+        return;
       });
     });
   };
