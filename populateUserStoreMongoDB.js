@@ -24,8 +24,8 @@ db.once('open', function() {
 
 	// create user schema
 	var userSchema = mongoose.Schema({
-    	username: String,
-    	password: String
+    	username: {type: String, require: true, trim: true, unique: true},
+    	password: {type: String, require: true}
 	});
 	
 	// create User model
@@ -54,4 +54,5 @@ db.once('open', function() {
 	var newUser = new User({ username: 'stephenmoore56', password: bcrypt.hashSync("Ty84Db0U6qM33",   salt) });
 	newUser.save();
 
+	console.log('Added three users.');
 });
