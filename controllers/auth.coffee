@@ -1,20 +1,7 @@
 # dependencies
 bcrypt = require('bcrypt')
 auth = require('../lib/auth')
-
-if (process.env.REDISTOGO_URL)
-  	# redistogo connection
-	rtg   = require("url").parse(process.env.REDISTOGO_URL)
-	client = require("redis").createClient(rtg.port, rtg.hostname)
-	client.auth(rtg.auth.split(":")[1])
-else
-	redis = require("redis")
-	client = redis.createClient()
-
-client.on("error", (err) ->
-    console.log("Redis Error: " + err)
-    return
-)
+User = require('../models/users.js')
 
 # auth controller actions
 exports.login = (req, res) ->
@@ -27,35 +14,30 @@ exports.authenticate = (req, res) ->
 	# extract username and password from POST
 	username = req.body.username
 	password = req.body.password
-	client.get(username, (err, reply) ->
-		if (err)
-			req.flash("error","An error occurred.")
-			res.redirect('/auth/login')
-			return
-		if (!reply)
-			req.flash("error","Invalid username/password combination.")
-			res.redirect('/auth/login')
-			return
-		bcrypt.compare(password, reply, (err, same) ->
-			if (err)
-				req.flash("error","An error occurred.")
-				res.redirect('/auth/login')
-				return	
-			if (! same)
-				req.flash("error","Invalid username/password combination.")
-				res.redirect('/auth/login')
-				return
-			else	
-			  req.flash("error","Welcome, #{username}.")
-				req.session.auth = true
-				req.session.username = username
-				res.locals.authenticated = true
-				res.locals.username = username		
-				res.redirect('/content/menu')
-				return
-			return
-		)
-		return
+	User.findOne({username : username}, (err,user) ->
+	  if (err)
+      req.flash("error","Invalid username/password combination.")
+      res.redirect('/auth/login')
+      return
+    bcrypt.compare(password, user.password, (err, same) ->
+      if (err)
+        req.flash("error","An error occurred.")
+        res.redirect('/auth/login')
+        return  
+      if (! same)
+        req.flash("error","Invalid username/password combination.")
+        res.redirect('/auth/login')
+        return
+      else  
+        req.flash("error","Welcome, #{username}.")
+        req.session.auth = true
+        req.session.username = username
+        res.locals.authenticated = true
+        res.locals.username = username    
+        res.redirect('/content/menu')
+        return
+      return
+    )    
 	)
 	return
 # need a logout / destroy session action here

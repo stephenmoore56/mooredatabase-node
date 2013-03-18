@@ -1,20 +1,20 @@
-var mongoose = require ("mongoose"); // The reason for this demo.
+var mongoose = require ("mongoose");
 var bcrypt = require('bcrypt');
+User = require('./models/users.js')
 
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.  
 var uristring = 
 process.env.MONGOLAB_URI || 
-process.env.MONGOHQ_URL || 
 'mongodb://localhost/local';
 
 // Makes connection asynchronously.  Mongoose will queue up database
 // operations and release them when the connection is complete.
 mongoose.connect(uristring, function (err, res) {
   if (err) { 
-  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+  	console.log ('ERROR connecting to: ' + uristring + '. ' + err);
   } else {
-  console.log ('Succeeded connected to: ' + uristring);
+  	console.log ('Succeeded connecting to: ' + uristring);
   }
 });
 
@@ -22,14 +22,14 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
 
-	// create user schema
-	var userSchema = mongoose.Schema({
-    	username: {type: String, require: true, trim: true, unique: true},
-    	password: {type: String, require: true}
-	});
-	
-	// create User model
-	var User = mongoose.model('User', userSchema);
+	// // create user schema
+	// var userSchema = mongoose.Schema({
+    	// username: {type: String, require: true, trim: true, unique: true},
+    	// password: {type: String, require: true}
+	// });
+// 	
+	// // create User model
+	// var User = mongoose.model('User', userSchema);
 	
 	// clear out old data
 	User.remove({}, function(err) {
