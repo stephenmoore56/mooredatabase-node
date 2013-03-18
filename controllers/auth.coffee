@@ -19,6 +19,10 @@ exports.authenticate = (req, res) ->
       req.flash("error","Invalid username/password combination.")
       res.redirect('/auth/login')
       return
+    if (! user)
+      req.flash("error","Invalid username/password combination.")
+      res.redirect('/auth/login')
+      return      
     bcrypt.compare(password, user.password, (err, same) ->
       if (err)
         req.flash("error","An error occurred.")
@@ -37,7 +41,8 @@ exports.authenticate = (req, res) ->
         res.redirect('/content/menu')
         return
       return
-    )    
+    ) 
+    return   
 	)
 	return
 # need a logout / destroy session action here
@@ -46,4 +51,3 @@ exports.logout = (req,res) ->
     	res.redirect('/auth/login')
     	return
     return
-	

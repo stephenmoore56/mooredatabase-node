@@ -31,7 +31,12 @@
         res.redirect('/auth/login');
         return;
       }
-      return bcrypt.compare(password, user.password, function(err, same) {
+      if (!user) {
+        req.flash("error", "Invalid username/password combination.");
+        res.redirect('/auth/login');
+        return;
+      }
+      bcrypt.compare(password, user.password, function(err, same) {
         if (err) {
           req.flash("error", "An error occurred.");
           res.redirect('/auth/login');
