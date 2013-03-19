@@ -9,6 +9,7 @@ $ ->
 		heightStyle: "content"
 		collapsible: true
 	$("#tabs").tabs()
+	$("#slideshow").cycle()  
 	$("input:submit,input:reset").button()
 	$("#datepicker").datepicker
 		dateFormat : 'yy-mm-dd'
@@ -17,7 +18,7 @@ $ ->
 		height : "100%"
 	$('a[href^=http]').click ->
 		window.open(this.href)
-		false
+		return false	
 	$(".myFigure").animate { opacity: 1.0 }, 2000
-	$("table.striped tr:even").addClass "even_row"
-	true													
+	$("table.striped tr:even").addClass("even_row")
+	true
