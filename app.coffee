@@ -2,8 +2,9 @@ express = require('express')
 http = require('http')
 path = require('path')
 engine = require('ejs-locals')
-MemStore = express.session.MemoryStore
 flash = require('connect-flash')
+url = require('url')
+RedisStore = require('connect-redis')(express);
 
 # connect to mongoose and stay connected
 # Makes connection asynchronously.  Mongoose will queue up database
@@ -17,11 +18,23 @@ mongoose.connect(uristring, (err, res) ->
     console.log('Connected to Mongoose')
 )
 
+# set environment
 process.env.NODE_ENV = "production"
 #process.env.NODE_ENV = "development"
 
+# express app and templating engine
 app = express()
 app.engine('ejs', engine)
+
+# parse redis to go URL
+app.configure('production', ->
+  redisUrl = url.parse(process.env.REDISTOGO_URL)
+  redisAuth = redisUrl.auth.split(':')  
+  app.set('redisHost', redisUrl.hostname)
+  app.set('redisPort', redisUrl.port)
+  app.set('redisDb', redisAuth[0])
+  app.set('redisPass', redisAuth[1])
+)
 
 app.configure ->
   app.set('port', process.env.PORT || 3000)
@@ -34,8 +47,11 @@ app.configure ->
   app.use(express.static(path.join(__dirname, 'public')))    
   app.use(express.session(
     secret: 'pileated_woodpecker'
-    store: MemStore(
-      reapInterval: 60000 * 10
+    store: new RedisStore(
+      host: app.set('redisHost')
+      port: app.set('redisPort')
+      db: app.set('redisDb')
+      pass: app.set('redisPass')
     )
   ))
   app.use(flash()) 
