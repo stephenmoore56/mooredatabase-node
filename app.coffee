@@ -19,7 +19,7 @@ mongoose.connect(uristring, (err, res) ->
 
 # set environment
 process.env.NODE_ENV = "production"
-#process.env.NODE_ENV = "development"
+# process.env.NODE_ENV = "development"
 
 # express app and templating engine
 app = express()

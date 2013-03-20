@@ -8,6 +8,8 @@ module.exports = (app) ->
   controllers.birding = birding
   auth = _.extend(require('../controllers/auth'))
   controllers.auth = auth
+  users = _.extend(require('../controllers/users'))
+  controllers.users = users  
   
   # routes to controllers
   app.get('/', controllers.content.nodejs)
@@ -25,4 +27,9 @@ module.exports = (app) ->
   app.get('/logout', controllers.auth.logout) 
   app.get('/auth/logout', controllers.auth.logout) 
   app.get('/content/menu', controllers.content.menu)
+  
+  # user routes
+  app.get('/users', controllers.users.index) 
+  app.get('/users/index', controllers.users.index)
+  app.get('/users/destroy/:id', controllers.users.destroy)
   true

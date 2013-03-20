@@ -21,38 +21,47 @@ mongoose.connect(uristring, function (err, res) {
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
-
-	// // create user schema
-	// var userSchema = mongoose.Schema({
-    	// username: {type: String, require: true, trim: true, unique: true},
-    	// password: {type: String, require: true}
-	// });
-// 	
-	// // create User model
-	// var User = mongoose.model('User', userSchema);
 	
 	// clear out old data
 	User.remove({}, function(err) {
 		if (err) {
 			console.log ('Error deleting old data.');
-  		}
+		}
 	});
-
+	
 	/*
 	admin / 28rTu932Ypxz987
 	pickpocket23bazooka / dY78vNqP37sS94U
 	stephenmoore56 / Ty84Db0U6qM33
 	*/
+	
 	// create salt for hashing
 	var salt = bcrypt.genSaltSync(10);
 	
 	// add users
-	var newUser = new User({ username: 'admin', password: bcrypt.hashSync("28rTu932Ypxz987", salt) });
+	var newUser = new User({ 
+		username: 'admin', 
+		password: bcrypt.hashSync("28rTu932Ypxz987", salt),
+		firstname: 'Administrator',
+		email: 'stephenmoore56@msn.com'
+	});
 	newUser.save();
-	var newUser = new User({ username: 'pickpocket23bazooka', password: bcrypt.hashSync("dY78vNqP37sS94U", salt) });
+	var newUser = new User({ 
+		username: 'pickpocket23bazooka', 
+		password: bcrypt.hashSync("dY78vNqP37sS94U", salt),
+		firstname: 'Pickpocket', 
+		email: 'stephenmoore56@msn.com'
+	});
 	newUser.save();
-	var newUser = new User({ username: 'stephenmoore56', password: bcrypt.hashSync("Ty84Db0U6qM33",   salt) });
+	var newUser = new User({ 
+		username: 'stephenmoore56', 
+		password: bcrypt.hashSync("Ty84Db0U6qM33", salt),
+		firstname: 'Stephen',
+		lastname: 'Moore',
+		email: 'stephenmoore56@msn.com'
+	});
 	newUser.save();
 
 	console.log('Added three users.');
-});
+
+});	

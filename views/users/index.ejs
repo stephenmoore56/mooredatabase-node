@@ -1,0 +1,38 @@
+<% layout('../layout.ejs') -%>
+<header class="content_box accordion_title"> 
+	<h4 class="content_header">Users</h4>
+</header>
+<table id='users' class='report sorted' style='width:100%;' title='Users'>
+	<thead>
+		<tr>
+	    	<th class='image_title'>Username</th>
+	    	<th class='image_title'>First Name</th>
+	  		<th class='image_title'>Last Name</th>
+	  		<th class='image_title'>Email</th>	 
+	  		<th class='image_title'>Created</th> 
+	  		<th class='image_title'>Updated</th>
+	  		<th class='image_title'>Action</th>	  			
+		</tr>
+	</thead>
+	<tbody>		
+	<% users.forEach(function(user) { %> 
+		<tr data-id="<%= user._id  %>">
+			<td class="left_aligned"><%= user.username  %></td>
+			<td class="left_aligned"><%= user.firstname %></td>
+			<td class="left_aligned"><%= user.lastname ? user.lastname : '' %></td>	
+			<td class="left_aligned"><%= user.email %></td>	
+			<td class="left_aligned"><%= user.created %></td>	
+			<td class="left_aligned"><%= user.updated %></td>
+			<td class="left_aligned">
+				<a class="content_a action" href="#">Edit</a>
+				<a class="content_a action" href="/users/destroy/<%= user._id  %>">Delete</a>
+			</td>							
+		</tr>
+	<% }) %> 
+	</tbody>
+</table>
+<p>
+	<a class="content_a" href="/content/menu">Add New User</a> | 
+	<a class="content_a" href="/content/menu">Menu</a>	
+</p>
+<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
