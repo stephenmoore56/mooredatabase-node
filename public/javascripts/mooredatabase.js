@@ -13,6 +13,7 @@
       collapsible: true
     });
     $("#tabs").tabs();
+    $("table.sorted").tablesorter();
     $("#slideshow").cycle();
     $("input:submit,input:reset").button();
     $("#datepicker").datepicker({
