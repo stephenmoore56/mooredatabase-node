@@ -6,7 +6,6 @@ exports.index = (req,res) ->
   auth.ssl_required(req,res,true)
   auth.auth_required(req,res)  
   User.find({}, (err,users) ->
-    console.log users
     res.render('users/index', {title : 'Users', users : users, flash: req.flash()})
     return
   )

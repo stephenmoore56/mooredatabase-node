@@ -10,7 +10,6 @@
     auth.ssl_required(req, res, true);
     auth.auth_required(req, res);
     User.find({}, function(err, users) {
-      console.log(users);
       res.render('users/index', {
         title: 'Users',
         users: users,

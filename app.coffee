@@ -3,9 +3,10 @@ express = require('express')
 http = require('http')
 path = require('path')
 engine = require('ejs-locals')
+ejs = require('ejs')
 flash = require('connect-flash')
 url = require('url')
-RedisStore = require('connect-redis')(express);
+RedisStore = require('connect-redis')(express)
 
 # connect to mongoose and stay connected
 # Makes connection asynchronously.  Mongoose will queue up database
@@ -19,11 +20,16 @@ mongoose.connect(uristring, (err, res) ->
 
 # set environment
 process.env.NODE_ENV = "production"
- # process.env.NODE_ENV = "development"
+# process.env.NODE_ENV = "development"
 
 # express app and templating engine
 app = express()
 app.engine('ejs', engine)
+
+# some filters for use in ejs views
+moment = require('moment')
+ejs.filters.dateFormatLong = (date) ->
+  moment(date).format("YYYY-MM-DD HH:mm:ss")
 
 # parse redis to go URL
 app.configure('production', ->
@@ -52,6 +58,8 @@ app.configure ->
       db: app.set('redisDb')
       pass: app.set('redisPass')
     )
+    cooke:
+      maxAge: 3600000
   ))
   app.use(flash()) 
   app.use (req, res, next) ->

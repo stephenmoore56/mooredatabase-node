@@ -21,11 +21,11 @@
 			<td class="left_aligned"><%= user.firstname %></td>
 			<td class="left_aligned"><%= user.lastname ? user.lastname : '' %></td>	
 			<td class="left_aligned"><%= user.email %></td>	
-			<td class="left_aligned"><%= user.created %></td>	
-			<td class="left_aligned"><%= user.updated %></td>
+			<td class="left_aligned"><%=: user.created | dateFormatLong %></td>	
+			<td class="left_aligned"><%=: user.updated  | dateFormatLong %></td>
 			<td class="left_aligned">
 				<a class="content_a action" href="#">Edit</a>
-				<a class="content_a action" href="/users/destroy/<%= user._id  %>">Delete</a>
+				<a class="content_a action delete_item" href="/users/destroy/<%= user._id  %>">Delete</a>
 			</td>							
 		</tr>
 	<% }) %> 
@@ -36,3 +36,4 @@
 	<a class="content_a" href="/content/menu">Menu</a>	
 </p>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
+<%- partial('../partials/deleteConfirm.ejs') %>
