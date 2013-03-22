@@ -1,4 +1,4 @@
-<% if (typeof flash != 'undefined') { %>
+<% if (typeof flash != 'undefined' && flash.error) { %>
   <% if (flash.error) { %>
   	<div class="ui-widget">
   		<div class="ui-state-highlight ui-corner-all" style="margin-top: 3px; padding: 0 .7em;"> 

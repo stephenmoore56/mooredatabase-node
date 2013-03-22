@@ -32,4 +32,8 @@ module.exports = (app) ->
   app.get('/users', controllers.users.index) 
   app.get('/users/index', controllers.users.index)
   app.get('/users/destroy/:id', controllers.users.destroy)
+  app.get('/users/add', controllers.users.add)
+  app.post('/users/create', controllers.users.create) 
+  app.get('/users/edit/:id', controllers.users.edit)  
+  app.post('/users/update', controllers.users.update)  
   true

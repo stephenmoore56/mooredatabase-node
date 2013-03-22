@@ -24,7 +24,7 @@
 			<td class="left_aligned"><%=: user.created | dateFormatLong %></td>	
 			<td class="left_aligned"><%=: user.updated  | dateFormatLong %></td>
 			<td class="left_aligned">
-				<a class="content_a action" href="#">Edit</a>
+				<a class="content_a action" href="/users/edit/<%= user._id  %>">Edit</a>
 				<a class="content_a action delete_item" href="/users/destroy/<%= user._id  %>">Delete</a>
 			</td>							
 		</tr>
@@ -32,7 +32,7 @@
 	</tbody>
 </table>
 <p>
-	<a class="content_a" href="/content/menu">Add New User</a> | 
+	<a class="content_a" href="/users/add">Add New User</a> | 
 	<a class="content_a" href="/content/menu">Menu</a>	
 </p>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
