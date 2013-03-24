@@ -1,4 +1,5 @@
-<% layout('../layout.ejs') -%>
+<% layout('../layout_form.ejs') -%>
+<script src="/javascripts/users_edit.js"></script>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
 <form id="editUserForm" action="/users/update" method="post">
 	<dl class="zend_form">
