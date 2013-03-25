@@ -23,7 +23,7 @@ exports.destroy = (req,res) ->
       res.redirect('/users/index')
       return
     else
-      req.flash("error","User deleted.")
+      req.flash("info","User deleted.")
       res.redirect('/users/index')
       return     
   )
@@ -53,7 +53,7 @@ exports.create = (req,res) ->
       req.flash("error", "" + err)
       res.redirect('users/add')
     else
-      req.flash("error","User added.")
+      req.flash("info","User added.")
       res.redirect('users/index')
     return
   )      
@@ -97,7 +97,7 @@ exports.update = (req,res) ->
       req.flash("error", "" + err)
       res.redirect('users/edit/' + id)
     else
-      req.flash("error","User updated.")
+      req.flash("info","User updated.")
       res.redirect('users/index')
     return
   )      

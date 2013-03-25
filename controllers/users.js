@@ -32,7 +32,7 @@
         req.flash("error", "Invalid user id.");
         res.redirect('/users/index');
       } else {
-        req.flash("error", "User deleted.");
+        req.flash("info", "User deleted.");
         res.redirect('/users/index');
       }
     });
@@ -65,7 +65,7 @@
         req.flash("error", "" + err);
         res.redirect('users/add');
       } else {
-        req.flash("error", "User added.");
+        req.flash("info", "User added.");
         res.redirect('users/index');
       }
     });
@@ -121,7 +121,7 @@
         req.flash("error", "" + err);
         res.redirect('users/edit/' + id);
       } else {
-        req.flash("error", "User updated.");
+        req.flash("info", "User updated.");
         res.redirect('users/index');
       }
     });

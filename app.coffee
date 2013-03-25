@@ -7,29 +7,16 @@ ejs = require('ejs')
 flash = require('connect-flash')
 url = require('url')
 RedisStore = require('connect-redis')(express)
-
-# connect to mongoose and stay connected
-# Makes connection asynchronously.  Mongoose will queue up database
-# operations and release them when the connection is complete.
-mongoose = require('mongoose')
-uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/local'
-mongoose.connect(uristring, (err, res) ->
-  if (err)
-    console.log('Error connecting to: ' + uristring + '. ' + err)
-)
+mongoose = require('./lib/mongoose')
 
 # set environment
 process.env.NODE_ENV = "production"
-# process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "development"
 
-# express app and templating engine
+# express app, templating engine, filters
 app = express()
 app.engine('ejs', engine)
-
-# some filters for use in ejs views
-moment = require('moment')
-ejs.filters.dateFormatLong = (date) ->
-  moment(date).format("YYYY-MM-DD HH:mm:ss")
+ejsFilters = require('./lib/ejsFilters')(ejs)
 
 # parse redis to go URL
 app.configure('production', ->
@@ -58,7 +45,7 @@ app.configure ->
       db: app.set('redisDb')
       pass: app.set('redisPass')
     )
-    cooke:
+    cookie:
       maxAge: 3600000
   ))
   app.use(flash()) 
@@ -82,6 +69,7 @@ app.configure ->
   app.use (req, res, next) ->
     res.status(404).render('error', { title: 'Error 404', description: 'The page you requested cannot be found.' })
 
+# error logging
 app.configure('development', ->
   app.use(express.logger())
   app.use(express.errorHandler(
