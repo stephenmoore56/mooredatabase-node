@@ -11,7 +11,7 @@ mongoose = require('./lib/mongoose')
 
 # set environment
 process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+# process.env.NODE_ENV = "development"
 
 # express app, templating engine, filters
 app = express()
