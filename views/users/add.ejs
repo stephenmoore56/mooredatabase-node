@@ -1,5 +1,5 @@
 <% layout('../layout_form.ejs') -%>
-<script src="/javascripts/users_add.js"></script>
+<% script('/javascripts/users_add.js') %>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
 <form id="newUserForm" action="/users/create" method="post">
 	<dl class="zend_form">
