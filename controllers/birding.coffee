@@ -1,5 +1,6 @@
 # birding controller
 auth = require('../lib/auth')
+
 exports.orders = (req, res) ->
 	auth.ssl_required(req,res,false)
 	mysqlDatabase = require('../lib/mysqlDatabase.js')
@@ -23,9 +24,13 @@ exports.orders = (req, res) ->
 	connection.query sql, (err, rows) ->
 		if (err)
 			res.render('error', { title: 'Database Error', description: 'A database error occurred: ' + err.message })
+			return
 		else
 			res.render('birding/orders', { title: 'Species and Sightings By Order', orders: rows })
+			return
 	connection.end()
+	return
+	
 exports.ordersajax = (req, res) ->
 	auth.ssl_required(req,res,false)
 	mysqlDatabase = require('../lib/mysqlDatabase.js')
@@ -43,6 +48,7 @@ exports.ordersajax = (req, res) ->
 	connection.query sql, (err, rows) ->
 		if (err)
 			res.render('error', { title: 'Database Error', description: 'A database error occurred: ' + err.message })
+			return
 		else
 			# send header; official MIME type for JSON
 			res.writeHead(200,
@@ -50,4 +56,6 @@ exports.ordersajax = (req, res) ->
 			)
 			# Send data as JSON string.
 			res.end(JSON.stringify(rows))
+			return
 	connection.end()
+	return

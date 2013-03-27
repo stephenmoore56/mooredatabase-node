@@ -45,6 +45,7 @@ exports.authenticate = (req, res) ->
     return   
 	)
 	return
+	
 # need a logout / destroy session action here
 exports.logout = (req,res) ->
 	req.session.regenerate ->

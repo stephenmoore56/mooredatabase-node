@@ -6,7 +6,7 @@
 
   exports.index = function(req, res) {
     auth.ssl_required(req, res, false);
-    return res.render('static-content/nodejs', {
+    res.render('static-content/nodejs', {
       title: 'Node.js'
     });
   };

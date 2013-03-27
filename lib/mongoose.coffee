@@ -6,5 +6,6 @@ uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/local'
 mongoose.connect(uristring, (err, res) ->
   if (err)
     console.log('Error connecting to: ' + uristring + '. ' + err)
+    return
 )
 exports.mongoose = mongoose

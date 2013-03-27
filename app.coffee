@@ -11,14 +11,14 @@ mongoose = require('./lib/mongoose')
 
 # set environment
 process.env.NODE_ENV = "production"
-# process.env.NODE_ENV = "development"
+process.env.NODE_ENV = "development"
 
 # express app, templating engine, filters
 app = express()
 app.engine('ejs', engine)
 ejsFilters = require('./lib/ejsFilters')(ejs)
 
-# parse redis to go URL
+# parse redis to go URL; use defaults locally
 app.configure('production', ->
   redisUrl = url.parse(process.env.REDISTOGO_URL)
   redisAuth = redisUrl.auth.split(':')  

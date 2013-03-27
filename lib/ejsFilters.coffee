@@ -3,3 +3,5 @@ module.exports = (ejs) ->
   moment = require('moment')
   ejs.filters.dateFormatLong = (date) ->
     moment(date).format("YYYY-MM-DD HH:mm:ss")
+    return
+  return

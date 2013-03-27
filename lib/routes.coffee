@@ -36,4 +36,4 @@ module.exports = (app) ->
   app.post('/users/create', controllers.users.create) 
   app.get('/users/edit/:id', controllers.users.edit)  
   app.post('/users/update', controllers.users.update)  
-  true
+  return

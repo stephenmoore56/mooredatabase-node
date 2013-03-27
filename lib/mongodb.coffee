@@ -11,6 +11,7 @@ process.env.MONGOLAB_URI ||
 mongoose.connect(uristring, (err, res) ->
   if (err)
     console.log('ERROR connecting to: ' + uristring + '. ' + err)
+    return
 )
 
 db = mongoose.connection
@@ -36,6 +37,7 @@ db.once('open', ->
   User.remove({}, (err) ->
     if (err)
       console.log('Error deleting old data.')
+      return
   )
 
   ###
@@ -55,4 +57,5 @@ db.once('open', ->
   newUser.save();
 
   console.log('Added three users.');
+  return
 )

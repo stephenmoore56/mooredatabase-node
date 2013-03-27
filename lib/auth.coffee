@@ -6,12 +6,11 @@ exports.ssl_required = (req,res,required) ->
         res.redirect('https://node.moore-database.com' + req.url) 
     else
       if req.headers['x-forwarded-proto'] is 'https'
-          res.redirect('http://node.moore-database.com' + req.url)        
-  true
+        res.redirect('http://node.moore-database.com' + req.url)        
+  return
   
 exports.auth_required = (req,res) ->
   # check session for auth value
   if req.session.auth isnt true
     res.redirect("/auth/login");
-    return
-  true
+  return
