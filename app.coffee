@@ -10,8 +10,10 @@ RedisStore = require('connect-redis')(express)
 mongoose = require('./lib/mongoose')
 
 # set environment
-process.env.NODE_ENV = "production"
-process.env.NODE_ENV = "development"
+if process.env.REDISTOGO_URL?
+  process.env.NODE_ENV = "production"
+else
+  process.env.NODE_ENV = "development"
 
 # express app, templating engine, filters
 app = express()

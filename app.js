@@ -20,9 +20,11 @@
 
   mongoose = require('./lib/mongoose');
 
-  process.env.NODE_ENV = "production";
-
-  process.env.NODE_ENV = "development";
+  if (process.env.REDISTOGO_URL != null) {
+    process.env.NODE_ENV = "production";
+  } else {
+    process.env.NODE_ENV = "development";
+  }
 
   app = express();
 
