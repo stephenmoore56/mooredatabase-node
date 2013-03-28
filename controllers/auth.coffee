@@ -33,7 +33,7 @@ exports.authenticate = (req, res) ->
         res.redirect('/auth/login')
         return
       else  
-        req.flash("error","Welcome, #{username}.")
+        req.flash("error","Welcome, #{user.fullname}.")
         req.session.auth = true
         req.session.username = username
         res.locals.authenticated = true

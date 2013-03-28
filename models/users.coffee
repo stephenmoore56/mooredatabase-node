@@ -34,4 +34,11 @@ User = new Schema(
     require: true          
 )
 
+User.virtual('fullname').get( ->
+  fullname = this.firstname
+  if this.lastname?
+    fullname += ' ' + this.lastname
+  return fullname
+)
+
 module.exports = mongoose.model('User',User)

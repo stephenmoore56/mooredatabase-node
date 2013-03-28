@@ -46,6 +46,15 @@
     }
   });
 
+  User.virtual('fullname').get(function() {
+    var fullname;
+    fullname = this.firstname;
+    if (this.lastname != null) {
+      fullname += ' ' + this.lastname;
+    }
+    return fullname;
+  });
+
   module.exports = mongoose.model('User', User);
 
 }).call(this);
