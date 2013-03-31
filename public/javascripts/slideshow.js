@@ -2,7 +2,7 @@
 (function() {
 
   $(function() {
-    return $("#slideshow").cycle();
+    $("#slideshow").cycle();
   });
 
 }).call(this);

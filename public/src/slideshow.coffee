@@ -1,2 +1,3 @@
 $ ->
-    $("#slideshow").cycle()  
+    $("#slideshow").cycle()
+    return 

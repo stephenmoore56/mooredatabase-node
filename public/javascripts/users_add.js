@@ -34,6 +34,6 @@
     });
   });
 
-  return true;
+  return;
 
 }).call(this);

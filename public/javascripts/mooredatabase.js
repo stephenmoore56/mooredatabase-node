@@ -30,7 +30,6 @@
       opacity: 1.0
     }, 2000);
     $("table.striped tr:even").addClass("even_row");
-    return true;
   });
 
 }).call(this);

@@ -21,4 +21,4 @@ $(document).ready ->
               email : ''                             
         errorClass : 'invalid'
         
-  return true
+  return
