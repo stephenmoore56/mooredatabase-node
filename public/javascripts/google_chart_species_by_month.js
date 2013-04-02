@@ -5,7 +5,7 @@
   $(document).ready(function() {
     if ($('#chart_div').length) {
       if (Modernizr.svg) {
-        $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp");
+        $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
       } else {
         $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
       }

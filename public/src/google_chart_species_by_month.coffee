@@ -3,7 +3,7 @@ $(document).ready ->
     # see if SVG is supported by browser
     if (Modernizr.svg)
       # make an AJAX/JSONP call for the chart data
-      $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp");
+      $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
     else
       $("#chart_div").html('<p>Your browser cannot display Google charts.</p>')
   
