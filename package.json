@@ -8,8 +8,8 @@
     "url": "https://github.com/stephenmoore56/mooredatabase-node.git"
   },
   "engines": {
-    "node": "0.8.21",
-    "npm": "1.2.12"
+    "node": "0.10.2",
+    "npm": "1.2.15"
   },
   "private": true,
   "scripts": {
