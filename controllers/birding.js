@@ -50,4 +50,11 @@
     connection.end();
   };
 
+  exports.months = function(req, res) {
+    auth.ssl_required(req, res, false);
+    res.render('birding/months', {
+      title: 'Bird Species and Sightings by Month'
+    });
+  };
+
 }).call(this);

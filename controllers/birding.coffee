@@ -59,3 +59,8 @@ exports.ordersajax = (req, res) ->
 			return
 	connection.end()
 	return
+
+exports.months = (req, res) ->
+  auth.ssl_required(req,res,false)
+  res.render('birding/months', { title: 'Bird Species and Sightings by Month' })
+  return	
