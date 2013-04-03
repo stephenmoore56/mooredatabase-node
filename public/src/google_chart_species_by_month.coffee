@@ -6,8 +6,7 @@ $(document).ready ->
       $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
     else
       $("#chart_div").html('<p>Your browser cannot display Google charts.</p>')
-  
-  true
+  return
   
 window.mooredatabase = mooredatabase || {}
 
@@ -44,15 +43,19 @@ drawChartSpeciesByMonth = (dataPoints) ->
       # species selected
       if selectedItem.column is 1
         window.location = "/zend/public/sighting/month/monthnumber/" + monthNumber
+        return
         # trips selected
       else if selectedItem.column is 2
         window.location = "/zend/public/trip/month/monthnumber/" + monthNumber
+        return
     else
       # go to other pages if legends are selected
       if selectedItem.column is 1
         window.location = "/zend/public/sighting"
+        return
       else
         window.location = "/zend/public/location"
+        return
         
 	# set chart options
 	options = 
@@ -75,4 +78,5 @@ drawChartSpeciesByMonth = (dataPoints) ->
 			baselineColor : '#CCC'
 	# draw chart
 	chart.draw(data, options)
+	return
 mooredatabase.drawChartSpeciesByMonth = drawChartSpeciesByMonth

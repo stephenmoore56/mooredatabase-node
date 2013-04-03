@@ -5,7 +5,7 @@
     if (!Modernizr.input.autofocus) {
       $("#username").focus();
     }
-    return $("#newUserForm").validate({
+    $("#newUserForm").validate({
       rules: {
         'username': {
           required: true
@@ -33,7 +33,5 @@
       errorClass: 'invalid'
     });
   });
-
-  return;
 
 }).call(this);

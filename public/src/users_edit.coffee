@@ -20,5 +20,4 @@ $(document).ready ->
               required : ''    
               email : ''                             
         errorClass : 'invalid'
-        
-  return
+    return

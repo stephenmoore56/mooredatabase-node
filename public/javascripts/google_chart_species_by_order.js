@@ -11,14 +11,12 @@
           dataType: 'json',
           success: function(data) {
             mooredatabase.drawChartSpeciesByOrder(data);
-            return true;
           }
         });
       } else {
         $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
       }
     }
-    return true;
   });
 
   google.load('visualization', '1.0', {
@@ -41,7 +39,7 @@
       height: 400,
       title: 'Bird Species Sighted By Order'
     };
-    return chart.draw(data, options);
+    chart.draw(data, options);
   };
 
   mooredatabase.drawChartSpeciesByOrder = drawChartSpeciesByOrder;

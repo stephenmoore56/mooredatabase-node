@@ -9,11 +9,10 @@ $(document).ready ->
         dataType : 'json'
         success : (data) ->
           mooredatabase.drawChartSpeciesByOrder(data)
-          true
+          return
     else
       $("#chart_div").html('<p>Your browser cannot display Google charts.</p>')
-  
-  true
+  return
   
 # Load the Visualization API and the piechart package.
 google.load 'visualization', '1.0', { 'packages' : ['corechart'] }
@@ -39,4 +38,5 @@ drawChartSpeciesByOrder = (dataPoints) ->
 		title : 'Bird Species Sighted By Order'
 	# draw chart
 	chart.draw data, options
+	return
 mooredatabase.drawChartSpeciesByOrder = drawChartSpeciesByOrder

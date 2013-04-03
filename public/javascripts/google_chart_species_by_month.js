@@ -10,7 +10,6 @@
         $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
       }
     }
-    return true;
   });
 
   window.mooredatabase = mooredatabase || {};
@@ -39,15 +38,15 @@
         myDate = new Date(value + " 01, 1900");
         monthNumber = myDate.getMonth() + 1;
         if (selectedItem.column === 1) {
-          return window.location = "/zend/public/sighting/month/monthnumber/" + monthNumber;
+          window.location = "/zend/public/sighting/month/monthnumber/" + monthNumber;
         } else if (selectedItem.column === 2) {
-          return window.location = "/zend/public/trip/month/monthnumber/" + monthNumber;
+          window.location = "/zend/public/trip/month/monthnumber/" + monthNumber;
         }
       } else {
         if (selectedItem.column === 1) {
-          return window.location = "/zend/public/sighting";
+          window.location = "/zend/public/sighting";
         } else {
-          return window.location = "/zend/public/location";
+          window.location = "/zend/public/location";
         }
       }
     });
@@ -75,7 +74,7 @@
         baselineColor: '#CCC'
       }
     };
-    return chart.draw(data, options);
+    chart.draw(data, options);
   };
 
   mooredatabase.drawChartSpeciesByMonth = drawChartSpeciesByMonth;
