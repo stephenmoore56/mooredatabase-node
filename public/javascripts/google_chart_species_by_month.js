@@ -30,26 +30,6 @@
     data.addColumn('number', 'Trips');
     data.addRows(chartData);
     chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    google.visualization.events.addListener(chart, 'select', function() {
-      var monthNumber, myDate, selectedItem, value;
-      selectedItem = chart.getSelection()[0];
-      if (selectedItem.row !== null && selectedItem.column !== null) {
-        value = data.getValue(selectedItem.row, 0);
-        myDate = new Date(value + " 01, 1900");
-        monthNumber = myDate.getMonth() + 1;
-        if (selectedItem.column === 1) {
-          window.location = "/zend/public/sighting/month/monthnumber/" + monthNumber;
-        } else if (selectedItem.column === 2) {
-          window.location = "/zend/public/trip/month/monthnumber/" + monthNumber;
-        }
-      } else {
-        if (selectedItem.column === 1) {
-          window.location = "/zend/public/sighting";
-        } else {
-          window.location = "/zend/public/location";
-        }
-      }
-    });
     options = {
       width: 600,
       height: 240,

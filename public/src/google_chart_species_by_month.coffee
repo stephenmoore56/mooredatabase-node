@@ -30,32 +30,6 @@ drawChartSpeciesByMonth = (dataPoints) ->
 
 	# Instantiate and draw our chart, passing in some options.
 	chart = new google.visualization.LineChart(document.getElementById('chart_div'))
-
-	# Listen for the 'select' event, and call my function selectHandler() when
-	# the user selects something on the chart.
-	google.visualization.events.addListener chart, 'select', ->
-    selectedItem = chart.getSelection()[0]
-    # column in graph is selected
-    if selectedItem.row isnt null and selectedItem.column isnt null
-      value = data.getValue(selectedItem.row, 0)
-      myDate = new Date(value + " 01, 1900")
-      monthNumber = myDate.getMonth() + 1
-      # species selected
-      if selectedItem.column is 1
-        window.location = "/zend/public/sighting/month/monthnumber/" + monthNumber
-        return
-        # trips selected
-      else if selectedItem.column is 2
-        window.location = "/zend/public/trip/month/monthnumber/" + monthNumber
-        return
-    else
-      # go to other pages if legends are selected
-      if selectedItem.column is 1
-        window.location = "/zend/public/sighting"
-        return
-      else
-        window.location = "/zend/public/location"
-        return
         
 	# set chart options
 	options = 
