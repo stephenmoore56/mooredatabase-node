@@ -10,7 +10,7 @@
     mysqlDatabase = require('../lib/mysqlDatabase.js');
     connection = mysqlDatabase.connect();
     connection.connect();
-    sql = "SELECT \			  aou_order.order_name, \			  aou_order.notes AS order_notes, \			  ( SELECT COUNT(*) \                FROM \                aou_list aol2 \                WHERE \                aol2.order = aou_order.order_name) AS totalSpecies, \              COUNT(DISTINCT aou_list.id) AS speciesCount \              FROM \			  sighting \			  INNER JOIN aou_list ON sighting.aou_list_id = aou_list.id \			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \			  GROUP BY aou_order.order_name, aou_order.notes \			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
+    sql = "SELECT \			  aou_order.order_name, \			  aou_order.notes AS order_notes, \			  ( SELECT COUNT(*) \          FROM \          aou_list aol2 \          WHERE \          aol2.order = aou_order.order_name) AS totalSpecies, \        COUNT(DISTINCT aou_list.id) AS speciesCount \        FROM \			  sighting \			  INNER JOIN aou_list ON sighting.aou_list_id = aou_list.id \			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \			  GROUP BY aou_order.order_name, aou_order.notes \			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
     connection.query(sql, function(err, rows) {
       if (err) {
         res.render('error', {
@@ -33,7 +33,7 @@
     mysqlDatabase = require('../lib/mysqlDatabase.js');
     connection = mysqlDatabase.connect();
     connection.connect();
-    sql = "SELECT \			  aou_order.order_name, \              COUNT(DISTINCT aou_list.id) AS speciesCount \              FROM \			  sighting \			  INNER JOIN aou_list ON sighting.aou_list_id = aou_list.id \			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \			  GROUP BY aou_order.order_name \			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
+    sql = "SELECT \			  aou_order.order_name, \        COUNT(DISTINCT aou_list.id) AS speciesCount \        FROM \			  sighting \			  INNER JOIN aou_list ON sighting.aou_list_id = aou_list.id \			  INNER JOIN aou_order ON aou_list.order = aou_order.order_name \			  GROUP BY aou_order.order_name \			  ORDER BY COUNT(DISTINCT aou_list.id) DESC";
     connection.query(sql, function(err, rows) {
       if (err) {
         res.render('error', {
