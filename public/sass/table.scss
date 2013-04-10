@@ -10,9 +10,13 @@ table {
     background: #DDD;
   }
   th {
-    @include gradientBlack;    
+    background: black;
+    color: #BBB;
     &.header{
       cursor: pointer;
+    }
+    &:hover {
+      color: white;
     }
   }    
   th, td {
