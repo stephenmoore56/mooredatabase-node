@@ -5,14 +5,15 @@
 <title>MOORE+DATABASE | <%= title %></title>
 <%- partial('partials/stylesheets.ejs') %>
 <%- partial('partials/scripts.ejs') %>
-<%- partial('partials/scripts_form.ejs') %>
 <%- scripts %>
 </head>
 <body>
-<%- partial('partials/bootstrap_navbar.ejs') %>
-<section id="content_container" class="container-fluid">
+<%- partial('partials/banner.ejs') %>	
+<%- partial('partials/navbar.ejs') %>
+<section id="content_container" class="group">
 <%- body -%>
 </section>
+<%- partial('partials/footer.ejs') %>
 <%- partial('partials/googleAnalytics.ejs') %>
 </body>
 </html>

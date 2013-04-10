@@ -16,7 +16,10 @@ fieldset {
     clear:both; // FF hack; because we don't display the label above 
 }
 legend {
+    margin: 0;
     margin-left: 1em;
+    border: none;
+    width: auto;
 }
 label {
     float: left;

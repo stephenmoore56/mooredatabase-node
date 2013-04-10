@@ -7,13 +7,13 @@
 <%- partial('partials/scripts.ejs') %>
 <%- scripts %>
 </head>
-<body>
-<%- partial('partials/banner.ejs') %>	
-<%- partial('partials/navbar.ejs') %>
-<section id="content_container" class="group">
+<body>	
+<%- partial('partials/bootstrap_navbar.ejs') %>
+<section id="content_container" class="container-fluid">
 <%- body -%>
 </section>
-<%- partial('partials/footer.ejs') %>
+<br />
+<br />
 <%- partial('partials/googleAnalytics.ejs') %>
 </body>
 </html>
