@@ -1,0 +1,8 @@
+.accordion-toggle {
+  background: black;
+  color: #BBB;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
