@@ -9,8 +9,12 @@ figure.myFigure {
     display: table-caption;
     caption-side: bottom ;
     font-size: .8em;
-    @include gradientBlack;
+    background: black;
+    color: #BBB;
     line-height: 2em;
+    &:hover {
+      color: white;
+    }
   }
   img {
     max-width: 100%;
