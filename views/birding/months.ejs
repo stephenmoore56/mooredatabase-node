@@ -1,20 +1,24 @@
 <% layout('../layout.ejs') -%>
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_month.min.js') -%>
-<header class="content_box accordion_title"> 
-	<h4 class="content_header">Species By Month</h4>
-</header>
-<section class="content_box">
-	<p>This page demonstrates</p>
-	<ul>   
-		<li>Cross-domain AJAX integration of a Node.js app running on Heroku with a remote Zend Framework app running at Rails Playground.</li>
-		<li>The line chart is drawn client-side using the Google Charts API with data obtained via a JSONP call to the remote Zend Framework app.</li>
-	</ul>
-</section>	
-<section class="content_box">	
-	<figure id="linechart">
-	    <div id="chart_div" title="Google Line Chart Example">
-	    	<p>Loading...</p>
-	    </div>
-	</figure>
-</section>
+<article class="row-fluid">
+	<header class="content_box accordion_title"> 
+		<h4 class="content_header">Species By Month</h4>
+	</header>
+	<section class="content_box">
+		<p>This page demonstrates</p>
+		<ul>   
+			<li>Cross-domain AJAX integration of a Node.js app running on Heroku with a remote Zend Framework app running at Rails Playground.</li>
+			<li>The line chart (not visible on phones) is drawn client-side using the Google Charts API with data obtained via a JSONP call to the remote Zend Framework app.</li>
+		</ul>
+	</section>	
+	<span class="hidden-phone">
+		<section class="content_box">	
+			<figure id="linechart">
+			    <div id="chart_div" title="Google Line Chart Example">
+			    	<p>Loading...</p>
+			    </div>
+			</figure>
+		</section>
+	</span>
+</article>

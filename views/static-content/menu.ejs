@@ -1,14 +1,18 @@
 <% layout('../layout.ejs') -%>
-<%- partial('../partials/figure.ejs', {"orientation":"portrait","src":"/images/wildflowers.jpg","title":"Anemone","caption":"Anemone"}) %>
-<section id="left_container">
-	<header id="homeTitle" class="content_box accordion_title">
-    	<h1 class="content_header">menu</h1>
-	</header>
-	<div class="content_box">
-		<ul>
-			<li><a class="content_a" href="/users/index">User Maintenance</a></li>
-		</ul>
-	</div>
-	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
-	<%- partial('../partials/slideshow.ejs') %>		
+<section class="row-fluid">
+	<article class="span6">
+		<header id="homeTitle" class="content_box accordion_title">
+	    	<h1 class="content_header">menu</h1>
+		</header>
+		<div class="content_box">
+			<ul>
+				<li><a class="content_a" href="/users/index">User Maintenance</a></li>
+			</ul>
+		</div>
+		<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
+		<%- partial('../partials/slideshow.ejs') %>		
+    </article>
+    <article class="span6">
+		<%- partial('../partials/figure.ejs', {"orientation":"portrait","src":"/images/wildflowers.jpg","title":"Anemone","caption":"Anemone"}) %>
+    </article>    
 </section>

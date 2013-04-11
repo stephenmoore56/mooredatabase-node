@@ -25,9 +25,15 @@
 			<td class="left_aligned"><%= user.email %></td>	
 			<td class="left_aligned"><%=: user.created | dateFormatLong %></td>	
 			<td class="left_aligned"><%=: user.updated  | dateFormatLong %></td>
-			<td class="left_aligned">
-				<a class="content_a action" href="/users/edit/<%= user._id  %>">Edit</a>
-				<a class="content_a action delete_item" href="/users/destroy/<%= user._id  %>">Delete</a>
+			<td class="center_aligned">
+				<div class="btn-group">
+					<button class="btn btn-mini">
+						<a href="/users/edit/<%= user._id  %>">Edit</a>
+					</button>
+					<button class="btn btn-mini">
+						<a href="/users/destroy/<%= user._id  %>">Delete</a>
+					</button>
+				</div>
 			</td>							
 		</tr>
 	<% }) %> 
@@ -38,4 +44,3 @@
 	<a class="content_a" href="/content/menu">Menu</a>	
 </p>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
-<%- partial('../partials/deleteConfirm.ejs') %>

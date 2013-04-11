@@ -1,6 +1,7 @@
 <% layout('../layout.ejs') -%>
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_order.min.js') -%>
+<article class="row-fluid">
 <header class="content_box accordion_title"> 
 	<h4 class="content_header">Species By Order</h4>
 </header>
@@ -11,17 +12,19 @@
 		node module mysql was used for data access.</li>
 		<li>The table is drawn server-side using Express, ejs templates for views, and ejs-locals
 		for layout and partial support.</li>
-		<li>The pie chart is drawn client-side using the Google Charts API with 
+		<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
 		data obtained via an AJAX call to the Node.js app.</li>
 	</ul>
-</section>	
-<section class="content_box">	
-	<figure id="piechart">
-	    <div id="chart_div" title="Google Pie Chart Example">
-	    	<p>Loading...</p>
-	    </div>
-	</figure>
 </section>
+<span class="hidden-phone">	
+	<section class="content_box">	
+		<figure id="piechart">
+		    <div id="chart_div" title="Google Pie Chart Example" style="width:100px;">
+		    	<p>Loading...</p>
+		    </div>
+		</figure>
+	</section>
+</span>
 <table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
 	<thead>
 		<tr>
@@ -42,3 +45,4 @@
 	<% }) %> 
 	</tbody>
 </table>
+</article>

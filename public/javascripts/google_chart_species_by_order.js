@@ -35,7 +35,7 @@
     data.addRows(chartData);
     chart = new google.visualization.PieChart(document.getElementById('chart_div'));
     options = {
-      width: 800,
+      width: 700,
       height: 400,
       title: 'Bird Species Sighted By Order'
     };

@@ -33,7 +33,7 @@ drawChartSpeciesByMonth = (dataPoints) ->
         
 	# set chart options
 	options = 
-		width : 600
+		width : 700
 		height : 240
 		pointSize : 5
 		title : 'Bird Species and Trips By Month'
