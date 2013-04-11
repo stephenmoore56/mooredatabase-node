@@ -2,47 +2,47 @@
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_order.min.js') -%>
 <article class="row-fluid">
-<header class="content_box accordion_title"> 
-	<h4 class="content_header">Species By Order</h4>
-</header>
-<section class="content_box">
-	<p>This page demonstrates</p>
-	<ul>   
-		<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the
-		node module mysql was used for data access.</li>
-		<li>The table is drawn server-side using Express, ejs templates for views, and ejs-locals
-		for layout and partial support.</li>
-		<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
-		data obtained via an AJAX call to the Node.js app.</li>
-	</ul>
-</section>
-<span class="hidden-phone">	
-	<section class="content_box">	
-		<figure id="piechart">
-		    <div id="chart_div" title="Google Pie Chart Example" style="width:100px;">
-		    	<p>Loading...</p>
-		    </div>
-		</figure>
+	<header class="content_box accordion_title"> 
+		<h4 class="content_header">Species By Order</h4>
+	</header>
+	<section class="content_box">
+		<p>This page demonstrates</p>
+		<ul>   
+			<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the
+			node module mysql was used for data access.</li>
+			<li>The table is drawn server-side using Express, ejs templates for views, and ejs-locals
+			for layout and partial support.</li>
+			<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
+			data obtained via an AJAX call to the Node.js app.</li>
+		</ul>
 	</section>
-</span>
-<table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
-	<thead>
-		<tr>
-	    	<th class='image_title'>Order</th>
-	    	<th class='image_title'>Notes</th>
-	  		<th class='image_title numeric'>Species Sighted</th>
-	  		<th class='image_title numeric'>Total Species</th>	  		
-		</tr>
-	</thead>
-	<tbody>		
-	<% orders.forEach(function(order) { %> 
-		<tr class="order">
-			<td class="left_aligned orderName"><%= order.order_name  %></td>
-			<td class="left_aligned"><%= order.order_notes %></td>
-			<td class="right_aligned"><%= order.speciesCount %></td>	
-			<td class="right_aligned"><%= order.totalSpecies %></td>					
-		</tr>
-	<% }) %> 
-	</tbody>
-</table>
+	<span class="hidden-phone">	
+		<section class="content_box">	
+			<figure id="piechart">
+			    <div id="chart_div" title="Google Pie Chart Example" style="width:100px;">
+			    	<p>Loading...</p>
+			    </div>
+			</figure>
+		</section>
+	</span>
+	<table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
+		<thead>
+			<tr>
+		    	<th class='image_title'>Order</th>
+		    	<th class='image_title'>Notes</th>
+		  		<th class='image_title numeric'>Species Sighted</th>
+		  		<th class='image_title numeric'>Total Species</th>	  		
+			</tr>
+		</thead>
+		<tbody>		
+		<% orders.forEach(function(order) { %> 
+			<tr class="order">
+				<td class="left_aligned orderName"><%= order.order_name  %></td>
+				<td class="left_aligned"><%= order.order_notes %></td>
+				<td class="right_aligned"><%= order.speciesCount %></td>	
+				<td class="right_aligned"><%= order.totalSpecies %></td>					
+			</tr>
+		<% }) %> 
+		</tbody>
+	</table>
 </article>
