@@ -6,3 +6,7 @@
     text-decoration: none;
   }
 }
+// remove discs from navbar li''
+ul.nav li {
+  list-style-type: none;
+}
