@@ -18,3 +18,12 @@ ul.nav li {
 img {
   max-height: 700px;
 }
+// buttons with links
+button a {
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}

@@ -28,10 +28,10 @@
 				<td class="left_aligned"><%=: user.updated  | dateFormatLong %></td>
 				<td class="center_aligned">
 					<div class="btn-group">
-						<button class="btn btn-mini">
+						<button class="btn btn-primary btn-mini">
 							<a href="/users/edit/<%= user._id  %>">Edit</a>
 						</button>
-						<button class="btn btn-mini">
+						<button class="btn btn-danger btn-mini">
 							<a href="/users/destroy/<%= user._id  %>">Delete</a>
 						</button>
 					</div>
