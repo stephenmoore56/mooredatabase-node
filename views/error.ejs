@@ -1,10 +1,14 @@
 <% layout('layout.ejs') -%>
-<%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/university.jpg","title":"University","caption":"University"}) %>
-<section id="left_container">
-	<header class="content_box accordion_title">
-    	<h1 class="content_header"><%= title %></h1>
-    </header>
-	<section class="content_box">
-		<p><%= description %></p>
-	</section>
+<section class="row-fluid">
+	<article class="span6">
+		<header class="content_box accordion_title">
+	    	<h1 class="content_header"><%= title %></h1>
+	    </header>
+		<section class="content_box">
+			<p><%= description %></p>
+		</section>
+	</article>
+	<aside class="span6">
+		<%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/university.jpg","title":"University","caption":"University"}) %>	
+	</aside>
 </section>
