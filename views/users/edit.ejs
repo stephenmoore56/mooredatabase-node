@@ -3,42 +3,35 @@
 <article class="row-fluid">
 	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
 	<form id="editUserForm" action="/users/update" method="post">
-		<dl class="zend_form">
-			<dt>&#160;</dt>
-			<dd>
-				<fieldset>
-					<legend>Edit User</legend>
-					<dl>
-						<dt><label for="username" class="required">Username:</label></dt>
-						<dd><input type="text" name="username" id="username" value="<%= user.username %>" size="30" maxLength="30" autofocus="autofocus" required="required"></dd>
-						
-						<dt><label for="password" class="required">Password:</label></dt>
-						<dd><input type="text" name="password" id="password" value="" size="30" maxLength="30"></dd>
-						
-						<dt><label for="firstname" class="required">First Name:</label></dt>
-						<dd><input type="text" name="firstname" id="firstname" value="<%= user.firstname %>" size="30" maxLength="30" required="required"></dd>
-						
-						<dt><label for="lastname" class="required">Last Name:</label></dt>
-						<dd><input type="text" name="lastname" id="lastname" value="<%= user.lastname ? user.lastname : '' %>" size="30" maxLength="30"></dd>
-						
-						<dt><label for="email" class="required">Email:</label></dt>
-						<dd><input type="text" name="email" id="email" value="<%= user.email %>" size="50" maxLength="50" required="required"></dd>
-						
-						<dt><label for="created" class="required">Created:</label></dt>
-						<dd><input type="text" name="created" id="created" value="<%=: user.created | dateFormatLong %>" size="30" readonly></dd>
-						
-						<dt><label for="updated" class="required">Last Updated:</label></dt>
-						<dd><input type="text" name="updated" id="updated" value="<%=: user.updated | dateFormatLong %>" size="30" readonly></dd>																								
-					</dl>
-				</fieldset>
-			</dd>
-			<dt id="submit-label">&#160;</dt>
-			<dd id="submit-element"><input type="submit" name="submit" id="submit" value="Save" class="btn btn-primary"></dd>
-			<input type="hidden" name="id" id="id" value="<%= user._id %>">
-		</dl>
+		<fieldset>
+			<legend>Edit User</legend>
+			<label for="username" class="required">Username:</label>
+			<input type="text" name="username" id="username" value="<%= user.username %>" size="30" maxLength="30" autofocus="autofocus" required="required">			
+			<label for="password" class="required">Password:</label>
+			<input type="text" name="password" id="password" value="" size="30" maxLength="30">
+			
+			<label for="firstname" class="required">First Name:</label>
+			<input type="text" name="firstname" id="firstname" value="<%= user.firstname %>" size="30" maxLength="30" required="required">
+			
+			<label for="lastname" class="required">Last Name:</label>
+			<input type="text" name="lastname" id="lastname" value="<%= user.lastname ? user.lastname : '' %>" size="30" maxLength="30">
+			
+			<label for="email" class="required">Email:</label>
+			<input type="text" name="email" id="email" value="<%= user.email %>" size="50" maxLength="50" required="required">
+			
+			<label for="created" class="required">Created:</label>
+			<input type="text" name="created" id="created" value="<%=: user.created | dateFormatLong %>" size="30" readonly>
+			
+			<label for="updated" class="required">Last Updated:</label>
+			<input type="text" name="updated" id="updated" value="<%=: user.updated | dateFormatLong %>" size="30" readonly>																								
+		</fieldset>
+		<input type="submit" name="submit" id="submit" value="Save" class="btn btn-primary">
+		<input type="hidden" name="id" id="id" value="<%= user._id %>">
 	</form>
-	<p>
-		<a class="content_a" href="/users/index">List Users</a> | 
-		<a class="content_a" href="/content/menu">Menu</a>	
-	</p>
+	<nav>
+		<p>
+			<a class="content_a" href="/users/index">List Users</a> | 
+			<a class="content_a" href="/content/menu">Menu</a>	
+		</p>
+	</nav>
 </article>

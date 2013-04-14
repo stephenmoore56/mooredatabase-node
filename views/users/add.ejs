@@ -3,35 +3,29 @@
 <article class="row-fluid">
 	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
 	<form id="newUserForm" action="/users/create" method="post">
-		<dl class="zend_form">
-			<dt>&#160;</dt>
-			<dd>
-				<fieldset>
-					<legend>Add New User</legend>
-					<dl>
-						<dt><label for="username" class="required">Username:</label></dt>
-						<dd><input type="text" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required"></dd>
-						
-						<dt><label for="password" class="required">Password:</label></dt>
-						<dd><input type="text" name="password" id="password" value="" size="30" maxLength="30" required="required"></dd>
-						
-						<dt><label for="firstname" class="required">First Name:</label></dt>
-						<dd><input type="text" name="firstname" id="firstname" value="" size="30" maxLength="30" required="required"></dd>
-						
-						<dt><label for="lastname" class="required">Last Name:</label></dt>
-						<dd><input type="text" name="lastname" id="lastname" value="" size="30" maxLength="30"></dd>
-						
-						<dt><label for="email" class="required">Email:</label></dt>
-						<dd><input type="text" name="email" id="email" value="" size="50" maxLength="50" required="required"></dd>															
-					</dl>
-				</fieldset>
-			</dd>
-			<dt id="submit-label">&#160;</dt>
-			<dd id="submit-element"><input type="submit" name="submit" id="submit" value="Add User" class="btn btn-primary"></dd>
-		</dl>
+		<fieldset>
+			<legend>Add New User</legend>
+				<label for="username" class="required">Username:</label>
+				<input type="text" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required">
+				
+				<label for="password" class="required">Password:</label>
+				<input type="text" name="password" id="password" value="" size="30" maxLength="30" required="required">
+				
+				<label for="firstname" class="required">First Name:</label>
+				<input type="text" name="firstname" id="firstname" value="" size="30" maxLength="30" required="required">
+				
+				<label for="lastname" class="required">Last Name:</label>
+				<input type="text" name="lastname" id="lastname" value="" size="30" maxLength="30">
+				
+				<label for="email" class="required">Email:</label>
+				<input type="text" name="email" id="email" value="" size="50" maxLength="50" required="required">															
+		</fieldset>
+		<input type="submit" name="submit" id="submit" value="Add User" class="btn btn-primary">
 	</form>
-	<p>
-		<a class="content_a" href="/users/index">List Users</a> | 
-		<a class="content_a" href="/content/menu">Menu</a>	
-	</p>
+	<nav>
+		<p>
+			<a class="content_a" href="/users/index">List Users</a> | 
+			<a class="content_a" href="/content/menu">Menu</a>	
+		</p>
+	</nav>
 </article>
