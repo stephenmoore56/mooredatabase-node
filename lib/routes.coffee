@@ -9,7 +9,7 @@ module.exports = (app) ->
   auth = _.extend(require('../controllers/auth'))
   controllers.auth = auth
   users = _.extend(require('../controllers/users'))
-  controllers.users = users  
+  controllers.users = users 
   
   # routes to controllers
   app.get('/', controllers.content.nodejs)
@@ -18,7 +18,9 @@ module.exports = (app) ->
   app.get('/birding', controllers.birding.orders)
   app.get('/birding/orders', controllers.birding.orders)
   app.get('/birding/ordersajax', controllers.birding.ordersajax)
+  app.get('/birding/ordersjson', controllers.birding.ordersjson)
   app.get('/birding/months', controllers.birding.months)  
+  app.get('/birding/monthsjson', controllers.birding.monthsjson)
   app.get('/logout', controllers.auth.logout)   
 
   # routes requiring https

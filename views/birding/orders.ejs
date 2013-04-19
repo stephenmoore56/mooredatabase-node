@@ -1,7 +1,7 @@
 <% layout('../layout.ejs') -%>
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_order.min.js') -%>
-<article class="row-fluid">
+<article class="row-fluid" ng-controller="OrdersCtrl">
 	<header class="content_box accordion_title"> 
 		<h4 class="content_header">Species By Order</h4>
 	</header>
@@ -10,10 +10,9 @@
 		<ul>   
 			<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the
 			node module mysql was used for data access.</li>
-			<li>The table is drawn server-side using Express, ejs templates for views, and ejs-locals
-			for layout and partial support.</li>
+			<li>The table is drawn client-side using AngularJS techniques with JSON data obtained via an AJAX call to the Node.js app.</li>
 			<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
-			data obtained via an AJAX call to the Node.js app.</li>
+			JSON data obtained via an AJAX call to the Node.js app.</li>
 		</ul>
 	</section>
 	<div class="hidden-phone">	
@@ -25,7 +24,7 @@
 			</figure>
 		</section>
 	</div>
-	<table id='species' class='report sorted' style='width:100%;' title='Order Sightings'>
+	<table id='orders' class='report' style='width:100%;' title='Order Sightings'>
 		<thead>
 			<tr>
 		    	<th class='image_title'>Order</th>
@@ -35,14 +34,12 @@
 			</tr>
 		</thead>
 		<tbody>		
-		<% orders.forEach(function(order) { %> 
-			<tr class="order">
-				<td class="left_aligned orderName"><%= order.order_name  %></td>
-				<td class="left_aligned"><%= order.order_notes %></td>
-				<td class="right_aligned"><%= order.speciesCount %></td>	
-				<td class="right_aligned"><%= order.totalSpecies %></td>					
+			<tr ng-repeat="order in orders">
+				<td class="left_aligned orderName">{{ order.order_name }}</td>
+				<td class="left_aligned">{{ order.order_notes }}</td>
+				<td class="right_aligned">{{ order.speciesCount }}</td>	
+				<td class="right_aligned">{{ order.totalSpecies }}</td>					
 			</tr>
-		<% }) %> 
 		</tbody>
 	</table>
 </article>
