@@ -35,10 +35,10 @@
 		</thead>
 		<tbody>		
 			<tr data-ng-repeat="order in orders | orderBy:orderProp:reverse">
-				<td class="left_aligned orderName">{{ order.order_name }}</td>
-				<td class="left_aligned">{{ order.order_notes }}</td>
-				<td class="right_aligned">{{ order.speciesCount }}</td>	
-				<td class="right_aligned">{{ order.totalSpecies }}</td>					
+				<td class="text-left orderName">{{ order.order_name }}</td>
+				<td class="text-left">{{ order.order_notes }}</td>
+				<td class="text-right">{{ order.speciesCount }}</td>	
+				<td class="text-right">{{ order.totalSpecies }}</td>					
 			</tr>
 		</tbody>
 	</table>
