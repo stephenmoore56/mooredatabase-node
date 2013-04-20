@@ -1,7 +1,7 @@
 <% layout('../layout.ejs') -%>
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_month.min.js') -%>
-<article class="row-fluid" ng-controller="MonthsCtrl">
+<article class="row-fluid" data-ng-controller="MonthsCtrl">
 	<header class="content_box accordion_title"> 
 		<h4 class="content_header">Species By Month</h4>
 	</header>
@@ -25,13 +25,15 @@
 	<table id='months' class='report' style='width:100%;' title='Month Sightings'>
 		<thead>
 			<tr>
-		    	<th class='image_title'>Month</th>
-		  		<th class='image_title numeric'>Species Sighted</th>
-		  		<th class='image_title numeric'>Trips Taken</th>	  		
+		    	<th class='image_title'			data-ng-click="setOrderProp('monthNumber')">Month Number</th>			
+		    	<th class='image_title'			data-ng-click="setOrderProp('monthName')">Month Name</th>
+		  		<th class='image_title numeric' data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
+		  		<th class='image_title numeric' data-ng-click="setOrderProp('tripCount')">Trips Taken</th>	  		
 			</tr>
 		</thead>
 		<tbody>		
-			<tr ng-repeat="month in months">
+			<tr data-ng-repeat="month in months | orderBy:orderProp:reverse">
+				<td class="center_aligned">{{ month.monthNumber}}</td>
 				<td class="left_aligned">{{ month.monthName }}</td>
 				<td class="right_aligned">{{ month.speciesCount }}</td>	
 				<td class="right_aligned">{{ month.tripCount }}</td>					

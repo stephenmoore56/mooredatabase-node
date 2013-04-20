@@ -1,7 +1,7 @@
 <% layout('../layout.ejs') -%>
 <% script('//www.google.com/jsapi?key=ABQIAAAAnQwHWIIOdfuy6mmnAPWMrxRz7CDf8eoRpZ9uxznpbqB6UwVVhhQRKXh9O02BW9yOPT-IoRtEsBIL8A') -%>
 <% script('/javascripts/google_chart_species_by_order.min.js') -%>
-<article class="row-fluid" ng-controller="OrdersCtrl">
+<article class="row-fluid" data-ng-controller="OrdersCtrl">
 	<header class="content_box accordion_title"> 
 		<h4 class="content_header">Species By Order</h4>
 	</header>
@@ -27,14 +27,14 @@
 	<table id='orders' class='report' style='width:100%;' title='Order Sightings'>
 		<thead>
 			<tr>
-		    	<th class='image_title'>Order</th>
-		    	<th class='image_title'>Notes</th>
-		  		<th class='image_title numeric'>Species Sighted</th>
-		  		<th class='image_title numeric'>Total Species</th>	  		
+		    	<th class='image_title'			data-ng-click="setOrderProp('order_name')">Order</th>
+		    	<th class='image_title'			data-ng-click="setOrderProp('order_notes')">Notes</th>
+		  		<th class='image_title numeric' data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
+		  		<th class='image_title numeric' data-ng-click="setOrderProp('totalSpecies')">Total Species</th>	  		
 			</tr>
 		</thead>
 		<tbody>		
-			<tr ng-repeat="order in orders">
+			<tr data-ng-repeat="order in orders | orderBy:orderProp:reverse">
 				<td class="left_aligned orderName">{{ order.order_name }}</td>
 				<td class="left_aligned">{{ order.order_notes }}</td>
 				<td class="right_aligned">{{ order.speciesCount }}</td>	
