@@ -21,6 +21,8 @@ module.exports = (app) ->
   app.get('/birding/ordersjson', controllers.birding.ordersjson)
   app.get('/birding/months', controllers.birding.months)  
   app.get('/birding/monthsjson', controllers.birding.monthsjson)
+  app.get('/birding/species', controllers.birding.species)  
+  app.get('/birding/speciesjson', controllers.birding.speciesjson)  
   app.get('/logout', controllers.auth.logout)   
 
   # routes requiring https

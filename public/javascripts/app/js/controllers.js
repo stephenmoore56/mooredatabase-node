@@ -30,3 +30,19 @@ MonthsCtrl = function($scope, $http) {
 		}
   	}	
 }
+SpeciesCtrl = function($scope, $http) {
+	$http.get('/birding/speciesjson').success(function(data) {
+		$scope.birds = data;
+	});
+	
+	$scope.orderProp = 'common_name';
+	$scope.reverse = false;
+	
+	$scope.setOrderProp = function(newOrderProp) {
+		if (newOrderProp == $scope.orderProp) {
+			$scope.reverse = ! $scope.reverse;
+		} else {
+   			$scope.orderProp = newOrderProp;			
+		}
+  	}	
+}

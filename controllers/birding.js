@@ -87,4 +87,34 @@
     connection.end();
   };
 
+  exports.species = function(req, res) {
+    auth.ssl_required(req, res, false);
+    res.render('birding/species', {
+      title: 'Bird Species and Sightings'
+    });
+  };
+
+  exports.speciesjson = function(req, res) {
+    var connection, mysqlDatabase, sql;
+    auth.ssl_required(req, res, false);
+    mysqlDatabase = require('../lib/mysqlDatabase.js');
+    connection = mysqlDatabase.connect();
+    connection.connect();
+    sql = "SELECT \        aou_list.id, \        aou_order.order_name, \        aou_list.common_name, \        aou_list.scientific_name, \        aou_list.family, \        aou_list.subfamily, \        COUNT(*) AS sightings, \        MAX(trip.trip_date) AS last_seen, \        MIN(RIGHT(MAKEDATE(YEAR(trip.trip_date),DAYOFYEAR(trip.trip_date)),5)) AS earliestSighting, \        MAX(RIGHT(MAKEDATE(YEAR(trip.trip_date),DAYOFYEAR(trip.trip_date)),5)) AS latestSighting \        FROM \        trip \        INNER JOIN sighting \          ON trip.id = sighting.trip_id \        INNER JOIN aou_list \          ON sighting.aou_list_id = aou_list.id \        INNER JOIN aou_order \          ON aou_list.order = aou_order.order_name \        GROUP BY \        aou_list.id, \        aou_order.order_name, \        aou_list.common_name, \        aou_list.scientific_name, \        aou_list.order, \        aou_list.family, \        aou_list.subfamily";
+    connection.query(sql, function(err, rows) {
+      if (err) {
+        res.render('error', {
+          title: 'Database Error',
+          description: 'A database error occurred: ' + err.message
+        });
+      } else {
+        res.writeHead(200, {
+          'Content-Type': 'application/json'
+        });
+        res.end(JSON.stringify(rows));
+      }
+    });
+    connection.end();
+  };
+
 }).call(this);
