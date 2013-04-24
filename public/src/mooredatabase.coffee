@@ -10,7 +10,6 @@ $ ->
 		collapsible: true
 	$("#tabs").tabs()
 	$("#slideshow").cycle()
-	$("table.sorted").tablesorter()
 	$("input:submit,input:reset").button()
 	$("#datepicker").datepicker
 		dateFormat : 'yy-mm-dd'

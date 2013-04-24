@@ -7,7 +7,7 @@
       if (Modernizr.svg) {
         $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
       } else {
-        $("#chart_div").html('<p>Your browser cannot display Google charts.</p>');
+        $("#chart_div").html('<p>Your browser cannot display Google charts. Try using Chrome or Firefox.</p>');
       }
     }
   });
