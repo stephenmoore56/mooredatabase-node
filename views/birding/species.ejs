@@ -18,7 +18,7 @@
 		</form>
 	
 	</section>			
-	<table id='months' class='report' style='width:100%;' title='All Species'>
+	<table id='months' class='report' style='width:100%;' title='All Species' ng-show="(birds | filter:searchText).length">
 		<thead>
 			<tr>
 		    	<th class='image_title'				data-ng-click="setOrderProp('common_name')">Common Name</th>			
@@ -41,5 +41,6 @@
 				<td class="text-right">{{ bird.sightings }}</td>					
 			</tr>
 		</tbody>
-	</table>	
+	</table>
+	<p class="alert alert-info" ng-hide="(birds | filter:searchText).length">There are no birds matching your search criteria.</p>	
 </article>

@@ -1,7 +1,5 @@
-OrdersCtrl = function($scope, $http) {
-	$http.get('/birding/ordersjson').success(function(data) {
-		$scope.orders = data;
-	});
+OrdersCtrl = function($scope, $http, Orders) {
+	$scope.orders = Orders.query();
 	
 	$scope.orderProp = 'speciesCount';
 	$scope.reverse = true;
@@ -14,10 +12,8 @@ OrdersCtrl = function($scope, $http) {
 		}
   	}		
 }
-MonthsCtrl = function($scope, $http) {
-	$http.get('/birding/monthsjson').success(function(data) {
-		$scope.months = data;
-	});
+MonthsCtrl = function($scope, $http, Months) {
+	$scope.months = Months.query();
 	
 	$scope.orderProp = 'monthNumber';
 	$scope.reverse = false;
@@ -30,10 +26,8 @@ MonthsCtrl = function($scope, $http) {
 		}
   	}	
 }
-SpeciesCtrl = function($scope, $http) {
-	$http.get('/birding/speciesjson').success(function(data) {
-		$scope.birds = data;
-	});
+SpeciesCtrl = function($scope, $http, Species) {
+	$scope.birds = Species.query();
 	
 	$scope.orderProp = 'common_name';
 	$scope.reverse = false;
