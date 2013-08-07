@@ -8,14 +8,19 @@
 	    <a class="brand" href="http://moore-database.com/index.html">MOORE+DATABASE</a>
 	    <div class="nav-collapse collapse">
 		    <ul class="nav">
-				<li>
-					<a href="/content/nodejs/" target="_self">
-						node home
-					</a>
-				</li>
 				<li class="dropdown">
 		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		            	node demos 
+		            	tools 
+		            	<span class="caret"></span>
+		            </a>
+		            <ul class="dropdown-menu">
+						<li><a href="/#/backend">Node.js</a></li>
+						<li><a href="/#/frontend">Front End</a></li>				
+					</ul>
+				</li>						
+				<li class="dropdown">
+		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		            	demos 
 		            	<span class="caret"></span>
 		            </a>
 		            <ul class="dropdown-menu">
@@ -23,7 +28,8 @@
 						<li><a href="/birding/months/">Bird Species By Month</a></li>
 						<li><a href="/birding/species/">All Species</a></li>					
 					</ul>
-				</li>					
+				</li>
+								
 				<% if (typeof authenticated != 'undefined' && authenticated == true) { %>
 					<li><a href="/content/menu/" target="_self">menu</a></li>		
 					<li><a href="/auth/logout/" target="_self">logout</a></li>
