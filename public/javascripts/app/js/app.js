@@ -1,5 +1,6 @@
 'use strict';
-// create app
+
+// create app; dependencies for AJAX data
 var myApp = angular.module('myApp', ['ngResource','myAppServices']);
 
 // routing for static pages (SPA)

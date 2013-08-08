@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('myAppServices', ['ngResource'])
 	.factory('Months', function($resource) {
 		return $resource('/birding/monthsjson');

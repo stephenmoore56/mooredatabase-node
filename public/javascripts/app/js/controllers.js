@@ -1,4 +1,6 @@
-OrdersCtrl = function($scope, $http, Orders) {
+'use strict';
+
+var OrdersCtrl = function($scope, $http, Orders) {
 	$scope.orders = Orders.query();
 	
 	$scope.orderProp = 'speciesCount';
@@ -12,7 +14,7 @@ OrdersCtrl = function($scope, $http, Orders) {
 		}
   	}		
 }
-MonthsCtrl = function($scope, $http, Months) {
+var MonthsCtrl = function($scope, $http, Months) {
 	$scope.months = Months.query();
 	
 	$scope.orderProp = 'monthNumber';
@@ -26,7 +28,7 @@ MonthsCtrl = function($scope, $http, Months) {
 		}
   	}	
 }
-SpeciesCtrl = function($scope, $http, Species) {
+var SpeciesCtrl = function($scope, $http, Species) {
 	$scope.birds = Species.query();
 	
 	$scope.orderProp = 'common_name';
