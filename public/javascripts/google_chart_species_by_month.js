@@ -4,9 +4,7 @@
 
   $(document).ready(function() {
     if ($('#chart_div').length) {
-      if (Modernizr.svg) {
-        $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
-      } else {
+      if (!Modernizr.svg) {
         $("#chart_div").html('<p>Your browser cannot display Google charts. Try using Chrome or Firefox.</p>');
       }
     }
@@ -22,7 +20,7 @@
     var chart, chartData, data, i, options, _i, _ref;
     chartData = [];
     for (i = _i = 0, _ref = dataPoints.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-      chartData.push([parseInt(dataPoints[i][0]), parseInt(dataPoints[i][1]), parseInt(dataPoints[i][2])]);
+      chartData.push([parseInt(dataPoints[i]['monthNumber']), parseInt(dataPoints[i]['speciesCount']), parseInt(dataPoints[i]['tripCount'])]);
     }
     data = new google.visualization.DataTable();
     data.addColumn('number', 'Month');
@@ -42,7 +40,7 @@
         },
         gridlines: {
           color: '#CCC',
-          count: 12
+          count: dataPoints.length
         },
         baselineColor: '#CCC'
       },

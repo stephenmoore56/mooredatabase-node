@@ -1,10 +1,7 @@
 $(document).ready ->
   if $('#chart_div').length
     # see if SVG is supported by browser
-    if (Modernizr.svg)
-      # make an AJAX/JSONP call for the chart data
-      $.getScript("http://moore-database.com/zend/public/sighting/monthsjsonp?callback=mooredatabase.drawChartSpeciesByMonth");
-    else
+    if (! Modernizr.svg)
       $("#chart_div").html('<p>Your browser cannot display Google charts. Try using Chrome or Firefox.</p>')
   return
   
@@ -21,7 +18,7 @@ drawChartSpeciesByMonth = (dataPoints) ->
 	# must be cast to integer
 	chartData = []
 	for i in [0...dataPoints.length]
-		chartData.push([parseInt(dataPoints[i][0]), parseInt(dataPoints[i][1]), parseInt(dataPoints[i][2])])
+		chartData.push([parseInt(dataPoints[i]['monthNumber']), parseInt(dataPoints[i]['speciesCount']), parseInt(dataPoints[i]['tripCount'])])
 	data = new google.visualization.DataTable()
 	data.addColumn('number', 'Month')
 	data.addColumn('number', 'Species')
@@ -43,7 +40,7 @@ drawChartSpeciesByMonth = (dataPoints) ->
 				color : '#000'
 			gridlines : 
 				color : '#CCC'
-				count : 12
+				count : dataPoints.length
 			baselineColor : '#CCC'
 		vAxis : 
 			title : 'Species/Trips'

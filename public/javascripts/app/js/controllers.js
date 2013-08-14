@@ -2,8 +2,11 @@
 // controllers
 angular.module('myApp.controllers', [])
 	.controller('OrdersCtrl', ['$scope','Orders', function($scope, Orders) {
-		$scope.orders = Orders.query();
-		
+		// use the same data to draw the table and the Google chart
+		$scope.orders = Orders.query(function() {
+			mooredatabase.drawChartSpeciesByOrder($scope.orders);			
+		});
+				
 		$scope.orderProp = 'speciesCount';
 		$scope.reverse = true;
 		
@@ -16,7 +19,10 @@ angular.module('myApp.controllers', [])
 	  	}		
 	}])
 	.controller('MonthsCtrl', ['$scope','Months', function($scope, Months) {
-		$scope.months = Months.query();
+		// use the same data to draw the table and the Google chart
+		$scope.months = Months.query(function() {
+			mooredatabase.drawChartSpeciesByMonth($scope.months);
+		});
 		
 		$scope.orderProp = 'monthNumber';
 		$scope.reverse = false;
