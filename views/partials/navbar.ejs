@@ -1,46 +1,42 @@
-<nav class="navbar navbar-inverse">
-	<div class="navbar-inner">
-		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</a>	
-	    <a class="brand" href="http://moore-database.com/index.html">MOORE+DATABASE</a>
-	    <div class="nav-collapse collapse">
-		    <ul class="nav">
-				<li class="dropdown">
-		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		            	tools 
-		            	<span class="caret"></span>
-		            </a>
-		            <ul class="dropdown-menu">
-						<li><a href="/#/backend">Node.js</a></li>
-						<li><a href="/#/frontend">Front End</a></li>				
-					</ul>
-				</li>						
-				<li class="dropdown">
-		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		            	demos 
-		            	<span class="caret"></span>
-		            </a>
-		            <ul class="dropdown-menu">
-						<li><a href="/birding/orders/">Bird Species By Order</a></li>
-						<li><a href="/birding/months/">Bird Species By Month</a></li>
-						<li><a href="/birding/species/">All Species</a></li>					
-					</ul>
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+    	<a class="navbar-brand" href="http://moore-database.com/index.html">MOORE+DATABASE</a>
+  	</div>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse"> 	
+	    <ul class="nav navbar-nav">
+			<li class="dropdown">
+	            <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">tools <b class="caret"></b></a>
+	            <ul class="dropdown-menu">
+					<li><a href="/#/backend">Node.js</a></li>
+					<li><a href="/#/frontend">Front End</a></li>				
+				</ul>
+			</li>						
+			<li class="dropdown">
+	            <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">demos <b class="caret"></b></a>
+	            <ul class="dropdown-menu">
+					<li><a href="/birding/orders/">Bird Species By Order</a></li>
+					<li><a href="/birding/months/">Bird Species By Month</a></li>
+					<li><a href="/birding/species/">All Species</a></li>					
+				</ul>
+			</li>
+							
+			<% if (typeof authenticated != 'undefined' && authenticated == true) { %>
+				<li><a href="/content/menu/" target="_self">menu</a></li>		
+				<li><a href="/auth/logout/" target="_self">logout</a></li>
+			<% } else { %>
+				<li>
+					<a class="dropdown-header" href="/auth/login/" target="_self">
+						login
+					</a>
 				</li>
-								
-				<% if (typeof authenticated != 'undefined' && authenticated == true) { %>
-					<li><a href="/content/menu/" target="_self">menu</a></li>		
-					<li><a href="/auth/logout/" target="_self">logout</a></li>
-				<% } else { %>
-					<li>
-						<a href="/auth/login/" target="_self">
-							login
-						</a>
-					</li>
-				<% } %>								
-		    </ul>
-	    </div>
-    </div>
+			<% } %>								
+	    </ul>
+	</div>
 </nav>

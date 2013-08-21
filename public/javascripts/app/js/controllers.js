@@ -16,7 +16,7 @@ angular.module('myApp.controllers', [])
 			} else {
 	   			$scope.orderProp = newOrderProp;			
 			}
-	  	}		
+	  	}			
 	}])
 	.controller('MonthsCtrl', ['$scope','Months', function($scope, Months) {
 		// use the same data to draw the table and the Google chart

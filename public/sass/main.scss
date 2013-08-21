@@ -12,10 +12,10 @@ $borderRadius: 5px;
 $navBorder: none;
 
 // Eric Meyers' CSS reset; Compass reset not so good
-@import 'reset';
+// @import 'reset';
 
 // clearfix
-@import 'clearfix';
+// @import 'clearfix';
 
 .hidden {
     display: none;
@@ -62,7 +62,6 @@ img.logo30 {
 }
 // imports
 @import 'table';
-@import 'typography';
-@import 'colorbox';
+//@import 'typography';
 @import 'slideshow';
 @import 'bootstrap_overrides';
