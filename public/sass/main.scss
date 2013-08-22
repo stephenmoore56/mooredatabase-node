@@ -1,52 +1,3 @@
-// // import Compass modules
-// @import 'compass';
-// 
-// // variables
-// $borderColor: #777;
-// $border: 1px solid $borderColor;
-// $borderBox: 1px solid #CCC;
-// $textColor: #111;
-// $baseColor: #000;
-// $accentColor: #F60;
-// $borderRadius: 5px;
-// $navBorder: none;
-// 
-// // Eric Meyers' CSS reset; Compass reset not so good
-// // @import 'reset';
-// 
-// // clearfix
-// // @import 'clearfix';
-// 
-// .hidden {
-    // display: none;
-// }
-// table, th, td, tr, fieldset, div {
-  // border-color: $borderColor;
-// }
-// // rounded box divs
-// .content_box {
-  // padding: 10px;
-  // border: $borderBox;
-  // margin-bottom: 5px;
-  // @include border-radius($borderRadius);
-// }
-// .accordion_title {
-  // text-align: center;
-  // padding: 5px;
-// }
-// .content_header {
-    // color: $textColor;
-// }
-// // hyperlinks in text
-// .content_a {
-  // &:link, &:visited {
-    // color: $textColor;
-  // }
-  // &:hover {
-    // color: $accentColor;
-    // text-decoration: underline;
-  // }
-// }
 // logos 
 img.logo80 {
   height: 80px; 
@@ -60,8 +11,6 @@ img.logo30 {
   height: 30px; 
   margin: 10px auto
 }
-// // imports
-// @import 'table';
-//@import 'typography';
+// imports
 @import 'slideshow';
 @import 'bootstrap_overrides';
