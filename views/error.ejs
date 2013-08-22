@@ -1,14 +1,16 @@
 <% layout('layout.ejs') -%>
-<section class="row-fluid">
-	<article class="span6">
-		<header class="content_box accordion_title">
-	    	<h1 class="content_header"><%= title %></h1>
-	    </header>
-		<section class="content_box">
-			<p><%= description %></p>
-		</section>
+<section class="row">
+	<article class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4><%= title %></h4>
+			</div>
+			<div class="panel-body">
+				<p><%= description %></p>	
+			</div>
+		</div>
 	</article>
-	<aside class="span6">
+	<aside class="col-md-6">
 		<%- partial('partials/figure.ejs', {"orientation":"landscape","src":"/images/university.jpg","title":"University","caption":"University"}) %>	
 	</aside>
 </section>

@@ -1,7 +1,7 @@
 <% layout('../layout.ejs') -%>
 <section class="row">
 	<article class="col-md-6">
-		<ng-view></ng-view>	
+		<div class="ng-view"></div>	
 		<div style="height:90px">
 			<%- partial('../partials/slideshow.ejs') %>
 		</div>	
@@ -15,18 +15,18 @@
 				<li data-target="#photoCarousel" data-slide-to="3"></li>
 		    </ol>
 			<div class="carousel-inner">
-				<div class="item active"><img class="span6 img-polaroid" src="/images/slideshow1.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="span6 img-polaroid" src="/images/slideshow2.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="span6 img-polaroid" src="/images/slideshow3.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="span6 img-polaroid" src="/images/slideshow4.jpg" alt="Power Plant"></div>
+				<div class="item active"><img class="img-thumbnail img-responsive" src="/images/slideshow1.jpg" alt="Power Plant"></div>
+				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow2.jpg" alt="Power Plant"></div>
+				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow3.jpg" alt="Power Plant"></div>
+				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow4.jpg" alt="Power Plant"></div>
 			</div><!-- end carousel-inner -->
 			<!-- Controls -->
 			<a class="left carousel-control" href="#photoCarousel" data-slide="prev">
-				<span class="icon-prev"></span>
-			</a>
-			<a class="right carousel-control" href="#photoCarousel" data-slide="next">
-				<span class="icon-next"></span>
-			</a>
+            	<span class="glyphicon glyphicon-chevron-left"></span>
+        	</a>
+	        <a class="right carousel-control" href="#photoCarousel" data-slide="next">
+	            <span class="glyphicon glyphicon-chevron-right"></span>
+	        </a>
         </div><!-- end artCarousel -->
     </aside>
     <div class="col-md-2"></div>

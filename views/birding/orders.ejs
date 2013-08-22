@@ -1,43 +1,43 @@
 <% layout('../layout.ejs') -%>
 <article class="row" data-ng-controller="OrdersCtrl">
-	<header class="content_box accordion_title"> 
-		<h4 class="content_header">Species By Order</h4>
-	</header>
-	<section class="content_box">
-		<p>This page demonstrates</p>
-		<ul>   
-			<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the
-			node module mysql was used for data access.</li>
-			<li>The table is drawn client-side using an AngularJS view, service and controller, with JSON data obtained via an AJAX call to the Node.js app.</li>
-			<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
-			JSON data obtained via an AJAX call to the Node.js app.</li>
-		</ul>
-	</section>
-	<div class="hidden-phone">	
-		<section class="content_box">	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Species By Order</h4>
+		</div>
+		<div class="panel-body">
+			<p>This page demonstrates</p>
+			<ul>   
+				<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the
+				node module mysql was used for data access.</li>
+				<li>The table is drawn client-side using an AngularJS view, service and controller, with JSON data obtained via an AJAX call to the Node.js app.</li>
+				<li>The pie chart (not visible on phones) is drawn client-side using the Google Charts API with 
+				JSON data obtained via an AJAX call to the Node.js app.</li>
+			</ul>
+		</div>	
+		<div class="panel-body">	
 			<figure id="piechart">
 			    <div id="chart_div" title="Google Pie Chart Example" style="width:100px;">
 			    	<p>Loading...</p>
 			    </div>
 			</figure>
-		</section>
+		</div>
+		<table id='orders' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='Order Sightings'>
+			<thead>
+				<tr>
+			    	<th class="text-left"  data-ng-click="setOrderProp('order_name')">Order</th>
+			    	<th class="text-left"  data-ng-click="setOrderProp('order_notes')">Notes</th>
+			  		<th class="text-right" data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
+			  		<th class="text-right" data-ng-click="setOrderProp('totalSpecies')">Total Species</th>	  		
+				</tr>
+			</thead>
+			<tbody>		
+				<tr data-ng-repeat="order in orders | orderBy:orderProp:reverse">
+					<td class="text-left">{{ order.order_name }}</td>
+					<td class="text-left">{{ order.order_notes }}</td>
+					<td class="text-right">{{ order.speciesCount }}</td>	
+					<td class="text-right">{{ order.totalSpecies }}</td>					
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<table id='orders' class='report' style='width:100%;' title='Order Sightings'>
-		<thead>
-			<tr>
-		    	<th class='image_title'			data-ng-click="setOrderProp('order_name')">Order</th>
-		    	<th class='image_title'			data-ng-click="setOrderProp('order_notes')">Notes</th>
-		  		<th class='image_title numeric' data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
-		  		<th class='image_title numeric' data-ng-click="setOrderProp('totalSpecies')">Total Species</th>	  		
-			</tr>
-		</thead>
-		<tbody>		
-			<tr data-ng-repeat="order in orders | orderBy:orderProp:reverse">
-				<td class="text-left orderName">{{ order.order_name }}</td>
-				<td class="text-left">{{ order.order_notes }}</td>
-				<td class="text-right">{{ order.speciesCount }}</td>	
-				<td class="text-right">{{ order.totalSpecies }}</td>					
-			</tr>
-		</tbody>
-	</table>
 </article>

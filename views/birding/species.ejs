@@ -1,46 +1,47 @@
 <% layout('../layout.ejs') -%>
 <article class="row" data-ng-controller="SpeciesCtrl">
-	<header class="content_box accordion_title"> 
-		<h4 class="content_header">All Species</h4>
-	</header>
-	<section class="content_box">
-		<p>This page demonstrates</p>
-		<ul>   
-			<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the node module mysql was used for data access.</li>
-			<li>The table is drawn client-side using an AngularJS view, service and controller, with JSON data obtained via an AJAX call to the Node.js app.</li>
-		</ul>
-	</section>
-	<section class="content_box">
-		<form class="form-search">
-			<label for="searchText">Filter:</label>
-			<input type="text" name="searchText" id="searchText" value="" size="50" maxLength="50" data-ng-model="searchText" class="input-large search-query"> 
-			<label>{{ (birds | filter:searchText).length }} Birds</label>
-		</form>
-	
-	</section>			
-	<table id='months' class='report ng-cloak' style='width:100%;' title='All Species' ng-cloak ng-show="(birds | filter:searchText).length">
-		<thead>
-			<tr>
-		    	<th class='image_title'				data-ng-click="setOrderProp('common_name')">Common Name</th>			
-		    	<th class='image_title'				data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
-		    	<th class='image_title'				data-ng-click="setOrderProp('order_name')">Order Name</th>			
-		    	<th class='image_title'				data-ng-click="setOrderProp('family')">Family Name</th>
-		    	<th class='image_title'				data-ng-click="setOrderProp('last_seen')">Last Seen</th>		    			    	
-		  		<th class='image_title text-center' data-ng-click="setOrderProp('earliestSighting')">Earliest/Latest</th>
-		  		<th class='image_title text-right' 	data-ng-click="setOrderProp('sightings')">Sightings</th>	  		
-			</tr>
-		</thead>
-		<tbody>		
-			<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
-				<td class="text-left">{{ bird.common_name }}</td>
-				<td class="text-left">{{ bird.scientific_name }}</td>
-				<td class="text-left">{{ bird.order_name }}</td>
-				<td class="text-left">{{ bird.family }} {{ bird.subfamily }}</td>
-				<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>				
-				<td class="text-center">{{ bird.earliestSighting }} / {{ bird.latestSighting }}</td>	
-				<td class="text-right">{{ bird.sightings }}</td>					
-			</tr>
-		</tbody>
-	</table>
-	<p class="alert alert-info ng-cloak" ng-cloak ng-show="(birds | filter:searchText).length == 0">There are no birds matching your search criteria.</p>	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>All Species</h4>
+		</div>
+		<div class="panel-body">
+			<p>This page demonstrates</p>
+			<ul>   
+				<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the node module mysql was used for data access.</li>
+				<li>The table is drawn client-side using an AngularJS view, service and controller, with JSON data obtained via an AJAX call to the Node.js app.</li>
+			</ul>
+		</div>	
+		<div class="panel-body">
+			<form class="form-search">
+				<label for="searchText">Filter:</label>
+				<input type="text" name="searchText" id="searchText" value="" size="50" maxLength="50" data-ng-model="searchText" class="input-large search-query"> 
+				<label>{{ (birds | filter:searchText).length }} Birds</label>
+			</form>	
+		</div>			
+		<table id='months' class='table-striped table-condensed table-bordered table-responsive ng-cloak' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
+			<thead>
+				<tr>
+			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>			
+			    	<th class="text-left"	data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
+			    	<th class="text-left"	data-ng-click="setOrderProp('order_name')">Order Name</th>			
+			    	<th class="text-left"	data-ng-click="setOrderProp('family')">Family Name</th>
+			    	<th class="text-center"	data-ng-click="setOrderProp('last_seen')">Last Seen</th>		    			    	
+			  		<th class="text-center" data-ng-click="setOrderProp('earliestSighting')">Earliest/Latest</th>
+			  		<th class="text-right" 	data-ng-click="setOrderProp('sightings')">Sightings</th>	  		
+				</tr>
+			</thead>
+			<tbody>		
+				<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
+					<td class="text-left">{{ bird.common_name }}</td>
+					<td class="text-left">{{ bird.scientific_name }}</td>
+					<td class="text-left">{{ bird.order_name }}</td>
+					<td class="text-left">{{ bird.family }} {{ bird.subfamily }}</td>
+					<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>				
+					<td class="text-center">{{ bird.earliestSighting }} / {{ bird.latestSighting }}</td>	
+					<td class="text-right">{{ bird.sightings }}</td>					
+				</tr>
+			</tbody>
+		</table>
+		<p class="alert alert-info ng-cloak" data-ng-show="(birds | filter:searchText).length == 0">There are no birds matching your search criteria.</p>
+	</div>	
 </article>

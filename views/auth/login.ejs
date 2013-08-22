@@ -1,28 +1,25 @@
 <% layout('../layout.ejs') -%>
 <%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
-<form class="form-horizontal" id="loginForm" action="/auth/login" method="post">
-	<fieldset>
-		<div class="control-group">
-    		<div class="controls">
-				<legend>Login</legend>
-			</div>	
-		</div>			
-		<div class="control-group">
-			<label class="control-label" for="username" class="required">Username:</label>
-			<div class="controls">
-				<input type="text" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required" autocomplete="on">
+
+<form class="form-horizontal" role="form" id="loginForm" action="/auth/login" method="post">
+	<fieldset>	
+		<legend>Login</legend>
+		<div class="form-group">
+			<label class="control-label required col-lg-2" for="username">Username:</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required" autocomplete="on">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="password" class="required">Password:</label>
-			<div class="controls">
-				<input type="password" name="password" id="password" value="" size="30" maxLength="30" autocomplete="on" required="required">
-			</div>	
+		<div class="form-group">
+			<label class="control-label required col-lg-2" for="password">Password:</label>
+			<div class="col-lg-4">
+				<input type="password" class="form-control" name="password" id="password" value="" size="30" maxLength="30" autocomplete="on" required="required">
+			</div>
 		</div>
-	</fieldset>
-	<div class="control-group">
-    	<div class="controls">
-			<input type="submit" name="submit" id="submit" value="Log In" class="btn btn-warning">
-		</div>	
-	</div>		
+	</fieldset>	
+	<div class="form-group">
+	    <div class="col-lg-offset-2 col-lg-10">
+	    	<button type="submit" class="btn btn-warning">Log In</button>
+	    </div>
+  	</div>
 </form>
