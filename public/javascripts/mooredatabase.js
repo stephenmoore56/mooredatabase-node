@@ -3,4 +3,10 @@
 
   window.mooredatabase = {};
 
+  $(function() {
+    $("#photoCarousel").carousel({
+      interval: 5000
+    });
+  });
+
 }).call(this);

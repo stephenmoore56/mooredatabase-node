@@ -11,6 +11,14 @@ img.logo30 {
   height: 30px; 
   margin: 10px auto
 }
+// padding on right and left of content container
+#content_container {
+  padding: 0 25px;
+}
+// italicized species names
+.scientific_name {
+    font-style: italic;
+}
 // imports
 @import 'slideshow';
 @import 'bootstrap_overrides';

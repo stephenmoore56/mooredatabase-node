@@ -18,7 +18,7 @@
 				<label>{{ (birds | filter:searchText).length }} Birds</label>
 			</form>	
 		</div>			
-		<table id='months' class='table-striped table-condensed table-bordered table-responsive ng-cloak' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
+		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
 			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>			
@@ -33,7 +33,7 @@
 			<tbody>		
 				<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
 					<td class="text-left">{{ bird.common_name }}</td>
-					<td class="text-left">{{ bird.scientific_name }}</td>
+					<td class="text-left scientific_name">{{ bird.scientific_name }}</td>
 					<td class="text-left">{{ bird.order_name }}</td>
 					<td class="text-left">{{ bird.family }} {{ bird.subfamily }}</td>
 					<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>				
@@ -42,6 +42,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<p class="alert alert-info ng-cloak" data-ng-show="(birds | filter:searchText).length == 0">There are no birds matching your search criteria.</p>
 	</div>	
+	<p class="alert alert-info" data-ng-show="(birds | filter:searchText).length == 0">There are no birds matching your search criteria.</p>	
 </article>
