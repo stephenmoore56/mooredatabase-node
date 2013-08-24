@@ -13,18 +13,18 @@
 		</div>	
 		<div class="panel-body">
 			<form class="form-search">
-				<label for="searchText">Filter:</label>
-				<input type="text" name="searchText" id="searchText" value="" size="50" maxLength="50" data-ng-model="searchText" class="input-large search-query"> 
-				<label>{{ (birds | filter:searchText).length }} Birds</label>
+				<label for="searchText">Filter:&nbsp;</label>
+				<input type="text" name="searchText" id="searchText" value="" size="30" maxLength="30" data-ng-model="searchText" class="input-large search-query"> 
+				<label>&nbsp;{{ (birds | filter:searchText).length }} Birds</label>
 			</form>	
 		</div>			
 		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
 			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>			
-			    	<th class="text-left"	data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
-			    	<th class="text-left"	data-ng-click="setOrderProp('order_name')">Order Name</th>			
-			    	<th class="text-left"	data-ng-click="setOrderProp('family')">Family Name</th>
+			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
+			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('order_name')">Order Name</th>			
+			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('family')">Family Name</th>
 			    	<th class="text-center"	data-ng-click="setOrderProp('last_seen')">Last Seen</th>		    			    	
 			  		<th class="text-center" data-ng-click="setOrderProp('earliestSighting')">Earliest/Latest</th>
 			  		<th class="text-right" 	data-ng-click="setOrderProp('sightings')">Sightings</th>	  		
@@ -33,9 +33,9 @@
 			<tbody>		
 				<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
 					<td class="text-left">{{ bird.common_name }}</td>
-					<td class="text-left scientific_name">{{ bird.scientific_name }}</td>
-					<td class="text-left">{{ bird.order_name }}</td>
-					<td class="text-left">{{ bird.family }} {{ bird.subfamily }}</td>
+					<td class="text-left hidden-xs scientific_name">{{ bird.scientific_name }}</td>
+					<td class="text-left hidden-xs">{{ bird.order_name }}</td>
+					<td class="text-left hidden-xs">{{ bird.family }} {{ bird.subfamily }}</td>
 					<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>				
 					<td class="text-center">{{ bird.earliestSighting }} / {{ bird.latestSighting }}</td>	
 					<td class="text-right">{{ bird.sightings }}</td>					

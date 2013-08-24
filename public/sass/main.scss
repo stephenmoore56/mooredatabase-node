@@ -19,6 +19,8 @@ img.logo30 {
 .scientific_name {
     font-style: italic;
 }
+// so navbar doesn't overlay content
+body { padding-top: 70px; }
 // imports
 @import 'slideshow';
 @import 'bootstrap_overrides';
