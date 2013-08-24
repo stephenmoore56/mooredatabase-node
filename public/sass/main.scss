@@ -21,6 +21,10 @@ img.logo30 {
 }
 // so navbar doesn't overlay content
 body { padding-top: 70px; }
+// remove space at bottom of table
+.table-responsive {
+  margin-bottom: 0;
+}
 // imports
 @import 'slideshow';
 @import 'bootstrap_overrides';
