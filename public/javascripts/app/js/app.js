@@ -8,14 +8,18 @@ myApp.config(function($routeProvider){
 	$routeProvider
 		.when('',
 		{
-			templateUrl: '/partials/backend.html'
+			templateUrl: '/partials/nodejs.html'
 		})
-		.when('/backend',
+		.when('/nodejs',
 		{
-			templateUrl: '/partials/backend.html'
+			templateUrl: '/partials/nodejs.html'
 		})		
-		.when('/frontend',
+		.when('/angularjs',
 		{
-			templateUrl: '/partials/frontend.html'
+			templateUrl: '/partials/angularjs.html'
+		})		
+		.when('/bootstrap',
+		{
+			templateUrl: '/partials/bootstrap.html'
 		});
 });

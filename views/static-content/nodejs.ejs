@@ -1,6 +1,12 @@
 <% layout('../layout.ejs') -%>
 <section class="row">
 	<article class="col-md-6">
+		<ul id="toolsNav" class="nav nav-pills">
+		  <li class="active"><a href="/#/nodejs">Node.js</a></li>
+		  <li><a href="/#/angularjs">AngularJS</a></li>
+		  <li><a href="/#/bootstrap">Bootstrap</a></li>
+		</ul>
+		<br />
 		<div class="ng-view"></div>	
 		<div style="height:90px">
 			<%- partial('../partials/slideshow.ejs') %>
