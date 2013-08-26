@@ -1,8 +1,9 @@
 <% if (typeof flash != 'undefined' && flash.error) { %>
   <% if (flash.error) { %>
-  	<div class="alert alert-info">
+  	<div class="alert alert-danger alert-dismissable">
+  		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<p><strong>
-			<span class="glyphicon glyphicon-warning-sign"></span>
+			<span class="glyphicon glyphicon-warning-sign"></span>&nbsp;
 			<%= flash.error %>
 		</p></strong>  
 	</div>    
