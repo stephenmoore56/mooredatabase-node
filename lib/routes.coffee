@@ -13,16 +13,12 @@ module.exports = (app) ->
   
   # routes to controllers
   app.get('/', controllers.content.nodejs)
-  app.get('/content', controllers.content.nodejs)
-  app.get('/content/nodejs', controllers.content.nodejs)
-  app.get('/birding', controllers.birding.orders)
-  app.get('/birding/orders', controllers.birding.orders)
+  app.get('/birding', controllers.birding.menu)
   app.get('/birding/ordersajax', controllers.birding.ordersajax)
   app.get('/birding/ordersjson', controllers.birding.ordersjson)
-  app.get('/birding/months', controllers.birding.months)  
   app.get('/birding/monthsjson', controllers.birding.monthsjson)
-  app.get('/birding/species', controllers.birding.species)  
-  app.get('/birding/speciesjson', controllers.birding.speciesjson)  
+  app.get('/birding/speciesjson', controllers.birding.speciesjson) 
+  app.get('/birding/menu', controllers.birding.menu)  
   app.get('/logout', controllers.auth.logout)   
 
   # routes requiring https

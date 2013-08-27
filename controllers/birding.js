@@ -4,10 +4,10 @@
 
   auth = require('../lib/auth');
 
-  exports.orders = function(req, res) {
+  exports.menu = function(req, res) {
     auth.ssl_required(req, res, false);
-    res.render('birding/orders', {
-      title: 'Bird Species and Sightings by Month'
+    res.render('birding/menu', {
+      title: 'Bird Species and Sightings'
     });
   };
 
@@ -57,13 +57,6 @@
     connection.end();
   };
 
-  exports.months = function(req, res) {
-    auth.ssl_required(req, res, false);
-    res.render('birding/months', {
-      title: 'Bird Species and Sightings by Month'
-    });
-  };
-
   exports.monthsjson = function(req, res) {
     var connection, mysqlDatabase, sql;
     auth.ssl_required(req, res, false);
@@ -85,13 +78,6 @@
       }
     });
     connection.end();
-  };
-
-  exports.species = function(req, res) {
-    auth.ssl_required(req, res, false);
-    res.render('birding/species', {
-      title: 'Bird Species and Sightings'
-    });
   };
 
   exports.speciesjson = function(req, res) {

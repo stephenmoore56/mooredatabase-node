@@ -1,10 +1,10 @@
 # birding controller
 auth = require('../lib/auth')
 
-exports.orders = (req, res) ->
+exports.menu = (req, res) ->
   auth.ssl_required(req,res,false)
-  res.render('birding/orders', { title: 'Bird Species and Sightings by Month' })
-  return  
+  res.render('birding/menu', { title: 'Bird Species and Sightings' })
+  return
 	
 exports.ordersjson = (req, res) ->
   auth.ssl_required(req,res,false)
@@ -70,11 +70,6 @@ exports.ordersajax = (req, res) ->
 	connection.end()
 	return
 
-exports.months = (req, res) ->
-  auth.ssl_required(req,res,false)
-  res.render('birding/months', { title: 'Bird Species and Sightings by Month' })
-  return	
-
 exports.monthsjson = (req, res) ->
   auth.ssl_required(req,res,false)
   mysqlDatabase = require('../lib/mysqlDatabase.js')
@@ -108,11 +103,6 @@ exports.monthsjson = (req, res) ->
       return
   connection.end()
   return 
-  
-exports.species = (req, res) ->
-  auth.ssl_required(req,res,false)
-  res.render('birding/species', { title: 'Bird Species and Sightings' })
-  return  
   
 exports.speciesjson = (req, res) ->
   auth.ssl_required(req,res,false)
