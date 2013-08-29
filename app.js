@@ -2,6 +2,13 @@
 (function() {
   var RedisStore, app, ejs, ejsFilters, engine, express, flash, http, mongoose, path, url;
 
+  if (process.env.NODETIME_ACCOUNT_KEY) {
+    require('nodetime').profile({
+      accountKey: process.env.NODETIME_ACCOUNT_KEY,
+      appName: 'MOORE+DATABASE Node'
+    });
+  }
+
   express = require('express');
 
   http = require('http');

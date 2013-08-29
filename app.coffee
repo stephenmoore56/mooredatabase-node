@@ -1,5 +1,9 @@
 # nodetime initialization
-
+if process.env.NODETIME_ACCOUNT_KEY
+  require('nodetime').profile(
+    accountKey: process.env.NODETIME_ACCOUNT_KEY
+    appName: 'MOORE+DATABASE Node' # optional
+  )
 # dependencies
 express = require('express')
 http = require('http')
