@@ -3,7 +3,8 @@ window.mooredatabase = {}
 $ ->
   $("#photoCarousel").carousel(
     interval: 5000
-  )
+  ).show();
+  $("#slideshow").show();
   $('#toolsNav a').on('click', ->
     $('#toolsNav li').each( ->
       $(this).removeClass('active')
