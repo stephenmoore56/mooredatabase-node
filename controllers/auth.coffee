@@ -16,11 +16,11 @@ exports.authenticate = (req, res) ->
 	password = req.body.password
 	User.findOne({username : username}, (err,user) ->
 	  if (err)
-      req.flash("error","Invalid username/password combination.")
+      req.flash("error","Invalid username / password combination.")
       res.redirect('/auth/login')
       return
     if (! user)
-      req.flash("error","Invalid username/password combination.")
+      req.flash("error","Invalid username / password combination.")
       res.redirect('/auth/login')
       return      
     bcrypt.compare(password, user.password, (err, same) ->
@@ -29,7 +29,7 @@ exports.authenticate = (req, res) ->
         res.redirect('/auth/login')
         return  
       if (! same)
-        req.flash("error","Invalid username/password combination.")
+        req.flash("error","Invalid username / password combination.")
         res.redirect('/auth/login')
         return
       else  

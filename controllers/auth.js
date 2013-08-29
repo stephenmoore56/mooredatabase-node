@@ -27,12 +27,12 @@
       username: username
     }, function(err, user) {
       if (err) {
-        req.flash("error", "Invalid username/password combination.");
+        req.flash("error", "Invalid username / password combination.");
         res.redirect('/auth/login');
         return;
       }
       if (!user) {
-        req.flash("error", "Invalid username/password combination.");
+        req.flash("error", "Invalid username / password combination.");
         res.redirect('/auth/login');
         return;
       }
@@ -43,7 +43,7 @@
           return;
         }
         if (!same) {
-          req.flash("error", "Invalid username/password combination.");
+          req.flash("error", "Invalid username / password combination.");
           res.redirect('/auth/login');
           return;
         } else {
