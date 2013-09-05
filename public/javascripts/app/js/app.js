@@ -5,19 +5,26 @@ var myApp = angular.module('myApp', ['ngResource', 'myApp.services', 'myApp.cont
 
 // routing for static pages (SPA)
 myApp.config(function($routeProvider) {
-	$routeProvider.when('', {
+	$routeProvider
+	.when('', {
 		templateUrl : '/partials/nodejs.html'
-	}).when('/nodejs', {
+	})
+	.when('/nodejs', {
 		templateUrl : '/partials/nodejs.html'
-	}).when('/angularjs', {
+	})
+	.when('/angularjs', {
 		templateUrl : '/partials/angularjs.html'
-	}).when('/bootstrap', {
+	})
+	.when('/bootstrap', {
 		templateUrl : '/partials/bootstrap.html'
-	}).when('/orders', {
+	})
+	.when('/orders', {
 		templateUrl : '/partials/orders.html'
-	}).when('/months', {
+	})
+	.when('/months', {
 		templateUrl : '/partials/months.html'
-	}).when('/species', {
+	})
+	.when('/species', {
 		templateUrl : '/partials/species.html'
 	});
 }); 
