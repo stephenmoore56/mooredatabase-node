@@ -14,7 +14,7 @@
 			<thead>
 				<tr>
 			    	<th class="text-left"  data-ng-click="setOrderProp('order_name')">Order</th>
-			    	<th class="text-left"  data-ng-click="setOrderProp('order_notes')">Notes</th>
+			    	<th class="text-left hidden-xs"  data-ng-click="setOrderProp('order_notes')">Notes</th>
 			  		<th class="text-right" data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
 			  		<th class="text-right" data-ng-click="setOrderProp('totalSpecies')">Total Species</th>	  		
 				</tr>
@@ -22,7 +22,7 @@
 			<tbody>		
 				<tr data-ng-repeat="order in orders | orderBy:orderProp:reverse">
 					<td class="text-left">{{ order.order_name }}</td>
-					<td class="text-left">{{ order.order_notes }}</td>
+					<td class="text-left hidden-xs">{{ order.order_notes }}</td>
 					<td class="text-right">{{ order.speciesCount }}</td>	
 					<td class="text-right">{{ order.totalSpecies }}</td>					
 				</tr>
