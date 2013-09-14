@@ -1,5 +1,6 @@
 'use strict';
 
+// function for sorting tables used by all controllers
 var setOrderProp = function($scope, newOrderProp) {
 	if (newOrderProp == $scope.orderProp) {
 		$scope.reverse = !$scope.reverse;
@@ -17,9 +18,9 @@ angular.module('myApp.controllers', [])
 		mooredatabase.drawChartSpeciesByOrder($scope.orders);
 	});
 
+	// initial sort and method to change it
 	$scope.orderProp = 'speciesCount';
 	$scope.reverse = true;
-
 	$scope.setOrderProp = function(newOrderProp) {
 		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};
@@ -30,9 +31,9 @@ angular.module('myApp.controllers', [])
 		mooredatabase.drawChartSpeciesByMonth($scope.months);
 	});
 
+	// initial sort and method to change it
 	$scope.orderProp = 'monthNumber';
 	$scope.reverse = false;
-
 	$scope.setOrderProp = function(newOrderProp) {
 		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};
@@ -40,9 +41,9 @@ angular.module('myApp.controllers', [])
 .controller('SpeciesCtrl', ['$scope', 'Species', function($scope, Species) {
 	$scope.birds = Species.query();
 
+	// initial sort and method to change it
 	$scope.orderProp = 'common_name';
 	$scope.reverse = false;
-
 	$scope.setOrderProp = function(newOrderProp) {
 		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};

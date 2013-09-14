@@ -47,5 +47,5 @@
 			</tbody>
 		</table>
 	</div>	
-	<p class="alert alert-info" data-ng-show="(birds | filter:searchText).length == 0">There are no birds matching your search criteria.</p>	
+	<p class="alert alert-info" data-ng-show="(birds | filter:searchText).length == 0 && birds.length > 0">There are no birds matching your search criteria.</p>	
 </article>
