@@ -1,5 +1,14 @@
 'use strict';
 
+var setOrderProp = function($scope, newOrderProp) {
+	if (newOrderProp == $scope.orderProp) {
+		$scope.reverse = !$scope.reverse;
+	} else {
+		$scope.orderProp = newOrderProp;
+	}	
+};
+mooredatabase.setOrderProp = setOrderProp;
+
 // controllers
 angular.module('myApp.controllers', [])
 .controller('OrdersCtrl', ['$scope', 'Orders', function($scope, Orders) {
@@ -12,11 +21,7 @@ angular.module('myApp.controllers', [])
 	$scope.reverse = true;
 
 	$scope.setOrderProp = function(newOrderProp) {
-		if (newOrderProp == $scope.orderProp) {
-			$scope.reverse = !$scope.reverse;
-		} else {
-			$scope.orderProp = newOrderProp;
-		}
+		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};
 }])
 .controller('MonthsCtrl', ['$scope', 'Months', function($scope, Months) {
@@ -29,11 +34,7 @@ angular.module('myApp.controllers', [])
 	$scope.reverse = false;
 
 	$scope.setOrderProp = function(newOrderProp) {
-		if (newOrderProp == $scope.orderProp) {
-			$scope.reverse = !$scope.reverse;
-		} else {
-			$scope.orderProp = newOrderProp;
-		}
+		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};
 }])
 .controller('SpeciesCtrl', ['$scope', 'Species', function($scope, Species) {
@@ -43,10 +44,6 @@ angular.module('myApp.controllers', [])
 	$scope.reverse = false;
 
 	$scope.setOrderProp = function(newOrderProp) {
-		if (newOrderProp == $scope.orderProp) {
-			$scope.reverse = !$scope.reverse;
-		} else {
-			$scope.orderProp = newOrderProp;
-		}
+		return mooredatabase.setOrderProp($scope,newOrderProp);
 	};
 }]); 

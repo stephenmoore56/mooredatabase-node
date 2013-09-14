@@ -13,24 +13,36 @@
 		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
-			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>			
+			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>		
+			  		<th class="text-left hidden-xs">Actions</th> 			    		
 			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
 			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('order_name')">Order Name</th>			
 			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('family')">Family Name</th>
 			    	<th class="text-center"	data-ng-click="setOrderProp('last_seen')">Last Seen</th>		    			    	
 			  		<th class="text-center" data-ng-click="setOrderProp('earliestSighting')">Earliest / Latest</th>
-			  		<th class="text-right" 	data-ng-click="setOrderProp('sightings')">Sightings</th>	  		
+			  		<th class="text-right" 	data-ng-click="setOrderProp('sightings')">Sightings</th>	 		
 				</tr>
 			</thead>
 			<tbody>		
 				<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
 					<td class="text-left">{{ bird.common_name }}</td>
+					<td class="text-left hidden-xs">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+								More <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="http://en.wikipedia.org/wiki/{{ bird.common_name }}">Wikipedia</a></li>
+								<li><a href="http://images.google.com/images?q={{ bird.common_name }}&sout=1" rel="external">Google Images</a></li>
+							</ul>
+						</div>
+					</td>									
 					<td class="text-left hidden-xs scientific_name">{{ bird.scientific_name }}</td>
 					<td class="text-left hidden-xs">{{ bird.order_name }}</td>
 					<td class="text-left hidden-xs">{{ bird.family }} {{ bird.subfamily }}</td>
 					<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>				
 					<td class="text-center">{{ bird.earliestSighting }} / {{ bird.latestSighting }}</td>	
-					<td class="text-right">{{ bird.sightings }}</td>					
+					<td class="text-right">{{ bird.sightings }}</td>	
 				</tr>
 			</tbody>
 		</table>
