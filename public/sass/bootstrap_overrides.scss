@@ -6,3 +6,9 @@ ul.nav li {
 .page-header {
   margin-top: 20px;
 }
+// on nav button links, set font to white,
+// remove underlining
+.btn-group .btn a {
+  color: #FFF;
+  text-decoration: none;
+}

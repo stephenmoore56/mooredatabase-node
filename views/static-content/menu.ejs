@@ -1,20 +1,22 @@
 <% layout('../layout.ejs') -%>
-<section class="row-fluid">
-	<article class="span6">
-		<header id="homeTitle" class="content_box accordion_title">
-	    	<h1 class="content_header">menu</h1>
-		</header>
-		<div class="content_box">
-			<ul>
-				<li><a class="content_a" href="/users/index">User Maintenance</a></li>
-			</ul>
-		</div>
-		<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
-		<div style="height:90px">
-			<%- partial('../partials/slideshow.ejs') %>
+<section class="row">
+	<article class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Menu</h4>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a class="content_a" href="/users/index">User Maintenance</a></li>
+				</ul>
+				<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
+				<div style="height:90px">
+					<%- partial('../partials/slideshow.ejs') %>
+				</div>					
+			</div>
 		</div>	
     </article>
-    <aside class="span6">
-		<%- partial('../partials/figure.ejs', {"orientation":"portrait","src":"/images/wildflowers.jpg","title":"Anemone","caption":"Anemone"}) %>
+    <aside class="col-md-6">
+		<img src="/images/wildflowers.jpg" class="img-responsive img-thumbnail" />
     </aside>    
 </section>

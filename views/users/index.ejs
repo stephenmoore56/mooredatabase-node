@@ -1,48 +1,50 @@
 <% layout('../layout.ejs') -%>
-<article class="row-fluid">
-	<header class="content_box accordion_title"> 
-		<h4 class="content_header">Users</h4>
-	</header>
-	<table id='users' class='report sorted' style='width:100%;' title='Users'>
-		<thead>
-			<tr>
-		    	<th class='image_title'>Username</th>
-		    	<th class='image_title'>First Name</th>
-		  		<th class='image_title'>Last Name</th>
-		  		<th class='image_title'>Full Name</th>	  		
-		  		<th class='image_title'>Email</th>	 
-		  		<th class='image_title'>Created</th> 
-		  		<th class='image_title'>Updated</th>
-		  		<th class='image_title'>Action</th>	  			
-			</tr>
-		</thead>
-		<tbody>		
-		<% users.forEach(function(user) { %> 
-			<tr data-id="<%= user._id  %>">
-				<td class="left_aligned"><%= user.username  %></td>
-				<td class="left_aligned"><%= user.firstname %></td>
-				<td class="left_aligned"><%= user.lastname ? user.lastname : '' %></td>
-				<td class="left_aligned"><%= user.fullname %></td>	
-				<td class="left_aligned"><%= user.email %></td>	
-				<td class="left_aligned"><%=: user.created | dateFormatLong %></td>	
-				<td class="left_aligned"><%=: user.updated  | dateFormatLong %></td>
-				<td class="center_aligned">
-					<div class="btn-group">
-						<button class="btn btn-primary btn-mini">
-							<a href="/users/edit/<%= user._id  %>">Edit</a>
-						</button>
-						<button class="btn btn-danger btn-mini">
-							<a href="/users/destroy/<%= user._id  %>">Delete</a>
-						</button>
-					</div>
-				</td>							
-			</tr>
-		<% }) %> 
-		</tbody>
-	</table>
+<article class="row">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Users</h4>
+		</div>
+		<table id='users' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='Users'>
+			<thead>
+				<tr>
+			    	<th class='text-left'>Username</th>
+			    	<th class='text-left'>First Name</th>
+			  		<th class='text-left'>Last Name</th>
+			  		<th class='text-left'>Full Name</th>	  		
+			  		<th class='text-left'>Email</th>	 
+			  		<th class='text-left'>Created</th> 
+			  		<th class='text-left'>Updated</th>
+			  		<th class='text-center'>Action</th>	  			
+				</tr>
+			</thead>
+			<tbody>		
+			<% users.forEach(function(user) { %> 
+				<tr data-id="<%= user._id  %>">
+					<td class="text-left"><%= user.username  %></td>
+					<td class="text-left"><%= user.firstname %></td>
+					<td class="text-left"><%= user.lastname ? user.lastname : '' %></td>
+					<td class="text-left"><%= user.fullname %></td>	
+					<td class="text-left"><%= user.email %></td>	
+					<td class="text-left"><%= user.created %></td>	
+					<td class="text-left"><%= user.updated %></td>
+					<td class="text-center">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary btn-xs">
+								<a href="/users/edit/<%= user._id  %>">Edit</a>
+							</button>
+							<button type="button" class="btn btn-danger btn-xs">
+								<a href="/users/destroy/<%= user._id  %>">Delete</a>
+							</button>
+						</div>
+					</td>							
+				</tr>
+			<% }) %> 
+			</tbody>
+		</table>
+	</div>			
 	<p>
 		<a class="content_a" href="/users/add">Add New User</a> | 
 		<a class="content_a" href="/content/menu">Menu</a>	
 	</p>
-	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
+	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>					
 </article>

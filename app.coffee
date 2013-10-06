@@ -10,6 +10,7 @@ http = require('http')
 path = require('path')
 engine = require('ejs-locals')
 ejs = require('ejs')
+ejsFilters = require('./lib/ejsFilters.js')
 flash = require('connect-flash')
 url = require('url')
 RedisStore = require('connect-redis')(express)
@@ -24,7 +25,6 @@ else
 # express app, templating engine, filters
 app = express()
 app.engine('ejs', engine)
-ejsFilters = require('./lib/ejsFilters')(ejs)
 
 # parse redis to go URL; use defaults locally
 app.configure('production', ->

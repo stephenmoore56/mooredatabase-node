@@ -1,26 +1,50 @@
 <% layout('../layout_form.ejs') -%>
 <% script('/javascripts/users_add.js') %>
-<article class="row-fluid">
+<article class="row">
 	<%- partial('../partials/flashMessage.ejs',{ "flash": flash }) %>
-	<form id="newUserForm" action="/users/create" method="post">
+	<form id="newUserForm" class="form-horizontal" action="/users/create" method="post">
 		<fieldset>
 			<legend>Add New User</legend>
-				<label for="username" class="required">Username:</label>
-				<input type="text" name="username" id="username" value="" size="30" maxLength="30" autofocus="autofocus" required="required">
-				
-				<label for="password" class="required">Password:</label>
-				<input type="text" name="password" id="password" value="" size="30" maxLength="30" required="required">
-				
-				<label for="firstname" class="required">First Name:</label>
-				<input type="text" name="firstname" id="firstname" value="" size="30" maxLength="30" required="required">
-				
-				<label for="lastname" class="required">Last Name:</label>
-				<input type="text" name="lastname" id="lastname" value="" size="30" maxLength="30">
-				
-				<label for="email" class="required">Email:</label>
-				<input type="text" name="email" id="email" value="" size="50" maxLength="50" required="required">															
+			<div class="form-group">
+				<label for="username" class="control-label required col-lg-2">Username:</label>
+				<div class="col-lg-4">
+					<input class="form-control" required="required" type="text" name="username" id="username" value="" size="50" maxLength="30" autofocus="autofocus" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group">			
+				<label for="password" class="control-label required col-lg-2">Password:</label>
+				<div class="col-lg-4">
+					<input class="form-control" required="required" type="text" name="password" id="password" value="" size="50" maxLength="30">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="firstname" class="control-label required col-lg-2">First Name:</label>
+				<div class="col-lg-4">
+					<input class="form-control" required="required" type="text" name="firstname" id="firstname" value="" size="50" maxLength="30">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="lastname" class="control-label required col-lg-2">Last Name:</label>
+				<div class="col-lg-4">
+					<input class="form-control" required="required" type="text" name="lastname" id="lastname" value="" size="50" maxLength="30">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="email" class="control-label required col-lg-2">Email:</label>
+				<div class="col-lg-4">
+					<input class="form-control" required="required" type="text" name="email" id="email" value="" size="50" maxLength="50">
+				</div>
+			</div>															
 		</fieldset>
-		<input type="submit" name="submit" id="submit" value="Add User" class="btn btn-primary">
+		<div class="form-group">
+	    	<div class="col-lg-offset-2 col-lg-10">
+				<input type="submit" name="submit" id="submit" value="Add User" class="btn btn-primary">
+			</div>
+		</div>	
 	</form>
 	<nav>
 		<p>
