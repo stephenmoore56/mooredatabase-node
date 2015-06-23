@@ -11,7 +11,7 @@ myApp
 		});
 
 		// initial sort and method to change it
-		$scope.predicate = 'speciesCount';
+		$scope.predicate = '-speciesCount';
 	    $scope.sortResults = function(predicate) {
 	          $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
 	          $scope.predicate = predicate;
