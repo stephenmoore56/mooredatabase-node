@@ -13,14 +13,14 @@
 		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style="width:100%" title='Month Sightings'>
 			<thead>
 				<tr>
-			    	<th	class="text-center" data-ng-click="setOrderProp('monthNumber')">Month Number</th>			
-			    	<th class="text-left"   data-ng-click="setOrderProp('monthName')">Month Name</th>
-			  		<th class="text-right"  data-ng-click="setOrderProp('speciesCount')">Species Sighted</th>
-			  		<th class="text-right"  data-ng-click="setOrderProp('tripCount')">Trips Taken</th>	  		
+			    	<th	class="text-center" data-ng-click="sortResults('monthNumber')">Month Number</th>			
+			    	<th class="text-left"   data-ng-click="sortResults('monthName')">Month Name</th>
+			  		<th class="text-right"  data-ng-click="sortResults('speciesCount')">Species Sighted</th>
+			  		<th class="text-right"  data-ng-click="sortResults('tripCount')">Trips Taken</th>	  		
 				</tr>
 			</thead>
 			<tbody>		
-				<tr data-ng-repeat="month in months | orderBy:orderProp:reverse">
+				<tr data-ng-repeat="month in months | orderBy:predicate:reverse">
 					<td class="text-center">{{ month.monthNumber}}</td>
 					<td class="text-left">{{ month.monthName }}</td>
 					<td class="text-right">{{ month.speciesCount }}</td>	

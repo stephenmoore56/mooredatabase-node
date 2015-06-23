@@ -13,18 +13,18 @@
 		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
-			    	<th class="text-left"	data-ng-click="setOrderProp('common_name')">Common Name</th>		
+			    	<th class="text-left"	data-ng-click="sortResults('common_name')">Common Name</th>		
 			  		<th class="text-left hidden-xs">Actions</th> 			    		
-			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('scientific_name')">Scientific Name</th>
-			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('order_name')">Order Name</th>			
-			    	<th class="text-left hidden-xs"	data-ng-click="setOrderProp('family')">Family Name</th>
-			    	<th class="text-center"	data-ng-click="setOrderProp('last_seen')">Last Seen</th>		    			    	
-			  		<th class="text-center" data-ng-click="setOrderProp('earliestSighting')">Earliest / Latest</th>
-			  		<th class="text-right" 	data-ng-click="setOrderProp('sightings')">Sightings</th>	 		
+			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('scientific_name')">Scientific Name</th>
+			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('order_name')">Order Name</th>			
+			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('family')">Family Name</th>
+			    	<th class="text-center"	data-ng-click="sortResults('last_seen')">Last Seen</th>		    			    	
+			  		<th class="text-center" data-ng-click="sortResults('earliestSighting')">Earliest / Latest</th>
+			  		<th class="text-right" 	data-ng-click="sortResults('sightings')">Sightings</th>	 		
 				</tr>
 			</thead>
 			<tbody>		
-				<tr data-ng-repeat="bird in birds | orderBy:orderProp:reverse | filter:searchText">
+				<tr data-ng-repeat="bird in birds | orderBy:predicate:reverse | filter:searchText">
 					<td class="text-left">{{ bird.common_name }}</td>
 					<td class="text-left hidden-xs">
 						<div class="btn-group">
