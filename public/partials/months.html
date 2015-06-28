@@ -1,4 +1,4 @@
-<article class="row" data-ng-controller="MonthsCtrl">
+<article class="row" data-ng-controller="MonthsCtrl" ng-cloak>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>Species By Month</h4>
@@ -13,10 +13,10 @@
 		<table id='months' class='table-striped table-condensed table-bordered table-responsive' style="width:100%" title='Month Sightings'>
 			<thead>
 				<tr>
-			    	<th	class="text-center" data-ng-click="sortResults('monthNumber')">Month Number</th>			
+			    	<th	class="text-center" data-ng-click="sortResults('monthNumber')">Month Number</th>
 			    	<th class="text-left"   data-ng-click="sortResults('monthName')">Month Name</th>
 			  		<th class="text-right"  data-ng-click="sortResults('speciesCount')">Species Sighted</th>
-			  		<th class="text-right"  data-ng-click="sortResults('tripCount')">Trips Taken</th>	  		
+			  		<th class="text-right"  data-ng-click="sortResults('tripCount')">Trips Taken</th>	  	
 				</tr>
 			</thead>
 			<tbody>		
