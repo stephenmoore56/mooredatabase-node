@@ -8,8 +8,8 @@
     "url": "https://github.com/stephenmoore56/mooredatabase-node.git"
   },
   "engines": {
-    "node": "0.10.33",
-    "npm": "1.4.28"
+    "node": "5.9.0",
+    "npm": "3.7.3"
   },
   "private": true,
   "scripts": {
@@ -17,17 +17,11 @@
   },
   "main": "./app.js",
   "dependencies": {
-    "express": "3.4.4",
-    "ejs": "0.8.4",
-    "ejs-locals": "~1.0.2",
-    "mysql": "2.0.0-alpha9",
-    "underscore": "1.5.2",
-    "redis": "0.9.0",
-    "connect-flash": "0.1.1",
-    "bcrypt": "0.7.7",
-    "connect-redis": "1.4.6",
-    "mongoose": "3.8.0",
-    "moment": "2.4.0",
-    "nodetime": "*"
+    "express": "4.*",
+    "ejs": "2.4.1",
+    "ejs-locals": "1.0.2",
+    "mysql": "2.10.2",
+    "underscore": "1.8.3",
+    "moment": "2.12.0"
   }
 }
