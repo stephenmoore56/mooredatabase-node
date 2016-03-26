@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    myApp.controller('OrdersCtrl', function OrdersCtrl($scope, OrdersDataFactory) {
+    myApp.controller('OrdersCtrl', function OrdersCtrl($scope, OrdersDataFactory, ReportCharts) {
 
         // use the same data to draw the table and the Google chart
         OrdersDataFactory.getData().then(function (data) {
             $scope.orders = data;
-            mooredatabase.drawChartSpeciesByOrder($scope.orders);
+            ReportCharts.drawChartSpeciesByOrder($scope.orders, 'chart_div');
         });
 
         // initial sort and method to change it
@@ -14,12 +14,12 @@
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
         };
-    }).controller('MonthsCtrl', function MonthsCtrl($scope, MonthsDataFactory) {
+    }).controller('MonthsCtrl', function MonthsCtrl($scope, MonthsDataFactory, ReportCharts) {
 
         // use the same data to draw the table and the Google chart
         MonthsDataFactory.getData().then(function (data) {
             $scope.months = data;
-            mooredatabase.drawChartSpeciesByMonth($scope.months);
+            ReportCharts.drawChartSpeciesByMonth($scope.months, 'chart_div');
         });
 
         // initial sort and method to change it
