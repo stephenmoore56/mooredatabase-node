@@ -8,7 +8,8 @@
         "controllers/*.js",
         "lib/*.js",
         "models/*.js",
-        "public/javascripts/app/js/*.js",
+        "public/javascripts/app/*.js",
+        "public/javascripts/*.js",
         "views/**/*.js"];
 
     /* style check */

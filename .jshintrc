@@ -88,7 +88,7 @@
     "globals"       : {
         "myApp": true,
         "angular": true,
-        "google": true,
+        "$": true,
         "Plotly": true
     }
 }

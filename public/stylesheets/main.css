@@ -61,3 +61,8 @@ ul.nav li {
     color: #FFF;
     text-decoration: none
 }
+
+#chart_div {
+    max-width: 600px;
+    max-height: 400px;
+}
