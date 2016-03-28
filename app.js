@@ -1,14 +1,14 @@
 (function () {
     'use strict';
 
-    /* express */
-    let express = require('express');
-    let app = express();
-    let routes = require('./lib/routes')(app, express);
+    // express
+    let express = require('express'),
+        app = express();
+    require('./lib/routes')(app, express);
 
-    /* ejs templating */
+    // ejs / ejs-locals templating
     let engine = require('ejs-locals');
-    let ejs = require('ejs');
+    require('ejs');
     app.engine('ejs', engine);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');

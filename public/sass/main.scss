@@ -25,6 +25,11 @@ body { padding-top: 70px; }
 .table-responsive {
   margin-bottom: 0;
 }
+// set max width on Plotly.js charts
+#chart_div {
+  max-width: 600px;
+  max-height: 400px;
+}
 // imports
 @import 'slideshow';
 @import 'bootstrap_overrides';
