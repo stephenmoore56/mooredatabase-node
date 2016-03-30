@@ -8,7 +8,8 @@
 			    <div id="chart_div"></div>
 			</figure>
 		</div>
-		<table id='orders' class='table-striped table-condensed table-bordered table-responsive' style='width:100%;' title='Order Sightings'>
+		<table id='orders' class='table-striped table-condensed table-bordered table-responsive'
+			   style='width:100%;' title='Order Sightings' data-ng-show="orders.length">
 			<thead>
 				<tr>
 			    	<th class="text-left"  data-ng-click="sortResults('order_name')">Order</th>
@@ -22,7 +23,7 @@
 					<td class="text-left">{{ order.order_name }}</td>
 					<td class="text-left hidden-xs">{{ order.order_notes }}</td>
 					<td class="text-right">{{ order.speciesCount }}</td>	
-					<td class="text-right">{{ order.totalSpecies }}</td>					
+					<td class="text-right">{{ order.order_species_count_all }}</td>
 				</tr>
 			</tbody>
 		</table>

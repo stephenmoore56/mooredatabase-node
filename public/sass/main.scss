@@ -30,6 +30,35 @@ body { padding-top: 70px; }
   max-width: 600px;
   max-height: 400px;
 }
-// imports
-@import 'slideshow';
-@import 'bootstrap_overrides';
+// slideshow styling
+#slideshow {
+  margin: 20px auto;
+  width: 300px;
+  height: 300px
+}
+#slideshow div {
+  width: 300px;
+  height: 300px;
+}
+#slideshow div img {
+  margin: auto;
+  display: block;
+}
+#photoCarousel img {
+  width: 100%;
+}
+// bootstrap overrides
+// remove discs from navbar li
+ul.nav li {
+  list-style-type: none;
+}
+// less margin above page headers
+.page-header {
+  margin-top: 20px;
+}
+// on nav button links, set font to white,
+// remove underlining
+.btn-group .btn a {
+  color: #FFF;
+  text-decoration: none;
+}
