@@ -82,6 +82,85 @@
                 };
             },
 
+            drawChartSpeciesByYear: function (dataPoints, chart_div) {
+                var years, species, trips, data, trace1, trace2, i, layout;
+                if (dataPoints.length === 0) {
+                    return;
+                }
+
+                var d3 = Plotly.d3;
+
+                var WIDTH_IN_PERCENT_OF_PARENT = 90,
+                    HEIGHT_IN_PERCENT_OF_PARENT = 90;
+
+                var gd3 = d3.select('#' + chart_div)
+                    .style({
+                        width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+                        height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh'
+                    });
+
+                var gd = gd3.node();
+
+                /* extract data from JSON data */
+                years = [];
+                species = [];
+                trips = [];
+                for (i = 0; i < dataPoints.length; i++) {
+                    // read species, trips and months into separate arrays
+                    years[i] = dataPoints[i].yearNumber;
+                    species[i] = dataPoints[i].speciesCount;
+                    trips[i] = dataPoints[i].tripCount;
+                }
+
+                trace1 = {
+                    x: years,
+                    y: species,
+                    name: 'Species',
+                    type: 'bar',
+                    marker: {
+                        color: '#ff7f0e'
+                    }
+                };
+
+                trace2 = {
+                    x: years,
+                    y: trips,
+                    name: 'Trips',
+                    mode: 'lines+markers',
+                    marker: {
+                        color: '#3072AB'
+                    }
+                };
+
+                data = [trace1, trace2];
+
+                layout = {
+                    margin: {
+                        l: 50,
+                        r: 5,
+                        b: 50,
+                        t: 30,
+                        pad: 5
+                    },
+                    xaxis: {
+                        title: 'Year',
+                        type: 'category'
+                    },
+                    yaxis: {
+                        title: 'Species / Trips'
+                    }
+                };
+
+                Plotly.newPlot(chart_div, data, layout, {
+                    displaylogo: false,
+                    modeBarButtonsToRemove: ['sendDataToCloud']
+                });
+
+                window.onresize = function () {
+                    Plotly.Plots.resize(gd);
+                };
+            },
+
             drawChartSpeciesByOrder: function (dataPoints, chart_div) {
                 var orderNames, speciesCounts, data, trace1, i, layout;
                 if (dataPoints.length === 0) {

@@ -41,5 +41,19 @@
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
         };
+    }).controller('YearsCtrl', function YearsCtrl($scope, YearsDataFactory, ReportCharts) {
+
+        // use the same data to draw the table and the Google chart
+        YearsDataFactory.getData().then(function (data) {
+            $scope.years = data;
+            ReportCharts.drawChartSpeciesByYear($scope.years, 'chart_div');
+        });
+
+        // initial sort and method to change it
+        $scope.predicate = 'yearNumber';
+        $scope.sortResults = function (predicate) {
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.predicate = predicate;
+        };
     });
 })();

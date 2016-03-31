@@ -10,8 +10,8 @@
 				<label>&nbsp;{{ (birds | filter:searchText).length }} Birds</label>
 			</form>	
 		</div>			
-		<table id='months' class='table-striped table-condensed table-bordered table-responsive' 
-			   style='width:100%;' title='All Species' data-ng-show="(birds | filter:searchText).length">
+		<table id='months' class='table-striped table-condensed table-bordered table-responsive report_table'
+			   title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
 			    	<th class="text-left"	data-ng-click="sortResults('common_name')">Common Name</th>		

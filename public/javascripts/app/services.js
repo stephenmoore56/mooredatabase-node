@@ -25,5 +25,13 @@
                 });
             }
         };
+    }).factory('YearsDataFactory', function ($http) {
+        return {
+            getData: function () {
+                return $http.get("/birding/yearsjson").then(function (response) {
+                    return response.data;
+                });
+            }
+        };
     });
 })();

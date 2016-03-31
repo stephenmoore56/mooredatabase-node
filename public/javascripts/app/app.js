@@ -18,6 +18,8 @@ myApp.config(['$routeProvider',
             templateUrl: '/partials/orders.html'
         }).when('/months', {
             templateUrl: '/partials/months.html'
+        }).when('/years', {
+            templateUrl: '/partials/years.html'
         }).when('/species', {
             templateUrl: '/partials/species.html'
         }).otherwise({

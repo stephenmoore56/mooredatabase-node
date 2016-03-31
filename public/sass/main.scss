@@ -30,6 +30,10 @@ body { padding-top: 70px; }
   max-width: 600px;
   max-height: 400px;
 }
+// tables 100% so they fill panel
+.report_table {
+  width: 100%;
+}
 // slideshow styling
 #slideshow {
   margin: 20px auto;

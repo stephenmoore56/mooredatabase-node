@@ -22,6 +22,9 @@
         if ($.inArray("months", myHash) !== -1) {
             $('#monthsNavPill').addClass('active');
         }
+        if ($.inArray("years", myHash) !== -1) {
+            $('#yearsNavPill').addClass('active');
+        }
         if ($.inArray("species", myHash) !== -1) {
             $('#speciesNavPill').addClass('active');
         }
