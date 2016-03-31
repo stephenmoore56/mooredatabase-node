@@ -39,7 +39,7 @@
     // watcher task for CSS
     gulp.task('compass-watch', function () {
         gulp.watch(config.sassfiles, ['compass']);
-    })
+    });
 
     gulp.task('clean-css', function () {
         var files = config.cssfiles;
