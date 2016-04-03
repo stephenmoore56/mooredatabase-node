@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     $(function() {
-        let myHash;
+        var myHash;
         $("#photoCarousel")
             .carousel({
                 interval: 5000
