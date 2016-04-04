@@ -4,8 +4,12 @@
             // use the same data to draw the table and the Google chart
             OrdersDataFactory.getData()
                 .then(function(data) {
-                    $scope.orders = data;
-                    ReportCharts.drawChartSpeciesByOrder($scope.orders, 'chart_div');
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        $scope.orders = data;
+                        ReportCharts.drawChartSpeciesByOrder($scope.orders, 'chart_div');
+                    }
                 });
             // initial sort and method to change it
             $scope.predicate = '-speciesCount';
@@ -18,8 +22,12 @@
             // use the same data to draw the table and the Google chart
             MonthsDataFactory.getData()
                 .then(function(data) {
-                    $scope.months = data;
-                    ReportCharts.drawChartSpeciesByMonth($scope.months, 'chart_div');
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        $scope.months = data;
+                        ReportCharts.drawChartSpeciesByMonth($scope.months, 'chart_div');
+                    }
                 });
             // initial sort and method to change it
             $scope.predicate = 'monthNumber';
@@ -32,7 +40,11 @@
             // use the same data to draw the table and the Google chart
             SpeciesDataFactory.getData()
                 .then(function(data) {
-                    $scope.birds = data;
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        $scope.birds = data;
+                    }
                 });
             // initial sort and method to change it
             $scope.predicate = 'common_name';
@@ -45,8 +57,12 @@
             // use the same data to draw the table and the Google chart
             YearsDataFactory.getData()
                 .then(function(data) {
-                    $scope.years = data;
-                    ReportCharts.drawChartSpeciesByYear($scope.years, 'chart_div');
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        $scope.years = data;
+                        ReportCharts.drawChartSpeciesByYear($scope.years, 'chart_div');
+                    }
                 });
             // initial sort and method to change it
             $scope.predicate = 'yearNumber';

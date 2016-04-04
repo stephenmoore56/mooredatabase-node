@@ -1,6 +1,7 @@
 (function() {
-    "use strict";
+    'use strict';
     let gulp = require('gulp');
+    let runSequence = require('run-sequence');
     let args = require('yargs')
         .argv;
     let config = require('./gulp.config')();
@@ -11,11 +12,27 @@
     let $ = require('gulp-load-plugins')({
         lazy: true
     });
-    gulp.task('jshint', function() {
-        log('Analyzing code and code style...');
-        return gulp.src(config.alljs)
+
+    // check out the JS; separate .jshintrc files for server
+    // and browser code so I can run ES6 on server side
+    gulp.task('jshint', function(cb) {
+        runSequence('jshint-server', 'jshint-browser', cb);
+    });
+    gulp.task('jshint-server', function() {
+        log('Analyzing code and code style for server JS...');
+        return gulp.src(config.allserverjs)
             .pipe($.if(args.verbose, $.print()))
-            .pipe($.jshint())
+            .pipe($.jshint('./.jshintrc_server'))
+            .pipe($.jshint.reporter('jshint-stylish', {
+                verbose: true
+            }))
+            .pipe($.jscs());
+    });
+    gulp.task('jshint-browser', function() {
+        log('Analyzing code and code style for browser JS...');
+        return gulp.src(config.allbrowserjs)
+            .pipe($.if(args.verbose, $.print()))
+            .pipe($.jshint('./.jshintrc_browser'))
             .pipe($.jshint.reporter('jshint-stylish', {
                 verbose: true
             }))

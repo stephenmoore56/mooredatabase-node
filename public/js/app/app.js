@@ -1,10 +1,10 @@
-'use strict';
 // create app
 var myApp = angular.module('myApp', ['ngRoute']);
 
 // routing for static pages (SPA)
 myApp.config(['$routeProvider',
     function($routeProvider) {
+        'use strict';
         $routeProvider.when('', {
                 templateUrl: '/templates/nodejs.html'
             })

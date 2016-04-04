@@ -1,4 +1,12 @@
 <article class="row" data-ng-controller="OrdersCtrl" ng-cloak>
+	<div class="alert alert-danger" role="alert" data-ng-show="error !== undefined">
+		<p>
+			A database error occurred:<br />
+			Error code: {{ error.code }}<br />
+			Error number: {{ error.errno }}<br />
+			SQL State: {{ error.sqlState }}<br />
+		</p>
+	</div>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Species By Order</h3>
@@ -8,7 +16,8 @@
 			    <div id="chart_div"></div>
 			</figure>
 		</div>
-		<table id='orders' class='table-striped table-condensed table-bordered table-responsive report_table'
+		<table id='orders'
+			   class='table-striped table-condensed table-bordered table-responsive report_table'
 			   title='Order Sightings' data-ng-show="orders.length">
 			<thead>
 				<tr>

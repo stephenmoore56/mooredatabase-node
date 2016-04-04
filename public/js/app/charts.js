@@ -1,27 +1,27 @@
 (function() {
     'use strict';
     myApp.factory('ReportCharts', function() {
+        var resizeChart = function(chart_div) {
+            var d3 = Plotly.d3;
+            var WIDTH_IN_PERCENT_OF_PARENT = 90,
+                HEIGHT_IN_PERCENT_OF_PARENT = 90;
+            var gd3 = d3.select('#' + chart_div)
+                .style({
+                    width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+                    height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh'
+                });
+            var gd = gd3.node();
+            window.onresize = function() {
+                Plotly.Plots.resize(gd);
+            };
+        };
         return {
-            resizeChart: function(chart_div) {
-                var d3 = Plotly.d3;
-                var WIDTH_IN_PERCENT_OF_PARENT = 90,
-                    HEIGHT_IN_PERCENT_OF_PARENT = 90;
-                var gd3 = d3.select('#' + chart_div)
-                    .style({
-                        width: WIDTH_IN_PERCENT_OF_PARENT + '%',
-                        height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh'
-                    });
-                var gd = gd3.node();
-                window.onresize = function() {
-                    Plotly.Plots.resize(gd);
-                };
-            },
             drawChartSpeciesByMonth: function(dataPoints, chart_div) {
                 var months, species, trips, data, trace1, trace2, i, layout;
                 if (dataPoints.length === 0) {
                     return;
                 }
-                this.resizeChart(chart_div);
+                resizeChart(chart_div);
                 months = [];
                 species = [];
                 trips = [];
@@ -76,7 +76,7 @@
                 if (dataPoints.length === 0) {
                     return;
                 }
-                this.resizeChart(chart_div);
+                resizeChart(chart_div);
                 years = [];
                 species = [];
                 trips = [];
@@ -131,7 +131,7 @@
                 if (dataPoints.length === 0) {
                     return;
                 }
-                this.resizeChart(chart_div);
+                resizeChart(chart_div);
                 orderNames = [];
                 speciesCounts = [];
                 for (i = 0; i < dataPoints.length; i++) {

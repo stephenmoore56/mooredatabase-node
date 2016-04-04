@@ -14,13 +14,10 @@
         let sql = "CALL proc_listSpeciesByOrder();";
         connection.query(sql, (err, rows) => {
             if (err) {
-                res.render('error', {
-                    title: 'Database Error',
-                    description: 'A database error occurred: ' + err.message
+                res.json({
+                    errors: [err]
                 });
             } else {
-                // stored procedure calls return an extra array with metadata
-                // we're interested in the first array
                 res.json(rows[0]);
             }
         });
@@ -32,9 +29,8 @@
         let sql = "CALL proc_listSpeciesByMonth();";
         connection.query(sql, (err, rows) => {
             if (err) {
-                res.render('error', {
-                    title: 'Database Error',
-                    description: 'A database error occurred: ' + err.message
+                res.json({
+                    errors: [err]
                 });
             } else {
                 res.json(rows[0]);
@@ -48,9 +44,8 @@
         let sql = "CALL proc_listSpeciesByYear();";
         connection.query(sql, (err, rows) => {
             if (err) {
-                res.render('error', {
-                    title: 'Database Error',
-                    description: 'A database error occurred: ' + err.message
+                res.json({
+                    errors: [err]
                 });
             } else {
                 res.json(rows[0]);
@@ -64,9 +59,8 @@
         let sql = "CALL proc_listSpeciesAll();";
         connection.query(sql, (err, rows) => {
             if (err) {
-                res.render('error', {
-                    title: 'Database Error',
-                    description: 'A database error occurred: ' + err.message
+                res.json({
+                    errors: [err]
                 });
             } else {
                 res.json(rows[0]);

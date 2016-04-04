@@ -1,14 +1,16 @@
 (function() {
     'use strict';
     $(function() {
-        var myHash;
+        // start up carousel and slideshow
         $("#photoCarousel")
             .carousel({
                 interval: 5000
             })
             .show();
         $("#slideshow")
-            .show();
+            .show()
+            .cycle();
+        // change active nav pill
         $('#toolsNav a')
             .on('click', function() {
                 $('#toolsNav li')
@@ -25,7 +27,7 @@
                 $(this)
                     .removeClass('active');
             });
-        myHash = window.location.hash.split("/");
+        var myHash = window.location.hash.split("/");
         if ($.inArray("orders", myHash) !== -1) {
             $('#ordersNavPill')
                 .addClass('active');
@@ -54,7 +56,5 @@
             $('#bootstrapNavPill')
                 .addClass('active');
         }
-        $("#slideshow")
-            .cycle();
     });
 })();

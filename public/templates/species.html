@@ -1,4 +1,12 @@
 <article class="row" data-ng-controller="SpeciesCtrl" ng-cloak>
+	<div class="alert alert-danger" role="alert" data-ng-show="error !== undefined">
+		<p>
+			A database error occurred:<br />
+			Error code: {{ error.code }}<br />
+			Error number: {{ error.errno }}<br />
+			SQL State: {{ error.sqlState }}<br />
+		</p>
+	</div>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">All Species</h3>
@@ -10,7 +18,8 @@
 				<label>&nbsp;{{ (birds | filter:searchText).length }} Birds</label>
 			</form>	
 		</div>			
-		<table id='months' class='table-striped table-condensed table-bordered table-responsive report_table'
+		<table id='months'
+		       class='table-striped table-condensed table-bordered table-responsive report_table'
 			   title='All Species' data-ng-show="(birds | filter:searchText).length">
 			<thead>
 				<tr>
@@ -45,7 +54,8 @@
 			</tbody>
 		</table>
 	</div>	
-	<p class="alert alert-info" data-ng-show="(birds | filter:searchText).length == 0 && birds.length > 0">
+	<p class="alert alert-info"
+	   data-ng-show="(birds | filter:searchText).length == 0 && birds.length > 0">
 		There are no birds matching your search criteria.
 	</p>	
 </article>
