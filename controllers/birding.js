@@ -7,12 +7,10 @@
         });
     };
 
-    // closure allows us to set this once and use in the functions exported
+    // closure allows us to set these once and use in the functions exported
     let mysqlDatabase = require('../lib/mysqlDatabase.js');
-
-    exports.ordersjson = (req, res) => {
+    let executeSQL = (req, res, sql) => {
         let connection = mysqlDatabase.getConnection();
-        let sql = "CALL proc_listSpeciesByOrder();";
         connection.query(sql, (err, rows) => {
             if (err) {
                 res.json({
@@ -23,50 +21,22 @@
             }
         });
         connection.end();
+    };
+
+    // exported actions for controller
+    exports.ordersjson = (req, res) => {
+        executeSQL(req, res, "CALL proc_listSpeciesByOrder();");
     };
 
     exports.monthsjson = (req, res) => {
-        let connection = mysqlDatabase.getConnection();
-        let sql = "CALL proc_listSpeciesByMonth();";
-        connection.query(sql, (err, rows) => {
-            if (err) {
-                res.json({
-                    errors: [err]
-                });
-            } else {
-                res.json(rows[0]);
-            }
-        });
-        connection.end();
+        executeSQL(req, res, "CALL proc_listSpeciesByMonth();");
     };
 
     exports.yearsjson = (req, res) => {
-        let connection = mysqlDatabase.getConnection();
-        let sql = "CALL proc_listSpeciesByYear();";
-        connection.query(sql, (err, rows) => {
-            if (err) {
-                res.json({
-                    errors: [err]
-                });
-            } else {
-                res.json(rows[0]);
-            }
-        });
-        connection.end();
+        executeSQL(req, res, "CALL proc_listSpeciesByYear();");
     };
 
     exports.speciesjson = (req, res) => {
-        let connection = mysqlDatabase.getConnection();
-        let sql = "CALL proc_listSpeciesAll();";
-        connection.query(sql, (err, rows) => {
-            if (err) {
-                res.json({
-                    errors: [err]
-                });
-            } else {
-                res.json(rows[0]);
-            }
-        });
-        connection.end();
+        executeSQL(req, res, "CALL proc_listSpeciesAll();");
     };
 })();
