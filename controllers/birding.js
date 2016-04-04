@@ -1,5 +1,6 @@
 (function() {
     'use strict';
+
     exports.menu = (req, res) => {
         res.render('birding/menu', {
             title: 'Bird Species and Sightings'
