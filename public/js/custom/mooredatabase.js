@@ -44,6 +44,10 @@
             $('#speciesNavPill')
                 .addClass('active');
         }
+        if ($.inArray("detail", myHash) !== -1) {
+            $('#speciesNavPill')
+                .addClass('active');
+        }
         if ($.inArray("nodejs", myHash) !== -1 || window.location.hash === "") {
             $('#nodejsNavPill')
                 .addClass('active');

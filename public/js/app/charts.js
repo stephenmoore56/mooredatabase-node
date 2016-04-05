@@ -92,7 +92,7 @@
                     name: 'Species',
                     type: 'bar',
                     marker: {
-                        color: 'green'
+                        color: '#ae00f9'
                     }
                 };
                 trace2 = {
@@ -101,7 +101,7 @@
                     name: 'Trips',
                     mode: 'lines+markers',
                     marker: {
-                        color: 'red'
+                        color: 'green'
                     }
                 };
                 data = [trace1, trace2];
@@ -149,7 +149,7 @@
                     margin: {
                         l: 50,
                         r: 5,
-                        b: 75,
+                        b: 100,
                         t: 30,
                         pad: 5
                     }
@@ -177,7 +177,7 @@
                     name: 'Sightings',
                     type: 'bar',
                     marker: {
-                        color: '#ff7f0e'
+                        color: '#423ffc'
                     }
                 };
                 data = [trace1];

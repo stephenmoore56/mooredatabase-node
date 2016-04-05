@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     myApp.controller('OrdersCtrl', function OrdersCtrl($scope, OrdersDataFactory, ReportCharts) {
-            // use the same data to draw the table and the Google chart
+            // use the same data to draw the table and the chart
             OrdersDataFactory.getData()
                 .then(function(data) {
                     if (data.errors) {
@@ -19,7 +19,7 @@
             };
         })
         .controller('MonthsCtrl', function MonthsCtrl($scope, MonthsDataFactory, ReportCharts) {
-            // use the same data to draw the table and the Google chart
+            // use the same data to draw the table and the chart
             MonthsDataFactory.getData()
                 .then(function(data) {
                     if (data.errors) {
@@ -37,7 +37,6 @@
             };
         })
         .controller('SpeciesCtrl', function SpeciesCtrl($scope, SpeciesDataFactory) {
-            // use the same data to draw the table and the Google chart
             SpeciesDataFactory.getData()
                 .then(function(data) {
                     if (data.errors) {
@@ -54,7 +53,7 @@
             };
         })
         .controller('YearsCtrl', function YearsCtrl($scope, YearsDataFactory, ReportCharts) {
-            // use the same data to draw the table and the Google chart
+            // use the same data to draw the table and the chart
             YearsDataFactory.getData()
                 .then(function(data) {
                     if (data.errors) {
@@ -73,21 +72,20 @@
         })
         .controller('DetailCtrl', function DetailCtrl($scope, $routeParams, DetailDataFactory, DetailMonthsDataFactory, ReportCharts) {
             $scope.id = $routeParams.id;
-            // use the same data to draw the table and the Google chart
             DetailDataFactory.getData($scope.id)
                 .then(function(data) {
                     if (data.errors) {
                         $scope.error = data.errors[0];
                     } else {
                         $scope.bird = data[0];
-                        DetailMonthsDataFactory.getData($scope.id)
-                            .then(function(data) {
-                                if (data.errors) {
-                                    $scope.error = data.errors[0];
-                                } else {
-                                    ReportCharts.drawChartMonthsForSpecies(data, 'chart_div');
-                                }
-                            });
+                    }
+                });
+            DetailMonthsDataFactory.getData($scope.id)
+                .then(function(data) {
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        ReportCharts.drawChartMonthsForSpecies(data, 'chart_div');
                     }
                 });
         });

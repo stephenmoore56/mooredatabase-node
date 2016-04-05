@@ -1,37 +1,20 @@
 <% layout('../layout.ejs') -%>
 <section class="row">
 	<article class="col-md-6">
-		<ul id="toolsNav" class="nav nav-pills">
-		  <li id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
-		  <li id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
-		  <li id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
-		</ul>
-		<br />
+		<p>
+			<ul id="toolsNav" class="nav nav-pills">
+			  <li id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
+			  <li id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
+			  <li id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
+			</ul>
+		</p>
 		<div class="ng-view"></div>	
-<%- partial('../partials/slideshow.ejs') %>
+		<%- partial('../partials/slideshow.ejs') %>
     </article>
     <aside class="col-md-4">
-		<div id="photoCarousel" class="carousel slide" style="display:none;">
-		    <ol class="carousel-indicators">
-				<li data-target="#photoCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#photoCarousel" data-slide-to="1"></li>
-				<li data-target="#photoCarousel" data-slide-to="2"></li>
-				<li data-target="#photoCarousel" data-slide-to="3"></li>
-		    </ol>
-			<div class="carousel-inner">
-				<div class="item active"><img class="img-thumbnail img-responsive" src="/images/slideshow1.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow2.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow3.jpg" alt="Power Plant"></div>
-				<div class="item"><img class="img-thumbnail img-responsive" src="/images/slideshow4.jpg" alt="Power Plant"></div>
-			</div><!-- end carousel-inner -->
-			<!-- Controls -->
-			<a class="left carousel-control" href="#photoCarousel" data-slide="prev">
-            	<span class="icon-prev"></span>
-        	</a>
-	        <a class="right carousel-control" href="#photoCarousel" data-slide="next">
-	            <span class="icon-next"></span>
-	        </a>
-        </div><!-- end artCarousel -->
+    	<p>
+			<%- partial('../partials/carousel.ejs') %>
+		</p>
     </aside>
     <div class="col-md-2"></div>
 </section>

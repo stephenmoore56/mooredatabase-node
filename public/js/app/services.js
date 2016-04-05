@@ -44,7 +44,7 @@
         .factory('DetailDataFactory', function($http) {
             return {
                 getData: function(id) {
-                    return $http.get("/birding/detailjson/" + id.toString())
+                    return $http.get("/birding/detailjson/" + id)
                         .then(function(response) {
                             return response.data;
                         });
@@ -54,7 +54,7 @@
         .factory('DetailMonthsDataFactory', function($http) {
             return {
                 getData: function(id) {
-                    return $http.get("/birding/detailmonthsjson/" + id.toString())
+                    return $http.get("/birding/detailmonthsjson/" + id)
                         .then(function(response) {
                             return response.data;
                         });

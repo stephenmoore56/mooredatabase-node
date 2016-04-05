@@ -26,8 +26,8 @@
 			    	<th class="text-left"	data-ng-click="sortResults('common_name')">Common Name</th>		
 			  		<th class="text-left">Actions</th> 			    		
 			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('scientific_name')">Scientific Name</th>
-			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('order_name')">Order Name</th>			
-			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('family')">Family Name</th>
+			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('order_name')">Order</th>			
+			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('family')">Family</th>
 			    	<th class="text-center hidden-xs" data-ng-click="sortResults('last_seen')">Last Seen</th>
 			    	<th class="text-right" 	data-ng-click="sortResults('sightings')">Sightings</th>
 				</tr>
@@ -41,8 +41,16 @@
 								More <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/birding/menu/#/detail/{{ bird.id }}">Detail</a></li>
-								<li><a href="http://en.wikipedia.org/wiki/{{ bird.common_name }}">Wikipedia</a></li>
+								<li>
+									<a href="/birding/menu/#/detail/{{ bird.id }}">
+										Detail
+									</a>
+								</li>
+								<li>
+									<a href="http://en.wikipedia.org/wiki/{{ bird.common_name }}">
+										Wikipedia
+									</a>
+								</li>
 								<li>
 									<a href="http://images.google.com/images?q={{ bird.common_name }}&sout=1" rel="external">
 										Google Images

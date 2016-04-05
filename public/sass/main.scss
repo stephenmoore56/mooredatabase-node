@@ -20,7 +20,10 @@ img.logo30 {
     font-style: italic;
 }
 // so navbar doesn't overlay content
-body { padding-top: 70px; }
+body {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
 // remove space at bottom of table
 .table-responsive {
   margin-bottom: 0;
