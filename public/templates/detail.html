@@ -1,0 +1,65 @@
+<div class="col-md-6">
+	<article class="row" data-ng-controller="DetailCtrl" ng-cloak>
+		<div class="alert alert-danger" role="alert" data-ng-show="error !== undefined">
+			<p>
+				A database error occurred:<br />
+				Error code: {{ error.code }}<br />
+				Error number: {{ error.errno }}<br />
+				SQL State: {{ error.sqlState }}<br />
+			</p>
+		</div>
+		<div class="panel panel-primary">		
+			<div class="panel-heading">
+				<h3 class="panel-title">Species Detail for {{ bird.common_name}}</h3>
+			</div>
+			<div class="panel-body">
+				<table id='months'
+			       class='table-condensed table-bordered table-responsive report_table'
+				   title='Species Detail' data-ng-show="bird.common_name">
+					<tbody>		
+						<tr>
+							<th class="text-left">Common Name</th>
+							<td class="text-left">{{ bird.common_name }}</td>	
+						</tr>
+						<tr>
+							<th class="text-left">Scientific Name</th>
+							<td class="text-left scientific_name">{{ bird.scientific_name }}</td>	
+						</tr>
+						<tr>
+							<th class="text-left">Order</th>
+							<td class="text-left">{{ bird.order_name }}</td>	
+						</tr>
+						<tr>
+							<th class="text-left">Family</th>
+							<td class="text-left">{{ bird.family }} {{ bird.subfamily }}</td>	
+						</tr>
+
+						<tr>
+							<th class="text-left">Sightings</th>
+							<td class="text-left">{{ bird.sightings }}</td>	
+						</tr>
+						<tr>
+							<th class="text-left">Last Seen</th>
+							<td class="text-left">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>	
+						</tr>
+						<tr>
+							<th class="text-left">Earliest / Latest</th>
+							<td class="text-left">{{ bird.earliestSighting }} / {{ bird.latestSighting }}</td>	
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="panel panel-primary">		
+			<div class="panel-heading">
+				<h3 class="panel-title">Sightings By Month</h3>
+			</div>
+			<div class="panel-body">
+				<figure id="linechart">
+				    <div id="chart_div"></div>
+				</figure>
+			</div>
+		</div>
+	</article>
+</div>
+<div class="col-md-6"></div>

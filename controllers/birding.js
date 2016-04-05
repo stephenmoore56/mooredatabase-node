@@ -39,4 +39,14 @@
     exports.speciesjson = (req, res) => {
         executeSQL(req, res, "CALL proc_listSpeciesAll();");
     };
+
+    exports.detailjson = (req, res) => {
+        let id = req.params.id;
+        executeSQL(req, res, "CALL proc_getSpecies2(" + id + ");");
+    };
+
+    exports.detailmonthsjson = (req, res) => {
+        let id = req.params.id;
+        executeSQL(req, res, "CALL proc_listMonthsForSpecies2(" + id + ");");
+    };
 })();

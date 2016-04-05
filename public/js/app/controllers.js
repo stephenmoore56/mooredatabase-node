@@ -70,5 +70,25 @@
                 $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
                 $scope.predicate = predicate;
             };
+        })
+        .controller('DetailCtrl', function DetailCtrl($scope, $routeParams, DetailDataFactory, DetailMonthsDataFactory, ReportCharts) {
+            $scope.id = $routeParams.id;
+            // use the same data to draw the table and the Google chart
+            DetailDataFactory.getData($scope.id)
+                .then(function(data) {
+                    if (data.errors) {
+                        $scope.error = data.errors[0];
+                    } else {
+                        $scope.bird = data[0];
+                        DetailMonthsDataFactory.getData($scope.id)
+                            .then(function(data) {
+                                if (data.errors) {
+                                    $scope.error = data.errors[0];
+                                } else {
+                                    ReportCharts.drawChartMonthsForSpecies(data, 'chart_div');
+                                }
+                            });
+                    }
+                });
         });
 })();

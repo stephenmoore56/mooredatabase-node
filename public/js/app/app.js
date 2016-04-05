@@ -29,6 +29,9 @@ myApp.config(['$routeProvider',
             .when('/species', {
                 templateUrl: '/templates/species.html'
             })
+            .when('/detail/:id', {
+                templateUrl: '/templates/detail.html'
+            })
             .otherwise({
                 redirectTo: '/nodejs'
             });

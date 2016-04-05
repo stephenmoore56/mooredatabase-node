@@ -158,6 +158,55 @@
                     displaylogo: false,
                     modeBarButtonsToRemove: ['sendDataToCloud']
                 });
+            },
+            drawChartMonthsForSpecies: function(dataPoints, chart_div) {
+                var months, sightings, data, trace1, i, layout;
+                if (dataPoints.length === 0) {
+                    return;
+                }
+                resizeChart(chart_div);
+                months = [];
+                sightings = [];
+                for (i = 0; i < dataPoints.length; i++) {
+                    months[i] = dataPoints[i].monthName.substring(0, 3);
+                    sightings[i] = dataPoints[i].sightingCount;
+                }
+                trace1 = {
+                    x: months,
+                    y: sightings,
+                    name: 'Sightings',
+                    type: 'bar',
+                    marker: {
+                        color: '#ff7f0e'
+                    }
+                };
+                data = [trace1];
+                layout = {
+                    legend: {
+                        xanchor: "center",
+                        yanchor: "top",
+                        y: -0.3,
+                        x: 0.5
+                    },
+                    margin: {
+                        l: 50,
+                        r: 5,
+                        b: 50,
+                        t: 30,
+                        pad: 5
+                    },
+                    xaxis: {
+                        title: 'Month',
+                        type: 'category'
+                    },
+                    yaxis: {
+                        title: 'Sightings'
+                    }
+                };
+                Plotly.newPlot(chart_div, data, layout, {
+                    displaylogo: false,
+                    modeBarButtonsToRemove: ['sendDataToCloud']
+                });
             }
         };
     });

@@ -40,5 +40,25 @@
                         });
                 }
             };
+        })
+        .factory('DetailDataFactory', function($http) {
+            return {
+                getData: function(id) {
+                    return $http.get("/birding/detailjson/" + id.toString())
+                        .then(function(response) {
+                            return response.data;
+                        });
+                }
+            };
+        })
+        .factory('DetailMonthsDataFactory', function($http) {
+            return {
+                getData: function(id) {
+                    return $http.get("/birding/detailmonthsjson/" + id.toString())
+                        .then(function(response) {
+                            return response.data;
+                        });
+                }
+            };
         });
 })();

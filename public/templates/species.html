@@ -24,31 +24,37 @@
 			<thead>
 				<tr>
 			    	<th class="text-left"	data-ng-click="sortResults('common_name')">Common Name</th>		
-			  		<th class="text-left hidden-xs">Actions</th> 			    		
+			  		<th class="text-left">Actions</th> 			    		
 			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('scientific_name')">Scientific Name</th>
 			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('order_name')">Order Name</th>			
 			    	<th class="text-left hidden-xs"	data-ng-click="sortResults('family')">Family Name</th>
-			    	<th class="text-center"	data-ng-click="sortResults('last_seen')">Last Seen</th><th class="text-right" 	data-ng-click="sortResults('sightings')">Sightings</th>
+			    	<th class="text-center hidden-xs" data-ng-click="sortResults('last_seen')">Last Seen</th>
+			    	<th class="text-right" 	data-ng-click="sortResults('sightings')">Sightings</th>
 				</tr>
 			</thead>
 			<tbody>		
 				<tr data-ng-repeat="bird in birds | orderBy:predicate:reverse | filter:searchText">
 					<td class="text-left">{{ bird.common_name }}</td>
-					<td class="text-left hidden-xs">
+					<td class="text-left">
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
 								More <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="/birding/menu/#/detail/{{ bird.id }}">Detail</a></li>
 								<li><a href="http://en.wikipedia.org/wiki/{{ bird.common_name }}">Wikipedia</a></li>
-								<li><a href="http://images.google.com/images?q={{ bird.common_name }}&sout=1" rel="external">Google Images</a></li>
+								<li>
+									<a href="http://images.google.com/images?q={{ bird.common_name }}&sout=1" rel="external">
+										Google Images
+									</a>
+								</li>
 							</ul>
 						</div>
 					</td>									
 					<td class="text-left hidden-xs scientific_name">{{ bird.scientific_name }}</td>
 					<td class="text-left hidden-xs">{{ bird.order_name }}</td>
 					<td class="text-left hidden-xs">{{ bird.family }} {{ bird.subfamily }}</td>
-					<td class="text-center">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>
+					<td class="text-center hidden-xs">{{ bird.last_seen | date:'yyyy-MM-dd' }}</td>
 					<td class="text-right">{{ bird.sightings }}</td>
 				</tr>
 			</tbody>

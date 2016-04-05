@@ -21,15 +21,13 @@
 			   title='Month Sightings' data-ng-show="months.length">
 			<thead>
 				<tr>
-			    	<th	class="text-center" data-ng-click="sortResults('monthNumber')">Month Number</th>
-			    	<th class="text-left"   data-ng-click="sortResults('monthName')">Month Name</th>
+			    	<th class="text-left"   data-ng-click="sortResults('monthNumber')">Month Name</th>
 			  		<th class="text-right"  data-ng-click="sortResults('speciesCount')">Species Sighted</th>
 			  		<th class="text-right"  data-ng-click="sortResults('tripCount')">Trips Taken</th>	  	
 				</tr>
 			</thead>
 			<tbody>		
 				<tr data-ng-repeat="month in months | orderBy:predicate:reverse">
-					<td class="text-center">{{ month.monthNumber}}</td>
 					<td class="text-left">{{ month.monthName }}</td>
 					<td class="text-right">{{ month.speciesCount }}</td>	
 					<td class="text-right">{{ month.tripCount }}</td>					
