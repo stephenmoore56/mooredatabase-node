@@ -1,45 +1,49 @@
 {
-    "name": "mooredatabase-node",
-    "version": "0.0.1",
-    "author": "Stephen Moore <stephenmoore56@msn.com> (http://moore-database.com)",
-    "description": "Portfolio / demonstration node.js application",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/stephenmoore56/mooredatabase-node.git"
-    },
-    "engines": {
-        "node": "5.9.0",
-        "npm": "3.7.3"
-    },
-    "private": true,
-    "scripts": {
-        "start": "node app"
-    },
-    "main": "./app.js",
-    "dependencies": {
-        "express": "4.*",
-        "ejs": "2.4.1",
-        "ejs-locals": "1.0.2",
-        "mysql": "2.10.2"
-    },
-    "devDependencies": {
-        "del": "^2.2.0",
-        "gulp": "^3.9.1",
-        "gulp-compass": "^2.1.0",
-        "gulp-concat": "^2.6.0",
-        "gulp-if": "^2.0.0",
-        "gulp-inject": "^4.0.0",
-        "gulp-jscs": "^3.0.2",
-        "gulp-jshint": "^2.0.0",
-        "gulp-load-plugins": "^1.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-print": "^2.0.1",
-        "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^1.5.3",
-        "gulp-util": "^3.0.7",
-        "jshint": "^2.9.1",
-        "jshint-stylish": "^2.1.0",
-        "run-sequence": "^1.1.5",
-        "yargs": "^4.3.2"
-    }
+  "name": "mooredatabase-node",
+  "version": "0.0.1",
+  "author": "Stephen Moore <stephenmoore56@msn.com> (http://moore-database.com)",
+  "description": "Portfolio / demonstration node.js application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenmoore56/mooredatabase-node.git"
+  },
+  "engines": {
+    "node": "5.9.0",
+    "npm": "3.7.3"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "main": "./app.js",
+  "dependencies": {
+    "express": "4.*",
+    "ejs": "2.4.1",
+    "ejs-locals": "1.0.2",
+    "mysql": "2.10.2"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "frisby": "^0.8.5",
+    "gulp": "^3.9.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-inject": "^4.0.0",
+    "gulp-jasmine": "^2.3.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "jasmine-node": "^1.14.5",
+    "jasmine-reporters": "^2.1.1",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "run-sequence": "^1.1.5",
+    "yargs": "^4.3.2"
+  }
 }
