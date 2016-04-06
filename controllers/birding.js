@@ -10,7 +10,7 @@
     });
     let executeSQL = (req, res, sql) => {
         let connection = mysqlDatabase.getConnection();
-        myCache.get(sql, function(err, value) {
+        myCache.get(sql, (err, value) => {
             if (value === undefined) {
                 // key not found; execute query and put
                 // result in cache
