@@ -1,29 +1,43 @@
 (function() {
     'use strict';
 
-    exports.menu = (req, res) => {
-        res.render('birding/menu', {
-            title: 'Bird Species and Sightings'
-        });
-    };
-
     // closure allows us to set these once and use in the functions exported
     let mysqlDatabase = require('../lib/mysqlDatabase.js');
+    let NodeCache = require('node-cache');
+    let myCache = new NodeCache({
+        stdTTL: 3600,
+        checkperiod: 120
+    });
     let executeSQL = (req, res, sql) => {
         let connection = mysqlDatabase.getConnection();
-        connection.query(sql, (err, rows) => {
-            if (err) {
-                res.json({
-                    errors: [err]
+        myCache.get(sql, function(err, value) {
+            if (value === undefined) {
+                // key not found; execute query and put
+                // result in cache
+                connection.query(sql, (err, rows) => {
+                    if (err) {
+                        res.json({
+                            errors: [err]
+                        });
+                    } else {
+                        myCache.set(sql, rows);
+                        res.json(rows[0]);
+                    }
                 });
             } else {
-                res.json(rows[0]);
+                res.json(value[0]);
             }
         });
         connection.end();
     };
 
     // exported actions for controller
+    exports.menu = (req, res) => {
+        res.render('birding/menu', {
+            title: 'Bird Species and Sightings'
+        });
+    };
+
     exports.ordersjson = (req, res) => {
         executeSQL(req, res, "CALL proc_listSpeciesByOrder();");
     };

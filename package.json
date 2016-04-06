@@ -17,10 +17,11 @@
   },
   "main": "./app.js",
   "dependencies": {
-    "express": "4.*",
     "ejs": "2.4.1",
     "ejs-locals": "1.0.2",
-    "mysql": "2.10.2"
+    "express": "4.*",
+    "mysql": "2.10.2",
+    "node-cache": "^3.2.1"
   },
   "devDependencies": {
     "del": "^2.2.0",
