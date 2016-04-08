@@ -1,26 +1,26 @@
 (function() {
     'use strict';
 
-    // closure allows us to set these once and use in the functions exported
+    // closure allows us to use these in the functions exported later
     let mysqlDatabase = require('../lib/mysqlDatabase.js');
     let NodeCache = require('node-cache');
+    const CACHE_TTL_DEFAULT = 3600;
+    const CACHE_CHECK_PERIOD = 600;
     let myCache = new NodeCache({
-        stdTTL: 3600,
-        checkperiod: 120
+        stdTTL: CACHE_TTL_DEFAULT,
+        checkperiod: CACHE_CHECK_PERIOD
     });
-    let executeSQL = (req, res, sql) => {
+    let executeSQL = (req, res, sql, cacheTtl) => {
         let connection = mysqlDatabase.getConnection();
         myCache.get(sql, (err, value) => {
             if (value === undefined) {
-                // key not found; execute query and put
-                // result in cache
                 connection.query(sql, (err, rows) => {
                     if (err) {
                         res.json({
                             errors: [err]
                         });
                     } else {
-                        myCache.set(sql, rows);
+                        myCache.set(sql, rows, cacheTtl || CACHE_TTL_DEFAULT);
                         res.json(rows[0]);
                     }
                 });
@@ -56,11 +56,11 @@
 
     exports.detailjson = (req, res) => {
         let id = req.params.id;
-        executeSQL(req, res, "CALL proc_getSpecies2(" + id + ");");
+        executeSQL(req, res, "CALL proc_getSpecies2(" + parseInt(id) + ");");
     };
 
     exports.detailmonthsjson = (req, res) => {
         let id = req.params.id;
-        executeSQL(req, res, "CALL proc_listMonthsForSpecies2(" + id + ");");
+        executeSQL(req, res, "CALL proc_listMonthsForSpecies2(" + parseInt(id) + ");");
     };
 })();
