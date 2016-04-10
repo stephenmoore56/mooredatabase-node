@@ -22,7 +22,6 @@ frisby.create('Months JSON endpoint')
     .expectHeader('Content-Type', 'application/json; charset=utf-8')
     .expectJSONTypes('*', {
         monthNumber: Number,
-        url: String,
         monthName: String,
         monthLetter: String,
         speciesCount: Number,
