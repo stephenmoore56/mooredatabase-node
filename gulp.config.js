@@ -9,11 +9,8 @@
             sassfiles: './public/sass/*.scss',
             cssdir: './public/css',
             cssfiles: './public/css/*.css',
-            configrb: './config.rb',
-            angularSrc: './public/js/app/src/*.js',
-            angularDist: './public/js/app/dist',
-            angularDistConcat: 'app.concat.js',
-            angularDistMin: 'app.min.js'
+            sasscache: './.sass-cache',
+            configrb: './config.rb'
         };
         return config;
     };

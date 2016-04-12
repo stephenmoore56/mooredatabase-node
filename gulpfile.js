@@ -40,7 +40,10 @@
     });
 
     // compile and minify SASS to CSS with compass
-    gulp.task('compass', ['clean-css'], function() {
+    gulp.task('css', function(cb) {
+        runSequence('clean-css', 'compass', 'clean-sass-cache', cb);
+    });
+    gulp.task('compass', function() {
         log('Compiling SASS -> CSS...');
         return gulp.src(config.sassfiles)
             .pipe($.if(args.verbose, $.print()))
@@ -52,13 +55,16 @@
             }))
             .pipe(gulp.dest(config.cssdir));
     });
-
     // watcher task for CSS
-    gulp.task('compass-watch', function() {
+    gulp.task('css-watch', function() {
         gulp.watch(config.sassfiles, ['compass']);
     });
     gulp.task('clean-css', function() {
         var files = config.cssfiles;
+        return clean(files);
+    });
+    gulp.task('clean-sass-cache', function() {
+        var files = config.sasscache;
         return clean(files);
     });
 
