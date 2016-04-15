@@ -1,6 +1,6 @@
 <% layout('../layout.ejs') -%>
-<section class="row">
-	<article class="col-md-6">
+<section class="row-fluid">
+	<article class="col-sm-6">
 		<p>
 			<ul id="toolsNav" class="nav nav-pills">
 			  <li id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
@@ -11,10 +11,9 @@
 		<div class="ng-view"></div>	
 		<%- partial('../partials/slideshow.ejs') %>
     </article>
-    <aside class="col-md-4">
+    <aside class="col-sm-4">
     	<p>
 			<%- partial('../partials/carousel.ejs') %>
 		</p>
     </aside>
-    <div class="col-md-2"></div>
 </section>
