@@ -6,6 +6,8 @@
     let NodeCache = require('node-cache');
     const CACHE_TTL_DEFAULT = 3600;
     const CACHE_CHECK_PERIOD = 600;
+    const HTTP_STATUS_OK = 200;
+    const HTTP_STATUS_ERROR = 500;
     let myCache = new NodeCache({
         stdTTL: CACHE_TTL_DEFAULT,
         checkperiod: CACHE_CHECK_PERIOD
@@ -16,16 +18,17 @@
             if (value === undefined) {
                 connection.query(sql, (err, rows) => {
                     if (err) {
-                        res.json({
+                        res.json(HTTP_STATUS_ERROR, {
                             errors: [err]
                         });
                     } else {
-                        myCache.set(sql, rows, cacheTtl || CACHE_TTL_DEFAULT);
-                        res.json(rows[0]);
+                        let data = rows[0];
+                        myCache.set(sql, data, cacheTtl || CACHE_TTL_DEFAULT);
+                        res.json(HTTP_STATUS_OK, data);
                     }
                 });
             } else {
-                res.json(value[0]);
+                res.json(HTTP_STATUS_OK, value);
             }
         });
         connection.end();
@@ -55,12 +58,12 @@
     };
 
     exports.detailjson = (req, res) => {
-        let id = req.params.id;
-        executeSQL(req, res, "CALL proc_getSpecies2(" + parseInt(id) + ");");
+        let id = parseInt(req.params.id);
+        executeSQL(req, res, `CALL proc_getSpecies2(${id});`);
     };
 
     exports.detailmonthsjson = (req, res) => {
-        let id = req.params.id;
-        executeSQL(req, res, "CALL proc_listMonthsForSpecies2(" + parseInt(id) + ");");
+        let id = parseInt(req.params.id);
+        executeSQL(req, res, `CALL proc_listMonthsForSpecies2(${id});`);
     };
 })();

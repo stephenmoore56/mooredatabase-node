@@ -17,6 +17,9 @@ myApp.config(['$routeProvider',
             .when('/bootstrap', {
                 templateUrl: '/templates/bootstrap.html'
             })
+            .when('/birding', {
+                templateUrl: '/templates/orders.html'
+            })
             .when('/orders', {
                 templateUrl: '/templates/orders.html'
             })
