@@ -18,17 +18,20 @@
             if (value === undefined) {
                 connection.query(sql, (err, rows) => {
                     if (err) {
-                        res.json(HTTP_STATUS_ERROR, {
-                            errors: [err]
-                        });
+                        res.status(HTTP_STATUS_ERROR)
+                            .json({
+                                errors: [err]
+                            });
                     } else {
                         let data = rows[0];
                         myCache.set(sql, data, cacheTtl || CACHE_TTL_DEFAULT);
-                        res.json(HTTP_STATUS_OK, data);
+                        res.status(HTTP_STATUS_OK)
+                            .json(data);
                     }
                 });
             } else {
-                res.json(HTTP_STATUS_OK, value);
+                res.status(HTTP_STATUS_OK)
+                    .json(value);
             }
         });
         connection.end();
