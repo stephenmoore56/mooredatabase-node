@@ -15,10 +15,10 @@
 
     // check out the JS; separate .jshintrc files for server
     // and browser code so I can run ES6 on server side
-    gulp.task('jshint', function(cb) {
-        runSequence('jshint-server', 'jshint-browser', cb);
+    gulp.task('js', function(cb) {
+        runSequence('js-server', 'js-browser', cb);
     });
-    gulp.task('jshint-server', function() {
+    gulp.task('js-server', function() {
         log('Analyzing code and code style for server JS...');
         return gulp.src(config.allserverjs)
             .pipe($.if(args.verbose, $.print()))
@@ -28,7 +28,7 @@
             }))
             .pipe($.jscs());
     });
-    gulp.task('jshint-browser', function() {
+    gulp.task('js-browser', function() {
         log('Analyzing code and code style for browser JS...');
         return gulp.src(config.allbrowserjs)
             .pipe($.if(args.verbose, $.print()))
