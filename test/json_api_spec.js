@@ -78,6 +78,25 @@ frisby.create('Detail JSON endpoint')
     })
     .toss();
 
+frisby.create('Detail JSON endpoint / invalid species id')
+    .get(baseURL + '/birding/detailjson/9999')
+    .expectStatus(404)
+    .expectHeader('Content-Type', 'application/json; charset=utf-8')
+    .toss();
+
+frisby.create('Detail JSON endpoint / bad param')
+    .get(baseURL + '/birding/detailjson/abcd')
+    .expectStatus(500)
+    .expectHeader('Content-Type', 'application/json; charset=utf-8')
+    // .inspectJSON()
+    .expectJSONTypes('*', {
+        code: String,
+        errno: Number,
+        sqlState: String,
+        index: Number
+    })
+    .toss();
+
 frisby.create('Detail Months JSON endpoint')
     .get(baseURL + '/birding/detailmonthsjson/1343')
     .expectStatus(200)
@@ -87,5 +106,34 @@ frisby.create('Detail Months JSON endpoint')
         monthNumber: Number,
         monthName: String,
         sightingCount: Number
+    })
+    .toss();
+
+frisby.create('Detail Months JSON endpoint / bad param')
+    .get(baseURL + '/birding/detailmonthsjson/abcd')
+    .expectStatus(500)
+    .expectHeader('Content-Type', 'application/json; charset=utf-8')
+    // .inspectJSON()
+    .expectJSONTypes('*', {
+        code: String,
+        errno: Number,
+        sqlState: String,
+        index: Number
+    })
+    .toss();
+
+frisby.create('Detail Months JSON endpoint / invalid species id')
+    .get(baseURL + '/birding/detailmonthsjson/9999')
+    .expectStatus(200)
+    .expectHeader('Content-Type', 'application/json; charset=utf-8')
+    .expectJSONTypes('*', {
+        common_name: String,
+        monthNumber: Number,
+        monthName: String,
+        sightingCount: Number
+    })
+    .expectJSON('*', {
+        common_name: '',
+        sightingCount: 0
     })
     .toss();
