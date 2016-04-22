@@ -126,14 +126,4 @@ frisby.create('Detail Months JSON endpoint / invalid species id')
     .get(baseURL + '/birding/detailmonthsjson/9999')
     .expectStatus(200)
     .expectHeader('Content-Type', 'application/json; charset=utf-8')
-    .expectJSONTypes('*', {
-        common_name: String,
-        monthNumber: Number,
-        monthName: String,
-        sightingCount: Number
-    })
-    .expectJSON('*', {
-        common_name: '',
-        sightingCount: 0
-    })
     .toss();
