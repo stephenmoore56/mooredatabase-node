@@ -3,8 +3,8 @@
 
     let express = require('express'),
         app = express(),
-        config = require('config'),
-        appConfig = config.appConfig;
+        appConfig = require('config')
+        .appConfig;
     require('./lib/routes')(app, express);
     require('./lib/templating')(app);
     require('./lib/session')(app);
