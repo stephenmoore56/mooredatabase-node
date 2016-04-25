@@ -1,19 +1,15 @@
 <% layout('../layouts/static.ejs') -%>
-<section class="row-fluid">
-	<article class="col-sm-6">
-		<p>
-			<ul id="toolsNav" class="nav nav-pills">
-			  <li id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
-			  <li id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
-			  <li id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
-			</ul>
-		</p>
+<div class="row-fluid">
+	<div class="col-sm-6">
+		<ul id="toolsNav" class="nav nav-pills">
+		  <li id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
+		  <li id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
+		  <li id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
+		</ul>
 		<div class="ng-view"></div>	
 		<%- partial('../partials/slideshow.ejs') %>
-    </article>
-    <aside class="col-sm-4">
-    	<p>
-			<%- partial('../partials/carousel.ejs') %>
-		</p>
-    </aside>
-</section>
+    </div>
+    <div class="col-sm-4">
+		<%- partial('../partials/carousel.ejs') %>
+    </div>
+</div>
