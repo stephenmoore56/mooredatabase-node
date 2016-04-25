@@ -72,6 +72,9 @@
         })
         .controller('DetailCtrl', function DetailCtrl($scope, $routeParams, DetailDataFactory, DetailMonthsDataFactory, ReportCharts) {
             $scope.id = $routeParams.id;
+            $scope.goBack = function() {
+                window.history.back();
+            };
             DetailDataFactory.getData($scope.id)
                 .then(function(data) {
                     if (data.errors) {

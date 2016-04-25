@@ -48,6 +48,26 @@
 						</tr>
 					</tbody>
 				</table>
+				<form id="detailButtonGroup" class="form-inline filterForm">
+					<button id="backButton" type="button" class="btn btn-success btn-sm" data-ng-click="goBack()">
+						<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+						Back
+					</button>
+					<div class="form-group">
+						<a href="http://en.wikipedia.org/wiki/{{ bird.common_name }}" target="_blank" rel="external"
+						   class="btn btn-info btn-sm">
+							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+							Wikipedia
+					   </a>
+					</div>
+					<div class="form-group">
+						<a href="http://images.google.com/images?q=<% bird.common_name %>&sout=1" target="_blank" rel="external"
+						   class="btn btn-info btn-sm">
+				   			<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+							Google Images
+					   </a>
+				   </div>
+			   	</form>
 			</div>
 		</div>
 	</div>
