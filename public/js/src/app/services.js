@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     // services for AJAX/JSON data
-    myApp.factory('MonthsDataFactory', function($http) {
+    myApp.factory('MonthsDataFactory', ['$http', function($http) {
             return {
                 getData: function() {
                     return $http.get("/birding/monthsjson")
@@ -10,8 +10,8 @@
                         });
                 }
             };
-        })
-        .factory('OrdersDataFactory', function($http) {
+        }])
+        .factory('OrdersDataFactory', ['$http', function($http) {
             return {
                 getData: function() {
                     return $http.get("/birding/ordersjson")
@@ -20,8 +20,8 @@
                         });
                 }
             };
-        })
-        .factory('SpeciesDataFactory', function($http) {
+        }])
+        .factory('SpeciesDataFactory', ['$http', function($http) {
             return {
                 getData: function() {
                     return $http.get("/birding/speciesjson")
@@ -30,8 +30,8 @@
                         });
                 }
             };
-        })
-        .factory('YearsDataFactory', function($http) {
+        }])
+        .factory('YearsDataFactory', ['$http', function($http) {
             return {
                 getData: function() {
                     return $http.get("/birding/yearsjson")
@@ -40,8 +40,8 @@
                         });
                 }
             };
-        })
-        .factory('DetailDataFactory', function($http) {
+        }])
+        .factory('DetailDataFactory', ['$http', function($http) {
             return {
                 getData: function(id) {
                     return $http.get("/birding/detailjson/" + id)
@@ -50,8 +50,8 @@
                         });
                 }
             };
-        })
-        .factory('DetailMonthsDataFactory', function($http) {
+        }])
+        .factory('DetailMonthsDataFactory', ['$http', function($http) {
             return {
                 getData: function(id) {
                     return $http.get("/birding/detailmonthsjson/" + id)
@@ -60,5 +60,5 @@
                         });
                 }
             };
-        });
+        }]);
 })();

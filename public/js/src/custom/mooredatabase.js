@@ -27,6 +27,7 @@
                 $(this)
                     .removeClass('active');
             });
+        // figure out which pill should be made active
         var myHash = window.location.hash.split("/");
         if ($.inArray("orders", myHash) !== -1) {
             $('#ordersNavPill')
