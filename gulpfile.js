@@ -6,8 +6,6 @@
         .argv;
     let config = require('./gulp.config')();
     let del = require('del');
-    let concat = require('gulp-concat');
-    let uglify = require('gulp-uglify');
 
     // lazy loading plugins
     // now we can use $. and name of plugin without gulp-
@@ -49,16 +47,16 @@
     gulp.task('uglify-angular', function() {
         log('Concatenating and minifying Angular files...');
         return gulp.src(config.angularfiles)
-            .pipe(concat(config.angularminfile)) //the name of the resulting file
-            .pipe(uglify())
+            .pipe($.concat(config.angularminfile)) //the name of the resulting file
+            .pipe($.uglify())
             .pipe(gulp.dest('.'));
     });
     // concatenate and minify custom application files
     gulp.task('uglify-custom', function() {
         log('Concatenating and minifying custom Javascript files...');
         return gulp.src(config.customfiles)
-            .pipe(concat(config.customminfile)) //the name of the resulting file
-            .pipe(uglify())
+            .pipe($.concat(config.customminfile)) //the name of the resulting file
+            .pipe($.uglify())
             .pipe(gulp.dest('.'));
     });
 
