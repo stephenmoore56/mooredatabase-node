@@ -54,6 +54,10 @@
         executeGET(res, req, "CALL proc_listSpeciesAll();");
     };
 
+    exports.allsightingsjson = (req, res) => {
+        executeGET(res, req, "CALL proc_extractAllSightings();");
+    };
+
     exports.detailjson = (req, res) => {
         // note template string
         let id = parseInt(req.params.id);

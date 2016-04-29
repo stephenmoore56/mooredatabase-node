@@ -59,6 +59,22 @@ frisby.create('Species JSON endpoint')
     })
     .toss();
 
+// TODO: complete this test, add missing fields like order_notes, location_notes
+frisby.create('All Sightings JSON endpoint')
+    .get(baseURL + '/birding/allsightingsjson')
+    .expectStatus(200)
+    .expectHeader('Content-Type', 'application/json; charset=utf-8')
+    .expectJSONTypes('*', {
+        id: Number,
+        order_name: String,
+        // order_notes: String,
+        common_name: String,
+        scientific_name: String,
+        family: String,
+        subfamily: String
+    })
+    .toss();
+
 frisby.create('Detail JSON endpoint')
     .get(baseURL + '/birding/detailjson/1343')
     .expectStatus(200)
