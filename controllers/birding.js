@@ -38,6 +38,14 @@
         });
     };
 
+    exports.clearCache = (req, res) => {
+        myCache.flushAll();
+        res.status(HttpStatus.OK)
+            .json([{
+                'message': 'Cache cleared.'
+            }]);
+    };
+
     exports.ordersjson = (req, res) => {
         executeGET(res, req, "CALL proc_listSpeciesByOrder();");
     };
