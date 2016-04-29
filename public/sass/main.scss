@@ -74,3 +74,11 @@ body {
 .glyphicon-menu-left {
   margin-right: 0px;
 }
+// multiple column layouts like static and detail
+// remove padding from columns
+.col-no-pad {
+    padding: 0;
+}
+.col-spacer {
+    max-width: 10px;
+}
