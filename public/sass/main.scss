@@ -54,30 +54,23 @@ body {
 #photoCarousel img {
   width: 100%;
 }
-// bootstrap overrides
-// remove discs from navbar li
-ul.nav li {
-  list-style-type: none;
-}
-// less margin above page headers
-.page-header {
-  margin-top: 20px;
-}
-// on nav button links, set font to white,
-// remove underlining
-.btn-group .btn a {
-  color: #FFF;
-  text-decoration: none;
-}
+// pad above and below nav pills
 #toolsNav {
   padding: 10px 0;
 }
+// margin above and below photos
 #photoCarousel {
   margin: 10px 0;
 }
+// pad above and below buttons on detail page
 #detailButtonGroup {
   padding: 10px 0;
 }
+// put a little space to right of glyphicon
 .glyphicon {
   margin-right: 5px;
+}
+// remove the margin on the back button arrow
+.glyphicon-menu-left {
+  margin-right: 0px;
 }
