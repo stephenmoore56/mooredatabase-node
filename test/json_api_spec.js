@@ -2,6 +2,7 @@
 
 let frisby = require('frisby');
 let baseURL = 'http://localhost:3000';
+// let baseURL = 'http://node.moore-database.com';
 
 frisby.create('Clear cache endpoint')
     .get(baseURL + '/birding/clearCache')

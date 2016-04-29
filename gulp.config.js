@@ -7,6 +7,7 @@
             allserverjs: ["*.js", "test/*.js", "controllers/*.js", "lib/*.js", "models/*.js", "views/**/*.js"],
             sassdir: './public/sass',
             sassfiles: './public/sass/*.scss',
+            builddir: './public/sass/build',
             cssdir: './public/css',
             cssfiles: './public/css/*.css',
             sasscache: './.sass-cache',
@@ -22,6 +23,10 @@
                 './public/js/src/custom/mooredatabase.js'
             ],
             customminfile: './public/js/dist/custom/mooredatabase.min.js',
+            scriptpartial: './views/partials/scripts.ejs',
+            jsinjectsources: [
+                './public/js/dist/**/*.min.js'
+            ]
         };
         return config;
     };
