@@ -1,24 +1,23 @@
-(function() {
+(() => {
     'use strict';
-    let gulp = require('gulp');
-    let runSequence = require('run-sequence');
-    let args = require('yargs')
-        .argv;
-    let config = require('./gulp.config')();
-    let del = require('del');
 
-    // lazy loading plugins
-    // now we can use $. and name of plugin without gulp-
-    let $ = require('gulp-load-plugins')({
-        lazy: true
-    });
+    let gulp = require('gulp'),
+        runSequence = require('run-sequence'),
+        args = require('yargs')
+        .argv,
+        config = require('./gulp.config')(),
+        del = require('del'),
+        // lazy loading plugins; use $. and name of plugin without gulp-
+        $ = require('gulp-load-plugins')({
+            lazy: true
+        });
 
     // check out the JS; separate .jshintrc files for server
     // and browser code so I can run ES6 on server side
-    gulp.task('js', function(cb) {
+    gulp.task('js', (cb) => {
         runSequence('js-server', 'js-browser', cb);
     });
-    gulp.task('js-server', function() {
+    gulp.task('js-server', () => {
         log('Analyzing code and code style for server JS...');
         return gulp.src(config.allserverjs)
             .pipe($.if(args.verbose, $.print()))
@@ -28,7 +27,7 @@
             }))
             .pipe($.jscs());
     });
-    gulp.task('js-browser', function() {
+    gulp.task('js-browser', () => {
         log('Analyzing code and code style for browser JS...');
         return gulp.src(config.allbrowserjs)
             .pipe($.if(args.verbose, $.print()))
@@ -40,11 +39,11 @@
     });
 
     // concatenate and minify JavaScript files
-    gulp.task('uglify', function(cb) {
+    gulp.task('uglify', (cb) => {
         runSequence('uglify-angular', 'uglify-custom', 'js-inject', cb);
     });
     // concatenate and minify AngularJS application files
-    gulp.task('uglify-angular', function() {
+    gulp.task('uglify-angular', () => {
         log('Concatenating and minifying Angular files...');
         return gulp.src(config.angularfiles)
             .pipe($.concat(config.angularminfile)) //the name of the resulting file
@@ -53,7 +52,7 @@
             .pipe(gulp.dest('.'));
     });
     // concatenate and minify custom application files
-    gulp.task('uglify-custom', function() {
+    gulp.task('uglify-custom', () => {
         log('Concatenating and minifying custom Javascript files...');
         return gulp.src(config.customfiles)
             .pipe($.concat(config.customminfile)) //the name of the resulting file
@@ -62,7 +61,7 @@
             .pipe(gulp.dest('.'));
     });
     // inject minified JS into scripts partial
-    gulp.task('js-inject', function() {
+    gulp.task('js-inject', () => {
         let target = gulp.src(config.scriptpartial);
         let sources = gulp.src(config.jsinjectsources, {
             read: false
@@ -73,10 +72,10 @@
     });
 
     // compile and minify SASS to CSS with compass
-    gulp.task('css', function(cb) {
+    gulp.task('css', (cb) => {
         runSequence('clean-css', 'compass', 'clean-sass-cache', 'css-inject', cb);
     });
-    gulp.task('compass', function() {
+    gulp.task('compass', () => {
         log('Compiling SASS -> CSS...');
         return gulp.src(config.sassfiles)
             .pipe($.if(args.verbose, $.print()))
@@ -90,20 +89,20 @@
             .pipe(gulp.dest(config.cssdir));
     });
     // watcher task for CSS
-    gulp.task('css-watch', function() {
+    gulp.task('css-watch', () => {
         gulp.watch(config.sassfiles, ['css']);
     });
     // clean up css/sass files and directories
-    gulp.task('clean-css', function() {
+    gulp.task('clean-css', () => {
         var files = config.cssfiles;
         return clean(files);
     });
-    gulp.task('clean-sass-cache', function() {
+    gulp.task('clean-sass-cache', () => {
         var files = config.sasscache;
         return clean(files);
     });
     // inject CSS into stylesheets partial
-    gulp.task('css-inject', function() {
+    gulp.task('css-inject', () => {
         let target = gulp.src('./views/partials/stylesheets.ejs');
         let sources = gulp.src(['./public/css/*.css'], {
             read: false
