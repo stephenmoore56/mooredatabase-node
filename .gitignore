@@ -23,3 +23,4 @@ public/.sass-cache/*
 node_modules/bcrypt/*
 .idea/workspace.xml
 node_modules
+.idea
