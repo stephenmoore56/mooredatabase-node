@@ -94,17 +94,18 @@
     });
     // clean up css/sass files and directories
     gulp.task('clean-css', () => {
-        var files = config.cssfiles;
+        let files = config.cssfiles;
         return clean(files);
     });
     gulp.task('clean-sass-cache', () => {
-        var files = config.sasscache;
+        let files = config.sasscache;
         return clean(files);
     });
     // inject CSS into stylesheets partial
     gulp.task('css-inject', () => {
-        let target = gulp.src('./views/partials/stylesheets.ejs');
-        let sources = gulp.src(['./public/css/*.css'], {
+        log('Injecting CSS filename into template...');
+        let target = gulp.src(config.stylesheetpartial);
+        let sources = gulp.src(config.cssinjectsources, {
             read: false
         });
         return target.pipe($.inject(sources))

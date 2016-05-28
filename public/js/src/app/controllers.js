@@ -2,6 +2,8 @@
     'use strict';
     myApp.controller('OrdersCtrl', ['$scope', 'OrdersDataFactory', 'ReportCharts',
             function OrdersCtrl($scope, OrdersDataFactory, ReportCharts) {
+                // change active nav pill
+                mooredatabaseCustom.setNavPill();
                 // use the same data to draw the table and the chart
                 OrdersDataFactory.getData()
                     .then(function(data) {
@@ -22,6 +24,8 @@
         ])
         .controller('MonthsCtrl', ['$scope', 'MonthsDataFactory', 'ReportCharts',
             function MonthsCtrl($scope, MonthsDataFactory, ReportCharts) {
+                // change active nav pill
+                mooredatabaseCustom.setNavPill();
                 // use the same data to draw the table and the chart
                 MonthsDataFactory.getData()
                     .then(function(data) {
@@ -42,6 +46,8 @@
         ])
         .controller('SpeciesCtrl', ['$scope', 'SpeciesDataFactory',
             function SpeciesCtrl($scope, SpeciesDataFactory) {
+                // change active nav pill
+                mooredatabaseCustom.setNavPill();
                 SpeciesDataFactory.getData()
                     .then(function(data) {
                         if (data.errors) {
@@ -60,6 +66,8 @@
         ])
         .controller('YearsCtrl', ['$scope', 'YearsDataFactory', 'ReportCharts',
             function YearsCtrl($scope, YearsDataFactory, ReportCharts) {
+                // change active nav pill
+                mooredatabaseCustom.setNavPill();
                 // use the same data to draw the table and the chart
                 YearsDataFactory.getData()
                     .then(function(data) {
@@ -80,6 +88,8 @@
         ])
         .controller('DetailCtrl', ['$scope', '$routeParams', 'DetailDataFactory', 'DetailMonthsDataFactory', 'ReportCharts',
             function DetailCtrl($scope, $routeParams, DetailDataFactory, DetailMonthsDataFactory, ReportCharts) {
+                // change active nav pill
+                mooredatabaseCustom.setNavPill();
                 $scope.id = $routeParams.id;
                 $scope.goBack = function() {
                     window.history.back();
