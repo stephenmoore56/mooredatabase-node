@@ -1,6 +1,6 @@
 var mooredatabaseCustom = {
     setNavPill: function() {
-        console.log('in function');
+	'use strict';
         // first remove active class from pills
         $('#toolsNav li')
             .each(function() {
@@ -24,10 +24,6 @@ var mooredatabaseCustom = {
         }
         if ($.inArray("years", myHash) !== -1) {
             $('#yearsNavPill')
-                .addClass('active');
-        }
-        if ($.inArray("species", myHash) !== -1) {
-            $('#speciesNavPill')
                 .addClass('active');
         }
         if ($.inArray("detail", myHash) !== -1) {

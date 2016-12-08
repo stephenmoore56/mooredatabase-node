@@ -89,6 +89,7 @@
         "myApp": true,
         "angular": true,
         "$": true,
-        "Plotly": true
+        "Plotly": true,
+        "mooredatabaseCustom": true
     }
 }
