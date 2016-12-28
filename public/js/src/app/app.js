@@ -40,3 +40,8 @@ myApp.config(['$routeProvider',
             });
     }
 ]);
+
+myApp.config(['$locationProvider', function($locationProvider) {
+    'use strict';
+    $locationProvider.hashPrefix('');
+}]);
