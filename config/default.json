@@ -7,8 +7,8 @@
     "dbConfig": {
         "connectionLimit": 10,
         "host": "mysql57test.cd02yxrr7fxm.us-east-1.rds.amazonaws.com",
-        "user": "smoore",
-        "password": "zZqcG2K4pe",
+        "user": "birding_readonly",
+        "password": "2N64Op16LQR9fbj",
         "database": "birding",
         "debug": false
     },
