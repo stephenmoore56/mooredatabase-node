@@ -36,13 +36,6 @@
         });
     };
 
-    // exported actions for controller
-    exports.menu = (req, res) => {
-        res.render('birding/menu', {
-            title: 'Bird Species and Sightings'
-        });
-    };
-
     exports.clearCache = (req, res) => {
         myCache.flushAll();
         res.status(HttpStatus.OK)

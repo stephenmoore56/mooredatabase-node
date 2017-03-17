@@ -5,4 +5,10 @@
             title: 'Node.js'
         });
     };
+
+    exports.menu = (req, res) => {
+        res.render('birding/menu', {
+            title: 'Bird Species and Sightings'
+        });
+    };
 })();
