@@ -1,18 +1,21 @@
 <% layout('../layouts/static.ejs') -%>
-<div class="row-fluid">
-	<div class="col-sm-12">
-		<div class="col-sm-6 col-no-pad">
-			<ul id="toolsNav" class="nav nav-pills">
-			  <li class="toolPill" id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
-			  <li class="toolPill" id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
-			  <li class="toolPill" id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
-			</ul>
-			<div id="angularView" class="ng-view"></div>
-			<%- partial('../partials/slideshow.ejs') %>
-	    </div>
-	    <div class="col-sm-1 col-no-pad col-spacer"></div>
-	    <div class="col-sm-5 col-no-pad">
-			<%- partial('../partials/carousel.ejs') %>
-	    </div>
-    </div>
+<div id="content_container" class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-sm-12">
+			<div class="col-sm-6 col-no-pad">
+				<ul id="toolsNav" class="nav nav-pills">
+				  <li class="toolPill" id="nodejsNavPill"><a href="/#/nodejs">Node.js</a></li>
+				  <li class="toolPill" id="angularjsNavPill"><a href="/#/angularjs">AngularJS</a></li>
+				  <li class="toolPill" id="bootstrapNavPill"><a href="/#/bootstrap">Bootstrap</a></li>
+				</ul>
+				<div id="angularView" class="ng-view"></div>
+				<%- partial('../partials/slideshow.ejs') %>
+			</div>
+			<div class="col-sm-1 col-no-pad col-spacer"></div>
+			<div class="col-sm-5 col-no-pad">
+				<%- partial('../partials/carousel.ejs') %>
+			</div>
+		</div>
+	</div>
 </div>
+<%- partial('../partials/footer.ejs') %>

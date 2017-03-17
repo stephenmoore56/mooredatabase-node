@@ -1,12 +1,14 @@
-<% layout('../layouts/birding.ejs') -%>
-<div class="row-fluid">
-	<div class="col-sm-12">
-		<ul id="toolsNav" class="nav nav-pills">
-		  <li id="ordersNavPill"><a href="/birding/#/orders">Orders</a></li>
-		  <li id="monthsNavPill"><a href="/birding/#/months">Months</a></li>
-		  <li id="yearsNavPill"><a href="/birding/#/years">Years</a></li>
-		  <li id="speciesNavPill"><a href="/birding/#/species">All</a></li>
-		</ul>
-		<div class="ng-view"></div>
+<% layout('../layouts/static.ejs') -%>
+<div id="content_container" class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-sm-12">
+			<ul id="toolsNav" class="nav nav-pills">
+			  <li id="ordersNavPill"><a href="/birding/#/orders">Orders</a></li>
+			  <li id="monthsNavPill"><a href="/birding/#/months">Months</a></li>
+			  <li id="yearsNavPill"><a href="/birding/#/years">Years</a></li>
+			  <li id="speciesNavPill"><a href="/birding/#/species">All</a></li>
+			</ul>
+			<div class="ng-view"></div>
+		</div>
 	</div>
 </div>
