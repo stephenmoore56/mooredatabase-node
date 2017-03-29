@@ -10,7 +10,7 @@
 				</p>
 				<p>The birding demos on this site demonstrate:</p>
 				<ul>
-					<li>Integration of a Node.js app running on Heroku with an Amazon RDS MySQL backend; the node module mysql is used for data access.</li>
+					<li>Integration of a Node.js app running on Heroku with a MongoDB database hosted at mLab; the node module mongodb and aggregation pipelines are used for data access.</li>
 					<li>The tables are drawn client-side using an AngularJS MVC app, with JSON data obtained from the Node.js app.</li>
 					<li>The charts are drawn client-side using Plotly.js with JSON data obtained from the Node.js app.</li>
 				</ul>
@@ -53,7 +53,7 @@
 					This site runs on Heroku.</p>
 				<p>The front end makes use of AngularJS, Bootstrap, jQuery and jQuery UI.
 				Custom CSS was authored and pre-processed using SASS and Compass.</p>
-				<p>The back end does SQL queries against a remote MySQL database (in AWS RDS</p>
+				<p>The back end uses aggregation pipelines to query a MongoDB database.</p>
 			</div>
 		</div>
 	</div>
@@ -68,8 +68,7 @@
 					<li>express</li>
 					<li>ejs</li>
 					<li>ejs-locals</li>
-					<li>mysql</li>
-					<li>node-cache</li>
+					<li>mongodb</li>
                     <li>gulp and gulp plugins</li>
                     <li>jasmine-node and frisby</li>
 				</ul>
