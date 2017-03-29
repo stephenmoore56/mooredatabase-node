@@ -24,6 +24,7 @@
     "express": "4.*",
     "express-session": "^1.13.0",
     "http-status-codes": "^1.0.6",
+    "mongodb": "^2.2.25",
     "mysql": "2.10.2",
     "node-cache": "^3.2.1",
     "redis": "^2.6.0-1",
