@@ -4,14 +4,6 @@
     "name": "MOORE+DATABASE",
     "public_dir": "public"
   },
-  "dbConfig": {
-    "connectionLimit": 10,
-    "host": "mysql57test.cd02yxrr7fxm.us-east-1.rds.amazonaws.com",
-    "user": "birding_readonly",
-    "password": "2N64Op16LQR9fbj",
-    "database": "birding",
-    "debug": false
-  },
   "mongoConfig": {
     "host": "ds045757.mlab.com",
     "port": 45757,
