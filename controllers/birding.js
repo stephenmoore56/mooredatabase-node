@@ -2,9 +2,9 @@
     'use strict';
 
     let db = require('../lib/mysql');
-    let MongoClient = require('../lib/mongodb').MongoClient;
-    let MongoUrl = require('../lib/mongodb').MongoUrl;
-    let assert = require('assert');
+    // let MongoClient = require('../lib/mongodb').MongoClient;
+    // let MongoUrl = require('../lib/mongodb').MongoUrl;
+    // let assert = require('assert');
     let cache = require('../lib/cache');
     let myCache = cache.createCache();
     let HttpStatus = require('http-status-codes');
@@ -81,11 +81,11 @@
         executeGET(res, req, `CALL proc_listMonthsForSpecies2(${id});`);
     };
 
-    exports.testMongoConnect = (req, res) => {
-        MongoClient.connect(MongoUrl, function (err, db) {
-            assert.equal(null, err);
-            console.log("Successfully connected to MongoDB.");
-        });
-    };
+    // exports.testMongoConnect = (req, res) => {
+    //     MongoClient.connect(MongoUrl, function (err, db) {
+    //         assert.equal(null, err);
+    //         console.log("Successfully connected to MongoDB.");
+    //     });
+    // };
 
 })();
