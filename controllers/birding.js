@@ -1,91 +1,299 @@
 (function () {
     'use strict';
 
-    let db = require('../lib/mysql');
-    // let MongoClient = require('../lib/mongodb').MongoClient;
-    // let MongoUrl = require('../lib/mongodb').MongoUrl;
-    // let assert = require('assert');
-    let cache = require('../lib/cache');
-    let myCache = cache.createCache();
+    let MongoClient = require('../lib/mongodb').MongoClient;
+    let MongoUrl = require('../lib/mongodb').MongoUrl;
     let HttpStatus = require('http-status-codes');
     const CONTENT_TYPE_JSON = 'application/json; charset=utf-8';
 
-    let executeGET = (res, req, sql) => {
-        myCache.get(sql, (err, cachedValue) => {
-            if (!cachedValue) {
-                db.executeSQL(sql, (err, response) => {
-                    if (err) {
-                        res.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                            .set('Content-Type', CONTENT_TYPE_JSON)
-                            .json([err]);
-                    } else {
-                        if (!response.length) {
-                            res.status(HttpStatus.NOT_FOUND)
-                                .set('Content-Type', CONTENT_TYPE_JSON)
-                                .json([]);
-                        } else {
-                            myCache.set(sql, response);
-                            res.status(HttpStatus.OK)
-                                .set('Content-Type', CONTENT_TYPE_JSON)
-                                .json(response);
-                        }
+    exports.ordersjson = (req, res) => {
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('bird').aggregate([
+                {
+                    '$lookup': {
+                        'from': 'sighting',
+                        'localField': 'aou_list_id',
+                        'foreignField': 'aou_list_id',
+                        'as': 'sighting'
                     }
-                });
-            } else {
+                },
+                {'$unwind': '$sighting'},
+                {
+                    '$group': {
+                        '_id': '$order_id',
+                        'species': {'$addToSet': '$sighting.aou_list_id'},
+                        'sightingCount': {'$sum': 1}
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'order',
+                        'localField': '_id',
+                        'foreignField': 'id',
+                        'as': 'order'
+                    }
+                },
+                {'$unwind': '$order'},
+                {
+                    '$project': {
+                        '_id': 0,
+                        'id': '$_id',
+                        'order_name': '$order.order_name',
+                        'order_notes': '$order.notes',
+                        'order_species_count_all': '$order.order_species_count_all',
+                        'speciesCount': {'$size': '$species'},
+                        'sightingCount': '$sightingCount'
+                    }
+                },
+                {'$sort': {speciesCount: -1}}
+            ]).toArray(function (err, docs) {
                 res.status(HttpStatus.OK)
                     .set('Content-Type', CONTENT_TYPE_JSON)
-                    .json(cachedValue);
-            }
+                    .json(docs);
+            });
         });
     };
 
-    exports.clearCache = (req, res) => {
-        myCache.flushAll();
-        res.status(HttpStatus.OK)
-            .set('Content-Type', CONTENT_TYPE_JSON)
-            .json([{
-                'message': 'Cache cleared.'
-            }]);
-    };
-
-    exports.ordersjson = (req, res) => {
-        executeGET(res, req, "CALL proc_listSpeciesByOrder();");
-    };
-
     exports.monthsjson = (req, res) => {
-        executeGET(res, req, "CALL proc_listSpeciesByMonth();");
-    };
-
-    exports.yearsjson = (req, res) => {
-        executeGET(res, req, "CALL proc_listSpeciesByYear();");
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('time').aggregate([
+                {
+                    '$lookup': {
+                        'from': 'sighting',
+                        'localField': 'sighting_date',
+                        'foreignField': 'sighting_date',
+                        'as': 'sighting'
+                    }
+                },
+                {'$unwind': '$sighting'},
+                {
+                    '$group': {
+                        '_id': '$monthNumber',
+                        'species': {'$addToSet': '$sighting.aou_list_id'},
+                        'trips': {'$addToSet': '$sighting.trip_id'},
+                        'sightingCount': {'$sum': 1}
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'month',
+                        'localField': '_id',
+                        'foreignField': 'monthNumber',
+                        'as': 'month'
+                    }
+                },
+                {'$unwind': '$month'},
+                {
+                    '$project': {
+                        '_id': 0,
+                        'monthNumber': '$_id',
+                        'monthName': '$month.monthName',
+                        'monthLetter': '$month.monthLetter',
+                        'speciesCount': {'$size': '$species'},
+                        'tripCount': {'$size': '$trips'},
+                        'sightingCount': '$sightingCount'
+                    }
+                },
+                {'$sort': {monthNumber: 1}}
+            ]).toArray(function (err, docs) {
+                res.status(HttpStatus.OK)
+                    .set('Content-Type', CONTENT_TYPE_JSON)
+                    .json(docs);
+            });
+        });
     };
 
     exports.speciesjson = (req, res) => {
-        executeGET(res, req, "CALL proc_listSpeciesAll();");
-    };
-
-    exports.allsightingsjson = (req, res) => {
-        executeGET(res, req, "CALL proc_extractAllSightings();");
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('sighting').aggregate([
+                {
+                    '$group': {
+                        '_id': '$aou_list_id',
+                        'last_seen': {'$max': '$sighting_date'},
+                        'sightings': {'$sum': 1}
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'bird',
+                        'localField': '_id',
+                        'foreignField': 'aou_list_id',
+                        'as': 'bird'
+                    }
+                },
+                {'$unwind': '$bird'},
+                {
+                    '$project': {
+                        '_id': 0,
+                        'id': '$_id',
+                        'sightings': '$sightings',
+                        'order_id': '$bird.order_id',
+                        'order_name': '$bird.order_name',
+                        'order_notes': '$bird.order_notes',
+                        'common_name': '$bird.common_name',
+                        'scientific_name': '$bird.scientific_name',
+                        'family': '$bird.family',
+                        'subfamily': '$bird.subfamily',
+                        'last_seen': '$last_seen',
+                    }
+                },
+                {'$sort': {common_name: 1}}
+            ]).toArray(function (err, docs) {
+                res.status(HttpStatus.OK)
+                    .set('Content-Type', CONTENT_TYPE_JSON)
+                    .json(docs);
+            });
+        });
     };
 
     exports.detailjson = (req, res) => {
-        // note template string
         let id = parseInt(req.params.id);
-        executeGET(res, req, `CALL proc_getSpecies2(${id});`);
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('bird').aggregate([
+                {'$match': {'aou_list_id': {'$eq': id}}},
+                {
+                    '$lookup': {
+                        'from': 'sighting',
+                        'localField': 'aou_list_id',
+                        'foreignField': 'aou_list_id',
+                        'as': 'sighting'
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$sighting',
+                        'preserveNullAndEmptyArrays': true
+                    }
+                },
+                {
+                    '$group': {
+                        '_id': '$aou_list_id',
+                        'earliestSighting': {'$max': {'$substr': ['$sighting.sighting_date', 5, 5]}},
+                        'latestSighting': {'$max': {'$substr': ['$sighting.sighting_date', 5, 5]}},
+                        'first_seen': {'$min': '$sighting.sighting_date'},
+                        'last_seen': {'$max': '$sighting.sighting_date'},
+                        'trips': {'$addToSet': '$sighting.trip_id'},
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'bird',
+                        'localField': '_id',
+                        'foreignField': 'aou_list_id',
+                        'as': 'bird'
+                    }
+                },
+                {'$unwind': '$bird'},
+                {
+                    '$project': {
+                        '_id': 0,
+                        'id': '$_id',
+                        'sightings': {'$size': '$trips'},
+                        'order_name': '$bird.order_name',
+                        'order_notes': '$bird.order_notes',
+                        'common_name': '$bird.common_name',
+                        'scientific_name': '$bird.scientific_name',
+                        'family': '$bird.family',
+                        'subfamily': '$bird.subfamily',
+                        'first_seen': '$first_seen',
+                        'last_seen': '$last_seen',
+                        'earliestSighting': '$earliestSighting',
+                        'latestSighting': '$latestSighting'
+                    }
+                }
+            ]).toArray(function (err, docs) {
+                res.status(HttpStatus.OK)
+                    .set('Content-Type', CONTENT_TYPE_JSON)
+                    .json(docs);
+            });
+        });
     };
 
     exports.detailmonthsjson = (req, res) => {
-        // TODO: modify procedure to return no result for invalid id
-        // note template string
         let id = parseInt(req.params.id);
-        executeGET(res, req, `CALL proc_listMonthsForSpecies2(${id});`);
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('sighting').aggregate([
+                {'$match': {'aou_list_id': {'$eq': id}}},
+                {
+                    '$lookup': {
+                        'from': 'time',
+                        'localField': 'sighting_date',
+                        'foreignField': 'sighting_date',
+                        'as': 'time'
+                    }
+                },
+                {'$unwind': '$time'},
+                {
+                    '$group': {
+                        '_id': '$time.monthNumber',
+                        'monthName': {'$first': '$time.monthName'},
+                        'aou_list_id': {'$first': '$aou_list_id'},
+                        'sightingCount': {'$sum': 1}
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'bird',
+                        'localField': 'aou_list_id',
+                        'foreignField': 'aou_list_id',
+                        'as': 'bird'
+                    }
+                },
+                {'$unwind': '$bird'},
+                {
+                    '$project': {
+                        '_id': 0,
+                        'common_name': '$bird.common_name',
+                        'monthNumber': '$_id',
+                        'monthName': '$monthName',
+                        'sightingCount': '$sightingCount'
+                    }
+                },
+                {'$sort': {'monthNumber': 1}}
+            ]).toArray(function (err, docs) {
+                res.status(HttpStatus.OK)
+                    .set('Content-Type', CONTENT_TYPE_JSON)
+                    .json(docs);
+            });
+        });
     };
 
-    // exports.testMongoConnect = (req, res) => {
-    //     MongoClient.connect(MongoUrl, function (err, db) {
-    //         assert.equal(null, err);
-    //         console.log("Successfully connected to MongoDB.");
-    //     });
-    // };
+    exports.yearsjson = (req, res) => {
+        MongoClient.connect(MongoUrl, function (err, db) {
+            db.collection('time').aggregate([
+                {
+                    '$lookup': {
+                        'from': 'sighting',
+                        'localField': 'sighting_date',
+                        'foreignField': 'sighting_date',
+                        'as': 'sighting'
+                    }
+                },
+                {'$unwind': '$sighting'},
+                {
+                    '$group': {
+                        '_id': '$yearNumber',
+                        'species': {'$addToSet': '$sighting.aou_list_id'},
+                        'trips': {'$addToSet': '$sighting.trip_id'},
+                        'sightingCount': {'$sum': 1}
+                    }
+                },
+                {
+                    '$project': {
+                        '_id': 0,
+                        'yearNumber': '$_id',
+                        'speciesCount': {'$size': '$species'},
+                        'tripCount': {'$size': '$trips'},
+                        'sightingCount': '$sightingCount'
+                    }
+                },
+                {'$sort': {yearNumber: 1}}
+            ]).toArray(function (err, docs) {
+                res.status(HttpStatus.OK)
+                    .set('Content-Type', CONTENT_TYPE_JSON)
+                    .json(docs);
+            });
+        });
+    };
 
 })();

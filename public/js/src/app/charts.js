@@ -1,7 +1,7 @@
-(function() {
+(function () {
     'use strict';
-    myApp.factory('ReportCharts', function() {
-        var resizeChart = function(chart_div) {
+    myApp.factory('ReportCharts', function () {
+        var resizeChart = function (chart_div) {
             var d3 = Plotly.d3;
             var WIDTH_IN_PERCENT_OF_PARENT = 90,
                 HEIGHT_IN_PERCENT_OF_PARENT = 90;
@@ -11,12 +11,12 @@
                     height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh'
                 });
             var gd = gd3.node();
-            window.onresize = function() {
+            window.addEventListener('resize', function () {
                 Plotly.Plots.resize(gd);
-            };
+            });
         };
         return {
-            drawChartSpeciesByMonth: function(dataPoints, chart_div) {
+            drawChartSpeciesByMonth: function (dataPoints, chart_div) {
                 var months, species, trips, data, trace1, trace2, i, layout;
                 if (dataPoints.length === 0) {
                     return;
@@ -59,11 +59,20 @@
                         pad: 5
                     },
                     xaxis: {
-                        title: 'Month',
                         type: 'category'
                     },
-                    yaxis: {
-                        title: 'Species / Trips'
+                    legend: {
+                        x: 0,
+                        y: 1,
+                        traceorder: 'normal',
+                        font: {
+                            family: 'sans-serif',
+                            size: 12,
+                            color: '#000'
+                        },
+                        bgcolor: '#ECECEC',
+                        bordercolor: '#FFFFFF',
+                        borderwidth: 2
                     }
                 };
                 Plotly.newPlot(chart_div, data, layout, {
@@ -71,7 +80,7 @@
                     modeBarButtonsToRemove: ['sendDataToCloud']
                 });
             },
-            drawChartSpeciesByYear: function(dataPoints, chart_div) {
+            drawChartSpeciesByYear: function (dataPoints, chart_div) {
                 var years, species, trips, data, trace1, trace2, i, layout;
                 if (dataPoints.length === 0) {
                     return;
@@ -114,11 +123,20 @@
                         pad: 5
                     },
                     xaxis: {
-                        title: 'Year',
                         type: 'category'
                     },
-                    yaxis: {
-                        title: 'Species / Trips'
+                    legend: {
+                        x: 0,
+                        y: 1,
+                        traceorder: 'normal',
+                        font: {
+                            family: 'sans-serif',
+                            size: 12,
+                            color: '#000'
+                        },
+                        bgcolor: '#ECECEC',
+                        bordercolor: '#FFFFFF',
+                        borderwidth: 2
                     }
                 };
                 Plotly.newPlot(chart_div, data, layout, {
@@ -126,7 +144,7 @@
                     modeBarButtonsToRemove: ['sendDataToCloud']
                 });
             },
-            drawChartSpeciesByOrder: function(dataPoints, chart_div) {
+            drawChartSpeciesByOrder: function (dataPoints, chart_div) {
                 var orderNames, speciesCounts, data, trace1, i, layout;
                 if (dataPoints.length === 0) {
                     return;
@@ -159,20 +177,36 @@
                     modeBarButtonsToRemove: ['sendDataToCloud']
                 });
             },
-            drawChartMonthsForSpecies: function(dataPoints, chart_div) {
-                var months, sightings, data, trace1, i, layout;
+            drawChartMonthsForSpecies: function (dataPoints, chart_div) {
+                var MONTHS, sightings, i, trace1, data, layout;
                 if (dataPoints.length === 0) {
                     return;
                 }
+                MONTHS = [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec',
+                ];
                 resizeChart(chart_div);
-                months = [];
                 sightings = [];
+                for (i = 0; i < MONTHS.length; i++) {
+                    sightings[i] = 0;
+                }
+                // update with sightings for months that have them
                 for (i = 0; i < dataPoints.length; i++) {
-                    months[i] = dataPoints[i].monthName.substring(0, 3);
-                    sightings[i] = dataPoints[i].sightingCount;
+                    sightings[dataPoints[i].monthNumber - 1] = dataPoints[i].sightingCount;
                 }
                 trace1 = {
-                    x: months,
+                    x: MONTHS,
                     y: sightings,
                     name: 'Sightings',
                     type: 'bar',
@@ -196,11 +230,7 @@
                         pad: 5
                     },
                     xaxis: {
-                        title: 'Month',
                         type: 'category'
-                    },
-                    yaxis: {
-                        title: 'Sightings'
                     }
                 };
                 Plotly.newPlot(chart_div, data, layout, {
