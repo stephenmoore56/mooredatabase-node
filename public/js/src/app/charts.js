@@ -3,8 +3,8 @@
     myApp.factory('ReportCharts', function () {
         var resizeChart = function (chart_div) {
             var d3 = Plotly.d3;
-            var WIDTH_IN_PERCENT_OF_PARENT = 90,
-                HEIGHT_IN_PERCENT_OF_PARENT = 90;
+            var WIDTH_IN_PERCENT_OF_PARENT = 95,
+                HEIGHT_IN_PERCENT_OF_PARENT = 95;
             var gd3 = d3.select('#' + chart_div)
                 .style({
                     width: WIDTH_IN_PERCENT_OF_PARENT + '%',
@@ -52,7 +52,7 @@
                 data = [trace1, trace2];
                 layout = {
                     margin: {
-                        l: 50,
+                        l: 30,
                         r: 5,
                         b: 50,
                         t: 30,
@@ -116,7 +116,7 @@
                 data = [trace1, trace2];
                 layout = {
                     margin: {
-                        l: 50,
+                        l: 30,
                         r: 5,
                         b: 50,
                         t: 30,
@@ -165,7 +165,7 @@
                 data = [trace1];
                 layout = {
                     margin: {
-                        l: 50,
+                        l: 30,
                         r: 5,
                         b: 100,
                         t: 30,
@@ -223,7 +223,7 @@
                         x: 0.5
                     },
                     margin: {
-                        l: 50,
+                        l: 30,
                         r: 5,
                         b: 50,
                         t: 30,

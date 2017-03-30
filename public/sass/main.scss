@@ -30,8 +30,11 @@ body {
 }
 // set max width on Plotly.js charts
 #chart_div {
-  max-width: 600px;
+  max-width: 800px;
   max-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 // tables 100% so they fill panel
 .report_table {
