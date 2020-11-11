@@ -3,11 +3,13 @@
 
     let MongoClient = require('../lib/mongodb').MongoClient;
     let MongoUrl = require('../lib/mongodb').MongoUrl;
+    let MongoDatabase = require('../lib/mongodb').MongoDatabase;
     let HttpStatus = require('http-status-codes');
     const CONTENT_TYPE_JSON = 'application/json; charset=utf-8';
 
     let executeAndReturnJSONResponse = (res, startCollection, pipeline) => {
-        MongoClient.connect(MongoUrl, function (err, db) {
+        MongoClient.connect(MongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
+            let db = client.db(MongoDatabase);
             db.collection(startCollection).aggregate(pipeline).toArray(function (err, docs) {
                 res.status(HttpStatus.OK)
                     .set('Content-Type', CONTENT_TYPE_JSON)
