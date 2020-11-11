@@ -1,6 +1,6 @@
 {
   "name": "mooredatabase-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Stephen Moore <stephenmoore56@msn.com> (http://moore-database.com)",
   "description": "Portfolio / demonstration node.js application",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/stephenmoore56/mooredatabase-node.git"
   },
   "engines": {
-    "node": "7.10.1"
+    "node": "8.10.0"
   },
   "private": true,
   "scripts": {
@@ -27,31 +27,5 @@
     "mongodb": "^2.2.30",
     "redis": "^2.6.0-1",
     "url": "^0.11.0"
-  },
-  "devDependencies": {
-    "del": "^2.2.0",
-    "frisby": "^0.8.5",
-    "gulp": "^3.9.1",
-    "gulp-compass": "^2.1.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-if": "^2.0.0",
-    "gulp-inject": "^4.0.0",
-    "gulp-jasmine": "^2.3.0",
-    "gulp-jscs": "^4.0.0",
-    "gulp-jshint": "^2.0.1",
-    "gulp-load-plugins": "^1.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-print": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-rev": "^7.0.0",
-    "gulp-uglify": "3.0.0",
-    "gulp-util": "^3.0.7",
-    "jasmine-node": "^1.14.5",
-    "jasmine-reporters": "^2.1.1",
-    "jshint": "^2.9.5",
-    "jshint-stylish": "^2.1.0",
-    "run-sequence": "^1.1.5",
-    "yargs": "^8.0.2"
   }
 }

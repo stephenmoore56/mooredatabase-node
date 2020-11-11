@@ -6,7 +6,7 @@
         "public_dir": "public"
     },
     "mongoConfig": {
-        "host": "localhost",
+        "host": "52.23.206.215",
         "port": 27017,
         "user": "birding_readonly",
         "password": "2N64Op16LQR9fbj",
