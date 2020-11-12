@@ -12,8 +12,7 @@
     "database": "birding"
   },
   "sessionConfig": {
-    "secret": "pileated_woodpecker",
-      "ttl": 7200
+    "secret": "pileated_woodpecker"
     },
     "saveUninitialized": false,
     "resave": false,
