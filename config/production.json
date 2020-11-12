@@ -13,7 +13,6 @@
   },
   "sessionConfig": {
     "secret": "pileated_woodpecker"
-    },
     "saveUninitialized": false,
     "resave": false,
     "cookie": {
