@@ -12,7 +12,7 @@
     "database": "birding"
   },
   "sessionConfig": {
-    "secret": "pileated_woodpecker"
+    "secret": "pileated_woodpecker",
     "saveUninitialized": false,
     "resave": false,
     "cookie": {
