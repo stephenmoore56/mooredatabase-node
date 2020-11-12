@@ -11,25 +11,5 @@
         "user": "birding_readonly",
         "password": "2N64Op16LQR9fbj",
         "database": "birding"
-    },
-//    "mongoConfig": {
-//        "host": "ds045757.mlab.com",
-//        "port": 45757,
-//        "user": "birding_readonly",
-//        "password": "2N64Op16LQR9fbj",
-//        "database": "heroku_app11812640"
-//    },
-    "sessionConfig": {
-        "secret": "pileated_woodpecker",
-        "redisConfig": {
-            "host": "localhost",
-            "port": 6379,
-            "ttl": 7200
-        },
-        "saveUninitialized": false,
-        "resave": false,
-        "cookie": {
-            "maxAge": 7200
-        }
     }
 }
