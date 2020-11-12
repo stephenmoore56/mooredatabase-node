@@ -7,7 +7,7 @@
         .appConfig;
     require('./lib/routes')(app, express);
     require('./lib/templating')(app);
-    require('./lib/session')(app);
+//    require('./lib/session')(app);
 
     // start app; Heroku assigns ports in production
     app.set('port', process.env.PORT || appConfig.port);
